@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1612399058 source:c:\users\max\desktop\csci191games\lesson01\main.cpp
+	<windows.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<iostream>
+	<windows.h>
+
+1612225335 c:\users\max\desktop\csci191games\common\include\gl\glut.h
+	<windows.h>
+	<stdlib.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
