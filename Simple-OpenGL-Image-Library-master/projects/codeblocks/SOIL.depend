@@ -1,0 +1,58 @@
+# depslib dependency file v1.0
+1613609952 source:c:\users\max\desktop\csci191games\simple-opengl-image-library-master\src\image_dxt.c
+	"image_DXT.h"
+	<math.h>
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+
+1613609952 c:\users\max\desktop\csci191games\simple-opengl-image-library-master\src\image_dxt.h
+
+1613609952 source:c:\users\max\desktop\csci191games\simple-opengl-image-library-master\src\image_helper.c
+	"image_helper.h"
+	<stdlib.h>
+	<math.h>
+
+1613609952 c:\users\max\desktop\csci191games\simple-opengl-image-library-master\src\image_helper.h
+
+1613609952 source:c:\users\max\desktop\csci191games\simple-opengl-image-library-master\src\soil.c
+	<windows.h>
+	<wingdi.h>
+	<GL/gl.h>
+	<windows.h>
+	<wingdi.h>
+	<GL/gl.h>
+	<OpenGL/gl.h>
+	<Carbon/Carbon.h>
+	<GLES/gl.h>
+	<GL/gl.h>
+	<GL/gl.h>
+	<GL/glx.h>
+	"SOIL.h"
+	"stb_image_aug.h"
+	"image_helper.h"
+	"image_DXT.h"
+	<stdlib.h>
+	<string.h>
+
+1613609952 c:\users\max\desktop\csci191games\simple-opengl-image-library-master\src\soil.h
+
+1613609952 c:\users\max\desktop\csci191games\simple-opengl-image-library-master\src\stb_image_aug.h
+	<stdio.h>
+
+1613609952 source:c:\users\max\desktop\csci191games\simple-opengl-image-library-master\src\stb_image_aug.c
+	"stb_image_aug.h"
+	<math.h>
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<memory.h>
+	<assert.h>
+	<stdarg.h>
+	"stbi_DDS_aug.h"
+	"stbi_DDS_aug_c.h"
+
+1613609952 c:\users\max\desktop\csci191games\simple-opengl-image-library-master\src\stbi_dds_aug.h
+
+1613609952 c:\users\max\desktop\csci191games\simple-opengl-image-library-master\src\stbi_dds_aug_c.h
+
