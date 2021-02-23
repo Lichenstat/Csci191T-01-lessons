@@ -53,18 +53,15 @@ GLint _glScene::initGL()
 GLint _glScene::drawScene()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glClearColor(0.6f, 0.1f, 0.2f, 0.3f); // change this if you want to change color of scene
+    glClearColor(0.6f, 0.1f, 0.2f, 0.3f);                   // change this if you want to change color of scene
     glLoadIdentity();
 
-    glTranslated(0, 0, -8);     // place in the scene
-    glColor3f(1.0, 0.3, 0.2);   // set a color to the object
+    glTranslated(0, 0, -8);                                 // place in the scene
+    glColor3f(1.0, 0.3, 0.2);                               // set a color to the object
 
-    glPushMatrix();             // group my object
-    glutSolidTeapot(1.5);       // draw object
-    glPopMatrix();              // exit the group
+    modelTeapot -> drawModel();
 
-    glBindTexture(GL_TEXTURE_2D,tex); // to use texture on the teapot
-
+    glBindTexture(GL_TEXTURE_2D,tex);                       // to use texture on the teapot
 }
 
 void _glScene::resizeGLScene(int width, int height)
@@ -77,5 +74,58 @@ void _glScene::resizeGLScene(int width, int height)
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-
 }
+
+int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
+                     UINT	uMsg,			        // Message For This Window
+                     WPARAM	wParam,			        // Additional Message Information
+                     LPARAM	lParam)
+{
+    switch (uMsg)									// Check For Windows Messages
+	{
+
+		case WM_KEYDOWN:							// Is A Key Being Held Down?
+		{
+			break;								// Jump Back
+		}
+
+		case WM_KEYUP:								// Has A Key Been Released?
+		{
+			break;							// Jump Back
+		}
+
+		case WM_LBUTTONDOWN:
+        {
+            break;
+        }
+
+        case WM_RBUTTONDOWN:
+        {
+            break;
+        }
+
+        case WM_MBUTTONDOWN:
+        {
+            break;
+        }
+
+        case WM_LBUTTONUP:
+        case WM_RBUTTONUP:
+        case WM_MBUTTONUP:
+        {
+            break;
+        }
+
+        case WM_MOUSEMOVE:
+        {
+            break;
+        }
+
+        case WM_MOUSEWHEEL:
+        {
+            break;
+        }
+
+	}
+}
+

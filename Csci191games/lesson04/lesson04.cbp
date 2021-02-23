@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="lesson03" />
+		<Option title="lesson04" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/lesson03" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/lesson04" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="C:/Users/Max/Desktop/Csci191games/common/bin" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
@@ -18,7 +18,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/lesson03" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/lesson04" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="C:/Users/Max/Desktop/Csci191games/common/bin" />
 				<Option object_output="obj/Release/" />
 				<Option type="0" />
@@ -47,9 +47,13 @@
 		</Linker>
 		<Unit filename="include/_glLight.h" />
 		<Unit filename="include/_glScene.h" />
+		<Unit filename="include/_input.h" />
+		<Unit filename="include/_model.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/_glLight.cpp" />
 		<Unit filename="src/_glScene.cpp" />
+		<Unit filename="src/_input.cpp" />
+		<Unit filename="src/_model.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
