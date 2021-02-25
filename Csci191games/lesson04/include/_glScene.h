@@ -5,6 +5,7 @@
 #include <GL/glut.h>
 #include <iostream>
 #include <_model.h>
+#include <_input.h>
 
 using namespace std;
 
@@ -19,6 +20,7 @@ class _glScene
         void resizeGLScene(int, int);
 
         _model *modelTeapot = new _model();
+        _input *kbMS = new _input();
 
         int winMSG(HWND, UINT, WPARAM, LPARAM);
         WPARAM wParam;

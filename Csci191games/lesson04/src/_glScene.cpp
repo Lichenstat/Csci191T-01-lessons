@@ -3,6 +3,7 @@
 #include <SOIL.h>
 
 GLuint tex;
+
 void bindTexture(char* fileName)
 {
     int width, height;
@@ -59,9 +60,10 @@ GLint _glScene::drawScene()
     glTranslated(0, 0, -8);                                 // place in the scene
     glColor3f(1.0, 0.3, 0.2);                               // set a color to the object
 
-    modelTeapot -> drawModel();
-
     glBindTexture(GL_TEXTURE_2D,tex);                       // to use texture on the teapot
+
+    modelTeapot -> drawModel();
+        //glutSolidTorus(0.2, 0.5, 20, 20);
 }
 
 void _glScene::resizeGLScene(int width, int height)
@@ -81,26 +83,33 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
                      WPARAM	wParam,			        // Additional Message Information
                      LPARAM	lParam)
 {
+    kbMS->wParam = wParam;
     switch (uMsg)									// Check For Windows Messages
 	{
 
 		case WM_KEYDOWN:							// Is A Key Being Held Down?
 		{
-			break;								// Jump Back
+		    kbMS->wParam = wParam;
+		    kbMS->keyPressed(modelTeapot);
+			break;							    // Jump Back
 		}
 
 		case WM_KEYUP:								// Has A Key Been Released?
 		{
-			break;							// Jump Back
+            kbMS->wParam = wParam;
+		    kbMS->keyUp();
+			break;							    // Jump Back
 		}
 
 		case WM_LBUTTONDOWN:
         {
+            kbMS->mouseDown(modelTeapot, LOWORD(lParam), HIWORD(lParam));
             break;
         }
 
         case WM_RBUTTONDOWN:
         {
+            kbMS->mouseDown(modelTeapot, LOWORD(lParam), HIWORD(lParam));
             break;
         }
 
@@ -113,11 +122,13 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
         case WM_RBUTTONUP:
         case WM_MBUTTONUP:
         {
+            kbMS->mouseUp();
             break;
         }
 
         case WM_MOUSEMOVE:
         {
+            kbMS->mouseMove(modelTeapot, LOWORD(lParam), HIWORD(lParam));
             break;
         }
 

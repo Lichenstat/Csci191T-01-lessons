@@ -5,11 +5,12 @@
 1613005950 c:\users\max\desktop\csci191games\lesson04\include\_gllight.h
 	<_glScene.h>
 
-1614041828 c:\users\max\desktop\csci191games\lesson04\include\_glscene.h
+1614213802 c:\users\max\desktop\csci191games\lesson04\include\_glscene.h
 	<windows.h>
 	<GL/glut.h>
 	<iostream>
 	<_model.h>
+	<_input.h>
 
 1612225335 c:\users\max\desktop\csci191games\common\include\gl\glut.h
 	<windows.h>
@@ -17,7 +18,7 @@
 	<GL/gl.h>
 	<GL/glu.h>
 
-1614043085 source:c:\users\max\desktop\csci191games\lesson04\src\_glscene.cpp
+1614215851 source:c:\users\max\desktop\csci191games\lesson04\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<SOIL.h>
@@ -40,8 +41,10 @@
 1614040432 source:c:\users\max\desktop\csci191games\lesson04\src\_model.cpp
 	"_model.h"
 
-1614041576 source:c:\users\max\desktop\csci191games\lesson04\src\_input.cpp
+1614216036 source:c:\users\max\desktop\csci191games\lesson04\src\_input.cpp
 	"_input.h"
 
-1614041576 c:\users\max\desktop\csci191games\lesson04\include\_input.h
+1614215939 c:\users\max\desktop\csci191games\lesson04\include\_input.h
+	<windows.h>
+	<_model.h>
 
