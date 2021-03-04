@@ -3,6 +3,7 @@
 
 #include <windows.h>
 #include <_model.h>
+#include <_parallax.h>
 
 class _input
 {
@@ -10,6 +11,7 @@ class _input
         _input();
         virtual ~_input();
         void keyPressed(_model*);   //kick off when you press a key
+        void moveEnv(_parallax *, float);
         void keyUp();
 
         void mouseDown(_model*, float, float);

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1614043008 source:c:\users\max\desktop\csci191games\lesson05\main.cpp
+1614821130 source:c:\users\max\desktop\csci191games\lesson05\main.cpp
 	<windows.h>
 	<_glScene.h>
 	<GL/glut.h>
@@ -27,9 +27,10 @@
 	<GL/glut.h>
 	<iostream>
 
-1614215939 c:\users\max\desktop\csci191games\lesson05\include\_input.h
+1614818399 c:\users\max\desktop\csci191games\lesson05\include\_input.h
 	<windows.h>
 	<_model.h>
+	<_parallax.h>
 
 1614645347 c:\users\max\desktop\csci191games\lesson05\include\_texture.h
 	<SOIL.h>
@@ -44,24 +45,25 @@
 1613005950 c:\users\max\desktop\csci191games\lesson05\include\_gllight.h
 	<_glScene.h>
 
-1614216693 source:c:\users\max\desktop\csci191games\lesson05\src\_input.cpp
+1614818727 source:c:\users\max\desktop\csci191games\lesson05\src\_input.cpp
 	"_input.h"
 
-1614040432 source:c:\users\max\desktop\csci191games\lesson05\src\_model.cpp
+1614821112 source:c:\users\max\desktop\csci191games\lesson05\src\_model.cpp
 	"_model.h"
 
-1614645131 source:c:\users\max\desktop\csci191games\lesson05\src\_texture.cpp
+1614819319 source:c:\users\max\desktop\csci191games\lesson05\src\_texture.cpp
 	"_texture.h"
 
-1614647714 source:c:\users\max\desktop\csci191games\lesson05\src\_glscene.cpp
+1614821039 source:c:\users\max\desktop\csci191games\lesson05\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<SOIL.h>
 
-1614647143 c:\users\max\desktop\csci191games\lesson05\include\_parallax.h
+1614817279 c:\users\max\desktop\csci191games\lesson05\include\_parallax.h
 	<string>
 	<GL/gl.h>
+	<_texture.h>
 
-1614647878 source:c:\users\max\desktop\csci191games\lesson05\src\_parallax.cpp
+1614820160 source:c:\users\max\desktop\csci191games\lesson05\src\_parallax.cpp
 	"_parallax.h"
 

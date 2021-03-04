@@ -25,8 +25,31 @@ void _input::keyPressed(_model* mdl)
         mdl->rotateY -= 1.0;
         break;
     }
-
 }
+
+void _input::moveEnv(_parallax* plx, float speed)
+{
+    switch(wParam)
+    {
+    case VK_LEFT:
+            plx->xMax -= speed;
+            plx->xMin -= speed;
+        break;
+    case VK_RIGHT:
+            plx->xMax += speed;
+            plx->xMin += speed;
+        break;
+        case VK_UP:
+            plx->yMax += speed;
+            plx->yMin += speed;
+        break;
+    case VK_DOWN:
+            plx->yMax -= speed;
+            plx->yMin -= speed;
+        break;
+    }
+}
+
 
 void _input::keyUp()
 {
@@ -64,9 +87,9 @@ void _input::mouseUp()
     mouseTranslation = false;
 }
 
-void _input::mouseWheel(_model*, float)
+void _input::mouseWheel(_model* mdl, float delta)
 {
-
+    mdl->zoom += delta/100;
 }
 
 void _input::mouseMove(_model* mdl, float x, float y)

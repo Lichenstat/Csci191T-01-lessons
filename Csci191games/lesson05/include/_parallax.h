@@ -3,6 +3,7 @@
 
 #include <string>
 #include <GL/gl.h>
+#include <_texture.h>
 
 using namespace std;
 
@@ -16,6 +17,7 @@ class _parallax
         void scroll(bool, string, float);
 
         float xMax, xMin, yMax, yMin;
+        _texture *plxTexture = new _texture();
 
     protected:
 

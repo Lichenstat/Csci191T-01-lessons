@@ -24,7 +24,8 @@ GLint _glScene::initGL()
     _glLight myLight(GL_LIGHT0);
 
     modelTex->loadTexture("images/car.jpg");
-
+    background->parallaxInit("images/plx.jpg");
+    background->parallaxInit("images/plx2.png");
 }
 
 GLint _glScene::drawScene()
@@ -34,9 +35,18 @@ GLint _glScene::drawScene()
     glLoadIdentity();
 
     glPushMatrix();
+    glScalef(3.33, 3.33, 1.0);
+    glBindTexture(GL_TEXTURE_2D, background->plxTexture->tex);
+    background->renderBack(screenWidth, screenHeight);
+
+    glPushMatrix();
+    glScalef(3.33, 1.0, 1.0);
+    glBindTexture(GL_TEXTURE_2D, background->plxTexture->tex);
     background->renderBack(screenWidth, screenHeight);
 
     glPopMatrix();
+
+    background->scroll(false, "left", 0.001);                // auto background scrolling
 
     glTranslated(0, 0, -8);                                 // place in the scene
     glColor3f(1.0, 0.3, 0.2);                               // set a color to the object
@@ -73,6 +83,7 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
 		{
 		    kbMS->wParam = wParam;
 		    kbMS->keyPressed(modelTeapot);
+			kbMS->moveEnv(background, .005);
 			break;							    // Jump Back
 		}
 
@@ -116,6 +127,7 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
 
         case WM_MOUSEWHEEL:
         {
+            kbMS->mouseWheel(modelTeapot, (float)GET_WHEEL_DELTA_WPARAM(wParam));
             break;
         }
 
