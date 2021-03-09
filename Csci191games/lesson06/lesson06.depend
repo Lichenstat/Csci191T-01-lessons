@@ -1,0 +1,80 @@
+# depslib dependency file v1.0
+1614821130 source:c:\users\max\desktop\csci191games\lesson06\main.cpp
+	<windows.h>
+	<_glScene.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<iostream>
+	<windows.h>
+
+1615253827 c:\users\max\desktop\csci191games\lesson06\include\_glscene.h
+	<windows.h>
+	<GL/glut.h>
+	<iostream>
+	<_model.h>
+	<_input.h>
+	<_texture.h>
+	<_parallax.h>
+	<_player.h>
+
+1612225335 c:\users\max\desktop\csci191games\common\include\gl\glut.h
+	<windows.h>
+	<stdlib.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1614040690 c:\users\max\desktop\csci191games\lesson06\include\_model.h
+	<windows.h>
+	<GL/glut.h>
+	<iostream>
+
+1614818399 c:\users\max\desktop\csci191games\lesson06\include\_input.h
+	<windows.h>
+	<_model.h>
+	<_parallax.h>
+
+1614817279 c:\users\max\desktop\csci191games\lesson06\include\_parallax.h
+	<string>
+	<GL/gl.h>
+	<_texture.h>
+
+1614645347 c:\users\max\desktop\csci191games\lesson06\include\_texture.h
+	<SOIL.h>
+	<GL/gl.h>
+	<iostream>
+
+1613609952 c:\users\max\desktop\csci191games\common\include\soil.h
+
+1613005140 source:c:\users\max\desktop\csci191games\lesson06\src\_gllight.cpp
+	"_glLight.h"
+
+1613005950 c:\users\max\desktop\csci191games\lesson06\include\_gllight.h
+	<_glScene.h>
+
+1614818727 source:c:\users\max\desktop\csci191games\lesson06\src\_input.cpp
+	"_input.h"
+
+1614821112 source:c:\users\max\desktop\csci191games\lesson06\src\_model.cpp
+	"_model.h"
+
+1614820160 source:c:\users\max\desktop\csci191games\lesson06\src\_parallax.cpp
+	"_parallax.h"
+
+1615252262 source:c:\users\max\desktop\csci191games\lesson06\src\_player.cpp
+	"_player.h"
+
+1615250808 c:\users\max\desktop\csci191games\lesson06\include\_player.h
+	<_common.h>
+	<_texture.h>
+	<GL/gl.h>
+
+1615249498 c:\users\max\desktop\csci191games\lesson06\include\_common.h
+
+1614819319 source:c:\users\max\desktop\csci191games\lesson06\src\_texture.cpp
+	"_texture.h"
+
+1615252613 source:c:\users\max\desktop\csci191games\lesson06\src\_glscene.cpp
+	"_glScene.h"
+	<_glLight.h>
+	<SOIL.h>
+
