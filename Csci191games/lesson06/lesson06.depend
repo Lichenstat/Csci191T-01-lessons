@@ -7,7 +7,7 @@
 	<iostream>
 	<windows.h>
 
-1615253827 c:\users\max\desktop\csci191games\lesson06\include\_glscene.h
+1615424839 c:\users\max\desktop\csci191games\lesson06\include\_glscene.h
 	<windows.h>
 	<GL/glut.h>
 	<iostream>
@@ -16,6 +16,7 @@
 	<_texture.h>
 	<_parallax.h>
 	<_player.h>
+	<_timer.h>
 
 1612225335 c:\users\max\desktop\csci191games\common\include\gl\glut.h
 	<windows.h>
@@ -60,10 +61,10 @@
 1614820160 source:c:\users\max\desktop\csci191games\lesson06\src\_parallax.cpp
 	"_parallax.h"
 
-1615252262 source:c:\users\max\desktop\csci191games\lesson06\src\_player.cpp
+1615423421 source:c:\users\max\desktop\csci191games\lesson06\src\_player.cpp
 	"_player.h"
 
-1615250808 c:\users\max\desktop\csci191games\lesson06\include\_player.h
+1615422988 c:\users\max\desktop\csci191games\lesson06\include\_player.h
 	<_common.h>
 	<_texture.h>
 	<GL/gl.h>
@@ -73,8 +74,14 @@
 1614819319 source:c:\users\max\desktop\csci191games\lesson06\src\_texture.cpp
 	"_texture.h"
 
-1615252613 source:c:\users\max\desktop\csci191games\lesson06\src\_glscene.cpp
+1615423218 source:c:\users\max\desktop\csci191games\lesson06\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<SOIL.h>
+
+1615424436 c:\users\max\desktop\csci191games\lesson06\include\_timer.h
+	<time.h>
+
+1615424670 source:c:\users\max\desktop\csci191games\lesson06\src\_timer.cpp
+	"_timer.h"
 

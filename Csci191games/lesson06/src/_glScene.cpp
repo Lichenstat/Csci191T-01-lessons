@@ -27,8 +27,9 @@ GLint _glScene::initGL()
     background->parallaxInit("images/plx.jpg");
     backgroundtwo->parallaxInit("images/plx2.png");
 
-    myPly -> playerInit();
-    myPly -> plyImage -> loadTexture("images/ply.png");
+    timer -> startTimer();
+    myPly -> playerInit(5, 3);  // how many frames (X, Y) frames is the sprite sheet
+    myPly -> plyImage -> loadTexture("images/plyspritesheet.png");
     return true;
 }
 
@@ -37,6 +38,7 @@ GLint _glScene::drawScene()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glClearColor(0.6f, 0.1f, 0.2f, 0.3f);                   // change this if you want to change color of scene
     glLoadIdentity();
+
 
     glPushMatrix();
     glScalef(3.33, 3.33, 1.0);
@@ -62,6 +64,16 @@ GLint _glScene::drawScene()
     glPushMatrix();
     glBindTexture(GL_TEXTURE_2D, myPly->plyImage->tex);
     myPly -> drawPlayer();
+
+    if(timer -> getTicks() > 120)
+    {
+    myPly -> xMin += 1/myPly -> framesX;
+    myPly -> xMax += 1/myPly -> framesX;
+    myPly -> yMin += 1/myPly -> framesY;
+    myPly -> yMax += 1/myPly -> framesY;
+    timer -> resetTime();
+    }
+
     glPopMatrix();
 }
 

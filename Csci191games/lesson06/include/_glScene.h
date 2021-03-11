@@ -9,6 +9,7 @@
 #include <_texture.h>
 #include <_parallax.h>
 #include <_player.h>
+#include <_timer.h>
 
 using namespace std;
 
@@ -30,6 +31,7 @@ class _glScene
         _parallax *background = new _parallax();
         _parallax *backgroundtwo = new _parallax();
         _player *myPly = new _player();
+        _timer *timer = new _timer();
 
         int winMSG(HWND, UINT, WPARAM, LPARAM);
         WPARAM wParam;
