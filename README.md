@@ -4,8 +4,8 @@ Game dev lessons for the group to use
 Dhanyu's website for files and external lessons: https://www.dhanyu.com/csci191/
 
 Before running the lessons it is important to note: 
-- These lessons are all based in C++ around Windows so it is likely that no other OS 
-  will work with these lessons.
+- These lessons are all based in C++ around Windows (due to libSOIL.a library) so it 
+  is likely that no other OS will work with these lessons.
 - (You only have to do this once!) glut32.dll goes into the 'C:\Windows' folder to 
   replace the one currently there so that the lessons will be able to properly run 
   in the CodeBlocks editor.
