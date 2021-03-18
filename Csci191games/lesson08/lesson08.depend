@@ -1,0 +1,98 @@
+# depslib dependency file v1.0
+1614824730 source:c:\users\max\desktop\csci191games\lesson08\main.cpp
+	<windows.h>
+	<_glScene.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<iostream>
+	<windows.h>
+
+1616031483 c:\users\max\desktop\csci191games\lesson08\include\_glscene.h
+	<windows.h>
+	<GL/glut.h>
+	<iostream>
+	<_model.h>
+	<_input.h>
+	<_texture.h>
+	<_parallax.h>
+	<_player.h>
+	<_timer.h>
+	<_enemies.h>
+
+1612228935 c:\users\max\desktop\csci191games\common\include\gl\glut.h
+	<windows.h>
+	<stdlib.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1614044290 c:\users\max\desktop\csci191games\lesson08\include\_model.h
+	<windows.h>
+	<GL/glut.h>
+	<iostream>
+
+1615855666 c:\users\max\desktop\csci191games\lesson08\include\_input.h
+	<windows.h>
+	<_model.h>
+	<_parallax.h>
+	<_player.h>
+
+1614820879 c:\users\max\desktop\csci191games\lesson08\include\_parallax.h
+	<string>
+	<GL/gl.h>
+	<_texture.h>
+
+1614648947 c:\users\max\desktop\csci191games\lesson08\include\_texture.h
+	<SOIL.h>
+	<GL/gl.h>
+	<iostream>
+
+1613613552 c:\users\max\desktop\csci191games\common\include\soil.h
+
+1615855004 c:\users\max\desktop\csci191games\lesson08\include\_player.h
+	<_common.h>
+	<_texture.h>
+	<GL/gl.h>
+	<iostream>
+
+1615253098 c:\users\max\desktop\csci191games\lesson08\include\_common.h
+
+1615428036 c:\users\max\desktop\csci191games\lesson08\include\_timer.h
+	<time.h>
+
+1616029168 source:c:\users\max\desktop\csci191games\lesson08\src\_enemies.cpp
+	"_enemies.h"
+
+1616027813 c:\users\max\desktop\csci191games\lesson08\include\_enemies.h
+	<_common.h>
+	<_timer.h>
+	<GL/gl.h>
+
+1613008740 source:c:\users\max\desktop\csci191games\lesson08\src\_gllight.cpp
+	"_glLight.h"
+
+1613009550 c:\users\max\desktop\csci191games\lesson08\include\_gllight.h
+	<_glScene.h>
+
+1616030720 source:c:\users\max\desktop\csci191games\lesson08\src\_glscene.cpp
+	"_glScene.h"
+	<_glLight.h>
+	<SOIL.h>
+
+1615856927 source:c:\users\max\desktop\csci191games\lesson08\src\_input.cpp
+	"_input.h"
+
+1614824712 source:c:\users\max\desktop\csci191games\lesson08\src\_model.cpp
+	"_model.h"
+
+1614823760 source:c:\users\max\desktop\csci191games\lesson08\src\_parallax.cpp
+	"_parallax.h"
+
+1615856340 source:c:\users\max\desktop\csci191games\lesson08\src\_player.cpp
+	"_player.h"
+
+1616031080 source:c:\users\max\desktop\csci191games\lesson08\src\_texture.cpp
+	"_texture.h"
+
+1615428270 source:c:\users\max\desktop\csci191games\lesson08\src\_timer.cpp
+	"_timer.h"
+
