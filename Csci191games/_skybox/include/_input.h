@@ -5,6 +5,7 @@
 #include <_model.h>
 #include <_parallax.h>
 #include <_player.h>
+#include <_skybox.h>
 
 class _input
 {
@@ -21,7 +22,10 @@ class _input
         void mouseDown(_model*, float, float);
         void mouseUp();
         void mouseWheel(_model*, float);
+        void mouseWheel(_skybox *, float);
+
         void mouseMove(_model*, float, float);
+        void mouseMove(_skybox *, float, float);
 
         float prevMouseX;
         float prevMouseY;

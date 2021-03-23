@@ -45,6 +45,7 @@
 			<Add library="gdi32" />
 			<Add directory="C:/Users/Max/Desktop/Csci191games/common/lib" />
 		</Linker>
+		<Unit filename="include/_common.h" />
 		<Unit filename="include/_glLight.h" />
 		<Unit filename="include/_glScene.h" />
 		<Unit filename="include/_input.h" />

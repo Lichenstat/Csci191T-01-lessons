@@ -111,6 +111,26 @@ void _input::mouseWheel(_model* mdl, float delta)
     mdl->zoom += delta/100;
 }
 
+void _input::mouseWheel(_skybox *sky, float delta)
+{
+    sky->translation.z += delta/100;
+}
+
+void _input::mouseMove(_skybox *sky, float x, float y)
+{
+    if(mouseRotate){
+        sky->rotations.y += (x-prevMouseX)/3;
+        sky->rotations.x += (y-prevMouseY)/3;
+    }
+    if(mouseTranslation){
+        sky->translation.x += (x-prevMouseX)/100;
+        sky->translation.y -= (y-prevMouseY)/100;
+    }
+    prevMouseX = x;
+    prevMouseY = y;
+}
+
+
 void _input::mouseMove(_model* mdl, float x, float y)
 {
     if(mouseRotate){

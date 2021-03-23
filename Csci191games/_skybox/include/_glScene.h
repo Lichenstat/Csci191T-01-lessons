@@ -10,6 +10,7 @@
 #include <_parallax.h>
 #include <_player.h>
 #include <_timer.h>
+#include <_skybox.h>
 
 using namespace std;
 
@@ -32,6 +33,7 @@ class _glScene
         _parallax *backgroundtwo = new _parallax();
         _player *myPly = new _player();
         _timer *timer = new _timer();
+        _skybox *skybox = new _skybox();
 
         int winMSG(HWND, UINT, WPARAM, LPARAM);
         WPARAM wParam;

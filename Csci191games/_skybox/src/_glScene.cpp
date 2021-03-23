@@ -32,6 +32,8 @@ GLint _glScene::initGL()
     myPly -> playerInit(5, 3);  // how many frames (X, Y) frames is the sprite sheet
     myPly -> plyImage -> loadTexture("images/plyspritesheet.png");
 
+    skybox->loadTexture();
+
     return true;
 }
 
@@ -41,7 +43,7 @@ GLint _glScene::drawScene()
     glClearColor(0.6f, 0.1f, 0.2f, 0.3f);                   // change this if you want to change color of scene
     glLoadIdentity();
 
-
+    /*
     glPushMatrix();
     glScalef(3.33, 3.33, 1.0);
     glBindTexture(GL_TEXTURE_2D, background->plxTexture->tex);
@@ -62,6 +64,9 @@ GLint _glScene::drawScene()
     //glBindTexture(GL_TEXTURE_2D,modelTex->tex);             // to use texture on the teapot
     //modelTeapot -> drawModel();
     //glutSolidTorus(0.2, 0.5, 20, 20);
+    */
+
+    skybox->drawBox();
 
     glPushMatrix();
     glBindTexture(GL_TEXTURE_2D, myPly->plyImage->tex);
@@ -150,13 +155,15 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
 
         case WM_MOUSEMOVE:
         {
-            kbMS->mouseMove(modelTeapot, LOWORD(lParam), HIWORD(lParam));
+            //kbMS->mouseMove(modelTeapot, LOWORD(lParam), HIWORD(lParam));
+            kbMS->mouseMove(skybox, LOWORD(lParam), HIWORD(lParam));
             break;
         }
 
         case WM_MOUSEWHEEL:
         {
             kbMS->mouseWheel(modelTeapot, (float)GET_WHEEL_DELTA_WPARAM(wParam));
+            kbMS->mouseWheel(skybox, (float)GET_WHEEL_DELTA_WPARAM(wParam));
             break;
         }
 

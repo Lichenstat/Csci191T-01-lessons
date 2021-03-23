@@ -7,7 +7,7 @@
 	<iostream>
 	<windows.h>
 
-1615428439 c:\users\max\desktop\csci191games\_skybox\include\_glscene.h
+1616460239 c:\users\max\desktop\csci191games\_skybox\include\_glscene.h
 	<windows.h>
 	<GL/glut.h>
 	<iostream>
@@ -17,6 +17,7 @@
 	<_parallax.h>
 	<_player.h>
 	<_timer.h>
+	<_skybox.h>
 
 1612228935 c:\users\max\desktop\csci191games\common\include\gl\glut.h
 	<windows.h>
@@ -29,11 +30,12 @@
 	<GL/glut.h>
 	<iostream>
 
-1615855666 c:\users\max\desktop\csci191games\_skybox\include\_input.h
+1616460495 c:\users\max\desktop\csci191games\_skybox\include\_input.h
 	<windows.h>
 	<_model.h>
 	<_parallax.h>
 	<_player.h>
+	<_skybox.h>
 
 1614820879 c:\users\max\desktop\csci191games\_skybox\include\_parallax.h
 	<string>
@@ -64,12 +66,12 @@
 1613009550 c:\users\max\desktop\csci191games\_skybox\include\_gllight.h
 	<_glScene.h>
 
-1615855870 source:c:\users\max\desktop\csci191games\_skybox\src\_glscene.cpp
+1616461658 source:c:\users\max\desktop\csci191games\_skybox\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<SOIL.h>
 
-1615856927 source:c:\users\max\desktop\csci191games\_skybox\src\_input.cpp
+1616462134 source:c:\users\max\desktop\csci191games\_skybox\src\_input.cpp
 	"_input.h"
 
 1614824712 source:c:\users\max\desktop\csci191games\_skybox\src\_model.cpp
@@ -81,10 +83,13 @@
 1615856340 source:c:\users\max\desktop\csci191games\_skybox\src\_player.cpp
 	"_player.h"
 
-1615858322 source:c:\users\max\desktop\csci191games\_skybox\src\_skybox.cpp
+1616462340 source:c:\users\max\desktop\csci191games\_skybox\src\_skybox.cpp
 	"_skybox.h"
 
-1615858322 c:\users\max\desktop\csci191games\_skybox\include\_skybox.h
+1616459182 c:\users\max\desktop\csci191games\_skybox\include\_skybox.h
+	<_common.h>
+	<_texture.h>
+	<GL/gl.h>
 
 1614822919 source:c:\users\max\desktop\csci191games\_skybox\src\_texture.cpp
 	"_texture.h"
