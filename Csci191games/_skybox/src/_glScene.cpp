@@ -42,6 +42,7 @@ GLint _glScene::drawScene()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glClearColor(0.6f, 0.1f, 0.2f, 0.3f);                   // change this if you want to change color of scene
     glLoadIdentity();
+    gluLookAt(0, 0, 3, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 
     /*
     glPushMatrix();

@@ -10,6 +10,10 @@ _skybox::_skybox()
     translation.x = 0.0;
     translation.y = 0.0;
     translation.z = 0.0;
+
+    dim.x = 6.33;
+    dim.y = 6.33;
+    dim.z = 6.33;
 }
 
 _skybox::~_skybox()
@@ -42,6 +46,8 @@ void _skybox::loadTexture()
 void _skybox::drawBox()
 {
     glPushMatrix();
+
+    glScalef(dim.x, dim.y, dim.z);
     glDisable(GL_NORMALIZE);
     glDisable(GL_LIGHTING);
     glRotatef(rotations.x, 1, 0, 0);

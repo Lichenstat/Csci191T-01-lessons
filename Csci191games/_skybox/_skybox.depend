@@ -66,7 +66,7 @@
 1613009550 c:\users\max\desktop\csci191games\_skybox\include\_gllight.h
 	<_glScene.h>
 
-1616461658 source:c:\users\max\desktop\csci191games\_skybox\src\_glscene.cpp
+1616632456 source:c:\users\max\desktop\csci191games\_skybox\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<SOIL.h>
@@ -91,7 +91,7 @@
 	<_texture.h>
 	<GL/gl.h>
 
-1614822919 source:c:\users\max\desktop\csci191games\_skybox\src\_texture.cpp
+1616632070 source:c:\users\max\desktop\csci191games\_skybox\src\_texture.cpp
 	"_texture.h"
 
 1615427383 source:c:\users\max\desktop\csci191games\_skybox\src\_time.cpp

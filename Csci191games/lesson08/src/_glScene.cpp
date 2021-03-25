@@ -39,7 +39,7 @@ GLint _glScene::initGL()
         enms[i].posE.y = -0.5;
 
         enms[i].placeEnms(enms[i].posE);
-        enms[i].sizeE.y = (float)(rand()%12)/50.0;
+        enms[i].sizeE.y = enms[i].sizeE.x = (float)(rand()%12)/30.0;
     }
 
     return true;
@@ -118,8 +118,10 @@ void _glScene::resizeGLScene(int width, int height)
     glViewport(0, 0, width, height);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(45.0, aspectRatio, 0.1, 100);
-    //gluOrtho2D();
+
+    //gluPerspective(45.0, aspectRatio, 0.1, 100);
+
+    glOrtho(-5.0, 5.0, -3.5, 3.5, 0.1, 100);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();

@@ -4,16 +4,17 @@ _enemies::_enemies()
 {
     //ctor
     posE.x = posE.y = 0.0;
-    posE.z = -5.0;
+    posE.z = -8.0;
 
-    sizeE.x = 1.0;
-    sizeE.y = 0.5;
+    sizeE.x = 0.1;
+    sizeE.y = 0.0;
 
     rotateE.x = rotateE.y = rotateE.z = 0.0;
 
     numberOfFrames = 7;
     xMin = yMin = 0.0;
-    xMax = yMax = 1/numberOfFrames;
+    xMax = 1/numberOfFrames;
+    yMax = .5;
 
     speed  = 0.01;
     actions = 0;
@@ -81,8 +82,8 @@ void _enemies::actionsEnms()
             // this is a sprite sheet assumed to be 7x2
             xMin += 1.0/numberOfFrames;
             xMax += 1.0/numberOfFrames;
-            yMin = 0.5;
-            yMax = 1.0;
+            yMin = 0.0;
+            yMax = 0.5;
             eT -> resetTime();
         }
     break;

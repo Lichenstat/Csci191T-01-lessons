@@ -59,7 +59,7 @@
 1615428036 c:\users\max\desktop\csci191games\lesson08\include\_timer.h
 	<time.h>
 
-1616029168 source:c:\users\max\desktop\csci191games\lesson08\src\_enemies.cpp
+1616634730 source:c:\users\max\desktop\csci191games\lesson08\src\_enemies.cpp
 	"_enemies.h"
 
 1616027813 c:\users\max\desktop\csci191games\lesson08\include\_enemies.h
@@ -73,7 +73,7 @@
 1613009550 c:\users\max\desktop\csci191games\lesson08\include\_gllight.h
 	<_glScene.h>
 
-1616030720 source:c:\users\max\desktop\csci191games\lesson08\src\_glscene.cpp
+1616633848 source:c:\users\max\desktop\csci191games\lesson08\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<SOIL.h>
