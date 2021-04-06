@@ -1,0 +1,203 @@
+# depslib dependency file v1.0
+1614824730 source:c:\users\max\desktop\csci191games\lesson10\main.cpp
+	<windows.h>
+	<_glScene.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<iostream>
+	<windows.h>
+
+1617671202 c:\users\max\desktop\csci191games\lesson10\include\_glscene.h
+	<windows.h>
+	<GL/glut.h>
+	<iostream>
+	<_model.h>
+	<_input.h>
+	<_texture.h>
+	<_parallax.h>
+	<_player.h>
+	<_timer.h>
+	<_enemies.h>
+	<_sounds.h>
+
+1612228935 c:\users\max\desktop\csci191games\common\include\gl\glut.h
+	<windows.h>
+	<stdlib.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1614044290 c:\users\max\desktop\csci191games\lesson10\include\_model.h
+	<windows.h>
+	<GL/glut.h>
+	<iostream>
+
+1615855666 c:\users\max\desktop\csci191games\lesson10\include\_input.h
+	<windows.h>
+	<_model.h>
+	<_parallax.h>
+	<_player.h>
+
+1614820879 c:\users\max\desktop\csci191games\lesson10\include\_parallax.h
+	<string>
+	<GL/gl.h>
+	<_texture.h>
+
+1614648947 c:\users\max\desktop\csci191games\lesson10\include\_texture.h
+	<SOIL.h>
+	<GL/gl.h>
+	<iostream>
+
+1613613552 c:\users\max\desktop\csci191games\common\include\soil.h
+
+1615855004 c:\users\max\desktop\csci191games\lesson10\include\_player.h
+	<_common.h>
+	<_texture.h>
+	<GL/gl.h>
+	<iostream>
+
+1615253098 c:\users\max\desktop\csci191games\lesson10\include\_common.h
+
+1615428036 c:\users\max\desktop\csci191games\lesson10\include\_timer.h
+	<time.h>
+
+1616027813 c:\users\max\desktop\csci191games\lesson10\include\_enemies.h
+	<_common.h>
+	<_timer.h>
+	<GL/gl.h>
+
+1616635225 source:c:\users\max\desktop\csci191games\lesson10\src\_enemies.cpp
+	"_enemies.h"
+
+1613008740 source:c:\users\max\desktop\csci191games\lesson10\src\_gllight.cpp
+	"_glLight.h"
+
+1613009550 c:\users\max\desktop\csci191games\lesson10\include\_gllight.h
+	<_glScene.h>
+
+1617671691 source:c:\users\max\desktop\csci191games\lesson10\src\_glscene.cpp
+	"_glScene.h"
+	<_glLight.h>
+	<SOIL.h>
+
+1615856927 source:c:\users\max\desktop\csci191games\lesson10\src\_input.cpp
+	"_input.h"
+
+1614824712 source:c:\users\max\desktop\csci191games\lesson10\src\_model.cpp
+	"_model.h"
+
+1614823760 source:c:\users\max\desktop\csci191games\lesson10\src\_parallax.cpp
+	"_parallax.h"
+
+1615856340 source:c:\users\max\desktop\csci191games\lesson10\src\_player.cpp
+	"_player.h"
+
+1617670841 source:c:\users\max\desktop\csci191games\lesson10\src\_sounds.cpp
+	"_sounds.h"
+
+1617670816 c:\users\max\desktop\csci191games\lesson10\include\_sounds.h
+	<iostream>
+	<SNDS/irrKlang.h>
+
+1617668452 c:\users\max\desktop\csci191games\common\include\snds\irrklang.h
+	"ik_irrKlangTypes.h"
+	"ik_vec3d.h"
+	"ik_IRefCounted.h"
+	"ik_IVirtualRefCounted.h"
+	"ik_ESoundOutputDrivers.h"
+	"ik_ESoundEngineOptions.h"
+	"ik_EStreamModes.h"
+	"ik_SAudioStreamFormat.h"
+	"ik_ISoundEngine.h"
+	"ik_ISoundSource.h"
+	"ik_ISound.h"
+	"ik_IAudioStream.h"
+	"ik_IAudioStreamLoader.h"
+	"ik_ISoundEffectControl.h"
+	"ik_ISoundStopEventReceiver.h"
+	"ik_IFileFactory.h"
+	"ik_IFileReader.h"
+	"ik_ISoundDeviceList.h"
+	"ik_IAudioRecorder.h"
+	"ik_ISoundMixedOutputReceiver.h"
+
+1617668451 c:\users\max\desktop\csci191games\common\include\snds\ik_irrklangtypes.h
+	<wchar.h>
+
+1617668452 c:\users\max\desktop\csci191games\common\include\snds\ik_vec3d.h
+	<math.h>
+	"ik_irrKlangTypes.h"
+
+1617668451 c:\users\max\desktop\csci191games\common\include\snds\ik_irefcounted.h
+	"ik_irrKlangTypes.h"
+
+1617668452 c:\users\max\desktop\csci191games\common\include\snds\ik_ivirtualrefcounted.h
+	"ik_irrKlangTypes.h"
+
+1617668450 c:\users\max\desktop\csci191games\common\include\snds\ik_esoundoutputdrivers.h
+
+1617668450 c:\users\max\desktop\csci191games\common\include\snds\ik_esoundengineoptions.h
+
+1617668451 c:\users\max\desktop\csci191games\common\include\snds\ik_estreammodes.h
+
+1617668452 c:\users\max\desktop\csci191games\common\include\snds\ik_saudiostreamformat.h
+	"ik_IRefCounted.h"
+
+1617668451 c:\users\max\desktop\csci191games\common\include\snds\ik_isoundengine.h
+	"ik_IRefCounted.h"
+	"ik_vec3d.h"
+	"ik_ISoundSource.h"
+	"ik_ISound.h"
+	"ik_EStreamModes.h"
+	"ik_IFileFactory.h"
+	"ik_ISoundMixedOutputReceiver.h"
+
+1617668452 c:\users\max\desktop\csci191games\common\include\snds\ik_isoundsource.h
+	"ik_IVirtualRefCounted.h"
+	"ik_vec3d.h"
+	"ik_EStreamModes.h"
+	"ik_SAudioStreamFormat.h"
+
+1617668451 c:\users\max\desktop\csci191games\common\include\snds\ik_isound.h
+	"ik_IVirtualRefCounted.h"
+	"ik_ISoundEffectControl.h"
+	"ik_vec3d.h"
+
+1617668451 c:\users\max\desktop\csci191games\common\include\snds\ik_isoundeffectcontrol.h
+	"ik_IVirtualRefCounted.h"
+	"ik_vec3d.h"
+
+1617668451 c:\users\max\desktop\csci191games\common\include\snds\ik_ifilefactory.h
+	"ik_IRefCounted.h"
+
+1617668452 c:\users\max\desktop\csci191games\common\include\snds\ik_isoundmixedoutputreceiver.h
+	"ik_IRefCounted.h"
+	"ik_SAudioStreamFormat.h"
+
+1617668451 c:\users\max\desktop\csci191games\common\include\snds\ik_iaudiostream.h
+	"ik_IRefCounted.h"
+	"ik_SAudioStreamFormat.h"
+
+1617668451 c:\users\max\desktop\csci191games\common\include\snds\ik_iaudiostreamloader.h
+	"ik_IRefCounted.h"
+	"ik_IFileReader.h"
+
+1617668451 c:\users\max\desktop\csci191games\common\include\snds\ik_ifilereader.h
+	"ik_IRefCounted.h"
+
+1617668452 c:\users\max\desktop\csci191games\common\include\snds\ik_isoundstopeventreceiver.h
+	"ik_IRefCounted.h"
+	"ik_SAudioStreamFormat.h"
+
+1617668451 c:\users\max\desktop\csci191games\common\include\snds\ik_isounddevicelist.h
+	"ik_IRefCounted.h"
+
+1617668451 c:\users\max\desktop\csci191games\common\include\snds\ik_iaudiorecorder.h
+	"ik_IRefCounted.h"
+	"ik_ISoundSource.h"
+
+1616031080 source:c:\users\max\desktop\csci191games\lesson10\src\_texture.cpp
+	"_texture.h"
+
+1615428270 source:c:\users\max\desktop\csci191games\lesson10\src\_timer.cpp
+	"_timer.h"
+
