@@ -3,12 +3,12 @@
 _sounds::_sounds()
 {
     //ctor
-    sndEng->drop();
 }
 
 _sounds::~_sounds()
 {
     //dtor
+    sndEng->drop();
 }
 
 void _sounds::playMusic(char* fileName)
