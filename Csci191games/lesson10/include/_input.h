@@ -5,6 +5,7 @@
 #include <_model.h>
 #include <_parallax.h>
 #include <_player.h>
+#include <_sounds.h>
 
 class _input
 {
@@ -13,6 +14,7 @@ class _input
         virtual ~_input();
         void keyPressed(_model*);   //kick off when you press a key
         void keyPressed(_player*);  //kick off when you press a key
+        void keyPressed(_sounds *);
 
         void moveEnv(_parallax *, float);
         void keyUp(_player *);

@@ -35,7 +35,7 @@ int _sounds::initSounds()
 {
     if(!sndEng)
     {
-        cout<<"Could not start Sound Engine\n";
+        cout<<"Could not start Sound Engine \n";
         return 0;
     }
     return 1;

@@ -14,6 +14,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -24,6 +25,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -35,6 +37,8 @@
 			<Add directory="C:/Users/Max/Desktop/Csci191games/common/include" />
 		</Compiler>
 		<Linker>
+			<Add library="../common/lib/libSOIL.a" />
+			<Add library="../common/lib/libirrKlang.a" />
 			<Add library="glut32" />
 			<Add library="opengl32" />
 			<Add library="glu32" />
@@ -42,7 +46,28 @@
 			<Add library="gdi32" />
 			<Add directory="C:/Users/Max/Desktop/Csci191games/common/lib" />
 		</Linker>
+		<Unit filename="include/_common.h" />
+		<Unit filename="include/_enemies.h" />
+		<Unit filename="include/_glLight.h" />
+		<Unit filename="include/_glScene.h" />
+		<Unit filename="include/_input.h" />
+		<Unit filename="include/_model.h" />
+		<Unit filename="include/_parallax.h" />
+		<Unit filename="include/_player.h" />
+		<Unit filename="include/_sounds.h" />
+		<Unit filename="include/_texture.h" />
+		<Unit filename="include/_timer.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/_enemies.cpp" />
+		<Unit filename="src/_glLight.cpp" />
+		<Unit filename="src/_glScene.cpp" />
+		<Unit filename="src/_input.cpp" />
+		<Unit filename="src/_model.cpp" />
+		<Unit filename="src/_parallax.cpp" />
+		<Unit filename="src/_player.cpp" />
+		<Unit filename="src/_sounds.cpp" />
+		<Unit filename="src/_texture.cpp" />
+		<Unit filename="src/_timer.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

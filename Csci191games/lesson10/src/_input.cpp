@@ -42,6 +42,17 @@ void _input::keyPressed(_player* ply)
     }
 }
 
+void _input::keyPressed(_sounds* snds)
+{
+    switch(wParam)
+    {
+    case VK_SPACE:
+        snds->playSounds("sounds/exmpl.wav");
+    break;
+    }
+}
+
+
 void _input::moveEnv(_parallax* plx, float speed)
 {
     switch(wParam)

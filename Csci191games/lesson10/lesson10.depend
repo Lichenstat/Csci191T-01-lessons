@@ -1,24 +1,24 @@
 # depslib dependency file v1.0
-1614824730 source:c:\users\max\desktop\csci191games\lesson10\main.cpp
-	<windows.h>
-	<_glScene.h>
-	<GL/glut.h>
-	<stdlib.h>
-	<iostream>
-	<windows.h>
+1616635225 source:c:\users\max\desktop\csci191games\lesson10\src\_enemies.cpp
+	"_enemies.h"
 
-1617671202 c:\users\max\desktop\csci191games\lesson10\include\_glscene.h
+1616027813 c:\users\max\desktop\csci191games\lesson10\include\_enemies.h
+	<_common.h>
+	<_timer.h>
+	<GL/gl.h>
+
+1615253098 c:\users\max\desktop\csci191games\lesson10\include\_common.h
+
+1615428036 c:\users\max\desktop\csci191games\lesson10\include\_timer.h
+	<time.h>
+
+1614824712 source:c:\users\max\desktop\csci191games\lesson10\src\_model.cpp
+	"_model.h"
+
+1614044290 c:\users\max\desktop\csci191games\lesson10\include\_model.h
 	<windows.h>
 	<GL/glut.h>
 	<iostream>
-	<_model.h>
-	<_input.h>
-	<_texture.h>
-	<_parallax.h>
-	<_player.h>
-	<_timer.h>
-	<_enemies.h>
-	<_sounds.h>
 
 1612228935 c:\users\max\desktop\csci191games\common\include\gl\glut.h
 	<windows.h>
@@ -26,16 +26,8 @@
 	<GL/gl.h>
 	<GL/glu.h>
 
-1614044290 c:\users\max\desktop\csci191games\lesson10\include\_model.h
-	<windows.h>
-	<GL/glut.h>
-	<iostream>
-
-1615855666 c:\users\max\desktop\csci191games\lesson10\include\_input.h
-	<windows.h>
-	<_model.h>
-	<_parallax.h>
-	<_player.h>
+1614823760 source:c:\users\max\desktop\csci191games\lesson10\src\_parallax.cpp
+	"_parallax.h"
 
 1614820879 c:\users\max\desktop\csci191games\lesson10\include\_parallax.h
 	<string>
@@ -49,52 +41,19 @@
 
 1613613552 c:\users\max\desktop\csci191games\common\include\soil.h
 
+1615856340 source:c:\users\max\desktop\csci191games\lesson10\src\_player.cpp
+	"_player.h"
+
 1615855004 c:\users\max\desktop\csci191games\lesson10\include\_player.h
 	<_common.h>
 	<_texture.h>
 	<GL/gl.h>
 	<iostream>
 
-1615253098 c:\users\max\desktop\csci191games\lesson10\include\_common.h
-
-1615428036 c:\users\max\desktop\csci191games\lesson10\include\_timer.h
-	<time.h>
-
-1616027813 c:\users\max\desktop\csci191games\lesson10\include\_enemies.h
-	<_common.h>
-	<_timer.h>
-	<GL/gl.h>
-
-1616635225 source:c:\users\max\desktop\csci191games\lesson10\src\_enemies.cpp
-	"_enemies.h"
-
-1613008740 source:c:\users\max\desktop\csci191games\lesson10\src\_gllight.cpp
-	"_glLight.h"
-
-1613009550 c:\users\max\desktop\csci191games\lesson10\include\_gllight.h
-	<_glScene.h>
-
-1617671691 source:c:\users\max\desktop\csci191games\lesson10\src\_glscene.cpp
-	"_glScene.h"
-	<_glLight.h>
-	<SOIL.h>
-
-1615856927 source:c:\users\max\desktop\csci191games\lesson10\src\_input.cpp
-	"_input.h"
-
-1614824712 source:c:\users\max\desktop\csci191games\lesson10\src\_model.cpp
-	"_model.h"
-
-1614823760 source:c:\users\max\desktop\csci191games\lesson10\src\_parallax.cpp
-	"_parallax.h"
-
-1615856340 source:c:\users\max\desktop\csci191games\lesson10\src\_player.cpp
-	"_player.h"
-
 1617670841 source:c:\users\max\desktop\csci191games\lesson10\src\_sounds.cpp
 	"_sounds.h"
 
-1617670816 c:\users\max\desktop\csci191games\lesson10\include\_sounds.h
+1617847442 c:\users\max\desktop\csci191games\lesson10\include\_sounds.h
 	<iostream>
 	<SNDS/irrKlang.h>
 
@@ -200,4 +159,46 @@
 
 1615428270 source:c:\users\max\desktop\csci191games\lesson10\src\_timer.cpp
 	"_timer.h"
+
+1614824730 source:c:\users\max\desktop\csci191games\lesson10\main.cpp
+	<windows.h>
+	<_glScene.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<iostream>
+	<windows.h>
+
+1617840818 c:\users\max\desktop\csci191games\lesson10\include\_glscene.h
+	<windows.h>
+	<GL/glut.h>
+	<iostream>
+	<_model.h>
+	<_input.h>
+	<_texture.h>
+	<_parallax.h>
+	<_player.h>
+	<_timer.h>
+	<_enemies.h>
+	<_sounds.h>
+
+1617847274 c:\users\max\desktop\csci191games\lesson10\include\_input.h
+	<windows.h>
+	<_model.h>
+	<_parallax.h>
+	<_player.h>
+	<_sounds.h>
+
+1613008740 source:c:\users\max\desktop\csci191games\lesson10\src\_gllight.cpp
+	"_glLight.h"
+
+1613009550 c:\users\max\desktop\csci191games\lesson10\include\_gllight.h
+	<_glScene.h>
+
+1617847691 source:c:\users\max\desktop\csci191games\lesson10\src\_glscene.cpp
+	"_glScene.h"
+	<_glLight.h>
+	<SOIL.h>
+
+1617847493 source:c:\users\max\desktop\csci191games\lesson10\src\_input.cpp
+	"_input.h"
 

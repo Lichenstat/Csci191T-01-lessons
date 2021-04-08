@@ -32,6 +32,7 @@ GLint _glScene::initGL()
     myPly -> plyImage -> loadTexture("images/plyspritesheet.png");
 
     texEnms -> loadTexture("images/enemy.png");
+
     snds->initSounds();
     snds->playMusic("sounds/opening.mp3");
 
@@ -145,6 +146,7 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
 		    kbMS->keyPressed(modelTeapot);
 			kbMS->moveEnv(background, .005);
 			kbMS->keyPressed(myPly);
+			kbMS->keyPressed(snds);
 			break;							        // Jump Back
 		}
 
