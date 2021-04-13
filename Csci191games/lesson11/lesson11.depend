@@ -7,7 +7,7 @@
 	<iostream>
 	<windows.h>
 
-1617840818 c:\users\max\desktop\csci191games\lesson11\include\_glscene.h
+1618273104 c:\users\max\desktop\csci191games\lesson11\include\_glscene.h
 	<windows.h>
 	<GL/glut.h>
 	<iostream>
@@ -19,6 +19,7 @@
 	<_timer.h>
 	<_enemies.h>
 	<_sounds.h>
+	<_fonts.h>
 
 1612228935 c:\users\max\desktop\csci191games\common\include\gl\glut.h
 	<windows.h>
@@ -69,7 +70,7 @@
 1616635225 source:c:\users\max\desktop\csci191games\lesson11\src\_enemies.cpp
 	"_enemies.h"
 
-1617844704 source:c:\users\max\desktop\csci191games\lesson11\src\_fonts.cpp
+1618276511 source:c:\users\max\desktop\csci191games\lesson11\src\_fonts.cpp
 	"_fonts.h"
 
 1617844620 c:\users\max\desktop\csci191games\lesson11\include\_fonts.h
@@ -84,7 +85,7 @@
 1613009550 c:\users\max\desktop\csci191games\lesson11\include\_gllight.h
 	<_glScene.h>
 
-1616633848 source:c:\users\max\desktop\csci191games\lesson11\src\_glscene.cpp
+1618275067 source:c:\users\max\desktop\csci191games\lesson11\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<SOIL.h>
@@ -101,7 +102,7 @@
 1615856340 source:c:\users\max\desktop\csci191games\lesson11\src\_player.cpp
 	"_player.h"
 
-1617670841 source:c:\users\max\desktop\csci191games\lesson11\src\_sounds.cpp
+1617865081 source:c:\users\max\desktop\csci191games\lesson11\src\_sounds.cpp
 	"_sounds.h"
 
 1617670816 c:\users\max\desktop\csci191games\lesson11\include\_sounds.h

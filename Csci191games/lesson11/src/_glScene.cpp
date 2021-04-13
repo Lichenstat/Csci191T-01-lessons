@@ -34,7 +34,10 @@ GLint _glScene::initGL()
     texEnms -> loadTexture("images/enemy.png");
 
     snds->initSounds();
-    snds->playMusic("sounds/opening.mp3");
+    //snds->playMusic("sounds/opening.mp3");
+
+    fnts->initFonts("images/fonts.png");
+    fnts->buildFont("aAa");
 
     for(int i = 0; i < 20; i++)
     {
@@ -112,6 +115,11 @@ GLint _glScene::drawScene()
     enms[i].actionsEnms();
     enms[i].drawEnms();
     }
+
+    //glScalef(5.0, 5.0, 0);
+    //glTranslatef(0, 0.0, -1);
+    fnts->drawFonts();
+
 }
 
 void _glScene::resizeGLScene(int width, int height)
