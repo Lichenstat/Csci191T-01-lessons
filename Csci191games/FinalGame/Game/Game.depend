@@ -1,0 +1,281 @@
+# depslib dependency file v1.0
+1618451732 source:c:\users\max\desktop\finalgame\game\main.cpp
+	<windows.h>
+	<_glScene.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<iostream>
+	<windows.h>
+
+1618456944 c:\users\max\desktop\finalgame\game\include\_glscene.h
+	<windows.h>
+	<GL/glut.h>
+	<iostream>
+	<_model.h>
+	<_input.h>
+	<_texture.h>
+	<_parallax.h>
+	<_player.h>
+	<_timer.h>
+	<_enemies.h>
+	<_sounds.h>
+	<_fonts.h>
+	<_healthpack_max.h>
+	<_player_max.h>
+
+1612228935 c:\users\max\desktop\finalgame\common\include\gl\glut.h
+	<windows.h>
+	<stdlib.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1614044290 c:\users\max\desktop\finalgame\game\include\_model.h
+	<windows.h>
+	<GL/glut.h>
+	<iostream>
+
+1618456048 c:\users\max\desktop\finalgame\game\include\_input.h
+	<windows.h>
+	<_model.h>
+	<_parallax.h>
+	<_player.h>
+	<_sounds.h>
+	<_object_max.h>
+	<_objectinteract_max.h>
+	<_animate_max.h>
+	<_player_max.h>
+
+1614820879 c:\users\max\desktop\finalgame\game\include\_parallax.h
+	<string>
+	<GL/gl.h>
+	<_texture.h>
+
+1614648947 c:\users\max\desktop\finalgame\game\include\_texture.h
+	<SOIL.h>
+	<GL/gl.h>
+	<iostream>
+
+1613613552 c:\users\max\desktop\finalgame\common\include\soil.h
+
+1615855004 c:\users\max\desktop\finalgame\game\include\_player.h
+	<_common.h>
+	<_texture.h>
+	<GL/gl.h>
+	<iostream>
+
+1618453911 c:\users\max\desktop\finalgame\game\include\_common.h
+
+1617670816 c:\users\max\desktop\finalgame\game\include\_sounds.h
+	<iostream>
+	<SNDS/irrKlang.h>
+
+1617668452 c:\users\max\desktop\finalgame\common\include\snds\irrklang.h
+	"ik_irrKlangTypes.h"
+	"ik_vec3d.h"
+	"ik_IRefCounted.h"
+	"ik_IVirtualRefCounted.h"
+	"ik_ESoundOutputDrivers.h"
+	"ik_ESoundEngineOptions.h"
+	"ik_EStreamModes.h"
+	"ik_SAudioStreamFormat.h"
+	"ik_ISoundEngine.h"
+	"ik_ISoundSource.h"
+	"ik_ISound.h"
+	"ik_IAudioStream.h"
+	"ik_IAudioStreamLoader.h"
+	"ik_ISoundEffectControl.h"
+	"ik_ISoundStopEventReceiver.h"
+	"ik_IFileFactory.h"
+	"ik_IFileReader.h"
+	"ik_ISoundDeviceList.h"
+	"ik_IAudioRecorder.h"
+	"ik_ISoundMixedOutputReceiver.h"
+
+1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_irrklangtypes.h
+	<wchar.h>
+
+1617668452 c:\users\max\desktop\finalgame\common\include\snds\ik_vec3d.h
+	<math.h>
+	"ik_irrKlangTypes.h"
+
+1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_irefcounted.h
+	"ik_irrKlangTypes.h"
+
+1617668452 c:\users\max\desktop\finalgame\common\include\snds\ik_ivirtualrefcounted.h
+	"ik_irrKlangTypes.h"
+
+1617668450 c:\users\max\desktop\finalgame\common\include\snds\ik_esoundoutputdrivers.h
+
+1617668450 c:\users\max\desktop\finalgame\common\include\snds\ik_esoundengineoptions.h
+
+1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_estreammodes.h
+
+1617668452 c:\users\max\desktop\finalgame\common\include\snds\ik_saudiostreamformat.h
+	"ik_IRefCounted.h"
+
+1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_isoundengine.h
+	"ik_IRefCounted.h"
+	"ik_vec3d.h"
+	"ik_ISoundSource.h"
+	"ik_ISound.h"
+	"ik_EStreamModes.h"
+	"ik_IFileFactory.h"
+	"ik_ISoundMixedOutputReceiver.h"
+
+1617668452 c:\users\max\desktop\finalgame\common\include\snds\ik_isoundsource.h
+	"ik_IVirtualRefCounted.h"
+	"ik_vec3d.h"
+	"ik_EStreamModes.h"
+	"ik_SAudioStreamFormat.h"
+
+1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_isound.h
+	"ik_IVirtualRefCounted.h"
+	"ik_ISoundEffectControl.h"
+	"ik_vec3d.h"
+
+1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_isoundeffectcontrol.h
+	"ik_IVirtualRefCounted.h"
+	"ik_vec3d.h"
+
+1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_ifilefactory.h
+	"ik_IRefCounted.h"
+
+1617668452 c:\users\max\desktop\finalgame\common\include\snds\ik_isoundmixedoutputreceiver.h
+	"ik_IRefCounted.h"
+	"ik_SAudioStreamFormat.h"
+
+1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_iaudiostream.h
+	"ik_IRefCounted.h"
+	"ik_SAudioStreamFormat.h"
+
+1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_iaudiostreamloader.h
+	"ik_IRefCounted.h"
+	"ik_IFileReader.h"
+
+1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_ifilereader.h
+	"ik_IRefCounted.h"
+
+1617668452 c:\users\max\desktop\finalgame\common\include\snds\ik_isoundstopeventreceiver.h
+	"ik_IRefCounted.h"
+	"ik_SAudioStreamFormat.h"
+
+1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_isounddevicelist.h
+	"ik_IRefCounted.h"
+
+1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_iaudiorecorder.h
+	"ik_IRefCounted.h"
+	"ik_ISoundSource.h"
+
+1615428036 c:\users\max\desktop\finalgame\game\include\_timer.h
+	<time.h>
+
+1616027813 c:\users\max\desktop\finalgame\game\include\_enemies.h
+	<_common.h>
+	<_timer.h>
+	<GL/gl.h>
+
+1617844620 c:\users\max\desktop\finalgame\game\include\_fonts.h
+	<iostream>
+	<string.h>
+	<_common.h>
+	<_texture.h>
+
+1616635225 source:c:\users\max\desktop\finalgame\game\src\_enemies.cpp
+	"_enemies.h"
+
+1618276630 source:c:\users\max\desktop\finalgame\game\src\_fonts.cpp
+	"_fonts.h"
+
+1613008740 source:c:\users\max\desktop\finalgame\game\src\_gllight.cpp
+	"_glLight.h"
+
+1613009550 c:\users\max\desktop\finalgame\game\include\_gllight.h
+	<_glScene.h>
+
+1618456999 source:c:\users\max\desktop\finalgame\game\src\_glscene.cpp
+	"_glScene.h"
+	<_glLight.h>
+	<SOIL.h>
+
+1618456229 source:c:\users\max\desktop\finalgame\game\src\_input.cpp
+	"_input.h"
+
+1614824712 source:c:\users\max\desktop\finalgame\game\src\_model.cpp
+	"_model.h"
+
+1614823760 source:c:\users\max\desktop\finalgame\game\src\_parallax.cpp
+	"_parallax.h"
+
+1618448660 source:c:\users\max\desktop\finalgame\game\src\_particles.cpp
+	"_particles.h"
+
+1618452621 c:\users\max\desktop\finalgame\game\include\_particles.h
+	<math.h>
+
+1615856340 source:c:\users\max\desktop\finalgame\game\src\_player.cpp
+	"_player.h"
+
+1617865081 source:c:\users\max\desktop\finalgame\game\src\_sounds.cpp
+	"_sounds.h"
+
+1616031080 source:c:\users\max\desktop\finalgame\game\src\_texture.cpp
+	"_texture.h"
+
+1615428270 source:c:\users\max\desktop\finalgame\game\src\_timer.cpp
+	"_timer.h"
+
+1618454024 source:c:\users\max\desktop\finalgame\game\src\_animate_max.cpp
+	"_animate_max.h"
+
+1618455391 c:\users\max\desktop\finalgame\game\include\_animate_max.h
+	<_object_max.h>
+
+1618455362 c:\users\max\desktop\finalgame\game\include\_object_max.h
+	<_common.h>
+	<_texture.h>
+	<GL/gl.h>
+	<iostream>
+
+1618453724 source:c:\users\max\desktop\finalgame\game\src\_hitbox_max.cpp
+	"_hitbox_max.h"
+
+1618455413 c:\users\max\desktop\finalgame\game\include\_hitbox_max.h
+	<_object_max.h>
+	<cmath>
+
+1618455150 source:c:\users\max\desktop\finalgame\game\src\_healthpack_max.cpp
+	"_healthpack_max.h"
+
+1618455307 c:\users\max\desktop\finalgame\game\include\_healthpack_max.h
+	<_object_max.h>
+	<_objectinteract_max.h>
+	<_movement_max.h>
+	<_animate_max.h>
+	<_hitbox_max.h>
+
+1618455480 c:\users\max\desktop\finalgame\game\include\_objectinteract_max.h
+	<_object_max.h>
+
+1618455433 c:\users\max\desktop\finalgame\game\include\_movement_max.h
+	<cmath>
+	<_object_max.h>
+	<_objectinteract_max.h>
+
+1618454715 source:c:\users\max\desktop\finalgame\game\src\_movement_max.cpp
+	"_movement_max.h"
+
+1618453255 source:c:\users\max\desktop\finalgame\game\src\_object_max.cpp
+	"_object_max.h"
+
+1618454595 source:c:\users\max\desktop\finalgame\game\src\_objectinteract_max.cpp
+	"_objectinteract_max.h"
+
+1618454953 source:c:\users\max\desktop\finalgame\game\src\_player_max.cpp
+	"_player_max.h"
+
+1618455512 c:\users\max\desktop\finalgame\game\include\_player_max.h
+	<_object_max.h>
+	<_objectinteract_max.h>
+	<_movement_max.h>
+	<_animate_max.h>
+
