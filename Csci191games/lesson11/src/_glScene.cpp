@@ -133,7 +133,8 @@ void _glScene::resizeGLScene(int width, int height)
 
     //gluPerspective(45.0, aspectRatio, 0.1, 100);
 
-    glOrtho(-5.0, 5.0, -3.5, 3.5, 0.1, 100);
+    glOrtho(-5.0, 5.0, -3.5, 3.5, 0.1, 100);  // will readjust game view to match game window size
+    //glOrtho(-width/350.0, width/350.0, -height/350.0, height/350.0, 0.1, 100); // will cut off game view when changing in game window
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -168,6 +169,9 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
 
 		case WM_LBUTTONDOWN:
         {
+            GetOGLPos(LOWORD(lParam), HIWORD(lParam));
+            cout << "Mouse Click On Location: " << posmX << " " << posmY << endl;
+
             kbMS->mouseDown(modelTeapot, LOWORD(lParam), HIWORD(lParam));
             break;
         }

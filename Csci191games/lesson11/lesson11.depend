@@ -7,7 +7,7 @@
 	<iostream>
 	<windows.h>
 
-1618273104 c:\users\max\desktop\csci191games\lesson11\include\_glscene.h
+1618446936 c:\users\max\desktop\csci191games\lesson11\include\_glscene.h
 	<windows.h>
 	<GL/glut.h>
 	<iostream>
@@ -70,7 +70,7 @@
 1616635225 source:c:\users\max\desktop\csci191games\lesson11\src\_enemies.cpp
 	"_enemies.h"
 
-1618276511 source:c:\users\max\desktop\csci191games\lesson11\src\_fonts.cpp
+1618276630 source:c:\users\max\desktop\csci191games\lesson11\src\_fonts.cpp
 	"_fonts.h"
 
 1617844620 c:\users\max\desktop\csci191games\lesson11\include\_fonts.h

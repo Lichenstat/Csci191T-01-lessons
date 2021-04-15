@@ -44,6 +44,33 @@ class _glScene
         int winMSG(HWND, UINT, WPARAM, LPARAM);
         WPARAM wParam;
 
+        GLdouble posmX, posmY;
+
+        void GetOGLPos(int x, int y)    // x and y as mouse coordinates
+        {
+            GLint viewport[4];          // to store viewpoint values
+            GLdouble modelview[16];     // to store model values
+            GLdouble projection[16];    // to store projection
+
+            GLfloat winX, winY, winZ;   // windows coordinates
+            GLdouble posX, posY, posZ;  // mapped mouse coordinates (output)
+
+            glGetDoublev(GL_MODELVIEW_MATRIX, modelview);
+            glGetDoublev(GL_PROJECTION_MATRIX, projection);
+            glGetIntegerv(GL_VIEWPORT, viewport);
+
+            winX = (float)x;
+            winY = (float)viewport[3] - (float)y;
+
+            glReadPixels(x, int(winY), 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &winZ);
+
+            gluUnProject(winX, winY, winZ, modelview, projection, viewport, &posX, &posY, &posZ);
+
+            posmX = posX;
+            posmY = posY;
+
+        }
+
     protected:
 
     private:
