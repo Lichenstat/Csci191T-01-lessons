@@ -3,7 +3,7 @@
 
 #include <math.h>
 
-#define  50000
+#define MAX_DROPS 50000
 #define GRAVITY -0.001
 
 class _particles
