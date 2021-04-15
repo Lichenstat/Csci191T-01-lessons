@@ -1,5 +1,0 @@
-# depslib dependency file v1.0
-1328089822 source:c:\users\max\desktop\csci191games\testopengl\main.c
-	<windows.h>
-	<gl/gl.h>
-
