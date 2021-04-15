@@ -5,6 +5,12 @@
 _glScene::_glScene()
 {
     //ctor
+    doneLoading = false;
+    mainScene = true;
+    levelOne = false;
+    levelTwo = false;
+    levelThree = false;
+
 }
 
 _glScene::~_glScene()
@@ -23,137 +29,171 @@ GLint _glScene::initGL()
     glEnable(GL_COLOR_MATERIAL);
     _glLight myLight(GL_LIGHT0);
 
-    modelTex->loadTexture("images/car.jpg");
-    background->parallaxInit("images/plx.jpg");
-    backgroundtwo->parallaxInit("images/plx2.png");
-
-    timer -> startTimer();
-    myPly -> playerInit(5, 3);  // how many frames (X, Y) frames is the sprite sheet
-    myPly -> plyImage -> loadTexture("images/plyspritesheet.png");
-
-    texEnms -> loadTexture("images/enemy.png");
-
-    snds->initSounds();
-    //snds->playMusic("sounds/opening.mp3");
-
-    fnts->initFonts("images/fonts.png");
-    fnts->buildFont("aAa");
-
-    for(int i = 0; i < 20; i++)
+    if(mainScene)
     {
-        enms[i].tex = texEnms -> tex;
-        enms[i].posE.x = (float)rand()/float(RAND_MAX)*5-2.5;
-        enms[i].posE.y = -0.5;
+        snds->stopAllSounds();
+        mainSceneBG->parallaxInit("images/mainSceneBGOne.jpg");
 
-        enms[i].placeEnms(enms[i].posE);
-        enms[i].sizeE.y = enms[i].sizeE.x = (float)(rand()%12)/30.0;
+        startGameBox->startGBoxTex->loadTexture("images/startGameButton.png");
+
+        doneLoading = true;
     }
 
-    //Max's addition to scene
-    itemTimer->startTimer();
+    if(levelOne)
+    {
+        modelTex->loadTexture("images/car.jpg");
+        background->parallaxInit("images/plx.jpg");
+        backgroundtwo->parallaxInit("images/plx2.png");
 
-    // initializing objects (in this case it is a player 1 and healthpacks)
-    player1->initialize();
-    _objectinteract_max::changePosition(player1->player, -1.0, -0.25);
+        timer -> startTimer();
+        myPly -> playerInit(5, 3);  // how many frames (X, Y) frames is the sprite sheet
+        myPly -> plyImage -> loadTexture("images/plyspritesheet.jpg");
 
-    healthpack1->initialize();
-    _objectinteract_max::changePosition(healthpack1->healthpack, 1.0, 0.0);
-    _objectinteract_max::changeScale(healthpack1->healthpack, 1.0, 0.2);
-    healthpack2->initialize();
-    _objectinteract_max::changePosition(healthpack2->healthpack, -5.0, 0.0);
-    _objectinteract_max::changeScale(healthpack2->healthpack, .5, 0.7);
-    //--------
+        texEnms -> loadTexture("images/enemy.png");
+
+        //snds->initSounds();
+        snds->playMusic("sounds/opening.mp3");
+
+        fnts->initFonts("images/fonts.png");
+        fnts->buildFont("aAa");
+
+        for(int i = 0; i < 20; i++)
+        {
+            enms[i].tex = texEnms -> tex;
+            enms[i].posE.x = (float)rand()/float(RAND_MAX)*5-2.5;
+            enms[i].posE.y = -0.5;
+
+            enms[i].placeEnms(enms[i].posE);
+            enms[i].sizeE.y = enms[i].sizeE.x = (float)(rand()%12)/30.0;
+        }
+
+        //Max's addition to scene
+        itemTimer->startTimer();
+
+        // initializing objects (in this case it is a player 1 and healthpacks)
+        player1->initialize();
+        _objectinteract_max::changePosition(player1->player, 0.0, 0.0);
+
+        healthpack1->initialize();
+        _objectinteract_max::changePosition(healthpack1->healthpack, 1.0, 0.0);
+        _objectinteract_max::changeScale(healthpack1->healthpack, 1.0, 0.2);
+        healthpack2->initialize();
+        _objectinteract_max::changePosition(healthpack2->healthpack, -5.0, 0.0);
+        _objectinteract_max::changeScale(healthpack2->healthpack, .5, 0.7);
+
+        doneLoading = true;
+    }
 
     return true;
 }
 
 GLint _glScene::drawScene()
 {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glClearColor(0.6f, 0.1f, 0.2f, 0.3f);                   // change this if you want to change color of scene
-    glLoadIdentity();
-
-
-    glPushMatrix();
-    glScalef(3.33, 3.33, 1.0);
-    glBindTexture(GL_TEXTURE_2D, background->plxTexture->tex);
-    background->renderBack(screenWidth, screenHeight);
-    glPopMatrix();
-
-    glPushMatrix();
-    glScalef(3.33, 1.0, 1.0);
-    glBindTexture(GL_TEXTURE_2D, backgroundtwo->plxTexture->tex);
-    background->renderBack(screenWidth, screenHeight);
-    glPopMatrix();
-
-    background->scroll(false, "left", 0.001);                // auto background scrolling
-
-    //glTranslated(0, 0, -8);                                 // place in the scene
-    //glColor3f(1.0, 0.3, 0.2);                               // set a color to the object
-
-    //glBindTexture(GL_TEXTURE_2D,modelTex->tex);             // to use texture on the teapot
-    //modelTeapot -> drawModel();
-    //glutSolidTorus(0.2, 0.5, 20, 20);
-
-    glPushMatrix();
-    glBindTexture(GL_TEXTURE_2D, myPly->plyImage->tex);
-    myPly -> drawPlayer();
-
-    if(timer -> getTicks() > 120)
+    if(mainScene)
     {
-        myPly -> actions();
-        timer->resetTime();
-    /*
-    myPly -> xMin += 1/myPly -> framesX;
-    myPly -> xMax += 1/myPly -> framesX;
-    myPly -> yMin += 1/myPly -> framesY;
-    myPly -> yMax += 1/myPly -> framesY;
-    */
-    timer -> resetTime();
+
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        glLoadIdentity();
+
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, mainSceneBG->plxTexture->tex);
+        mainSceneBG->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+
+        glPushMatrix();
+        glBindTexture(GL_TEXTURE_2D, startGameBox->startGBoxTex->tex);
+        startGameBox->drawStartGBox();
+        glPopMatrix();
+
     }
-    glPopMatrix();
-
-    for(int i = 0; i < 20; i++)
+    if(!mainScene)
     {
-        if(enms[i].posE.x < -2.0)
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClearColor(0.6f, 0.1f, 0.2f, 0.3f);                   // change this if you want to change color of scene
+        glLoadIdentity();
+
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, background->plxTexture->tex);
+        background->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+
+        glPushMatrix();
+        glScalef(3.33, 1.0, 1.0);
+        glBindTexture(GL_TEXTURE_2D, backgroundtwo->plxTexture->tex);
+        background->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+
+        background->scroll(false, "left", 0.001);                // auto background scrolling
+
+        //glTranslated(0, 0, -8);                                 // place in the scene
+        //glColor3f(1.0, 0.3, 0.2);                               // set a color to the object
+
+        //glBindTexture(GL_TEXTURE_2D,modelTex->tex);             // to use texture on the teapot
+        //modelTeapot -> drawModel();
+        //glutSolidTorus(0.2, 0.5, 20, 20);
+
+        glPushMatrix();
+        glBindTexture(GL_TEXTURE_2D, myPly->plyImage->tex);
+        myPly -> drawPlayer();
+
+        if(timer -> getTicks() > 120)
         {
-            enms[i].actions = 0;
-            enms[i].speed = 0.01;
+            myPly -> actions();
+            timer->resetTime();
+            /*
+            myPly -> xMin += 1/myPly -> framesX;
+            myPly -> xMax += 1/myPly -> framesX;
+            myPly -> yMin += 1/myPly -> framesY;
+            myPly -> yMax += 1/myPly -> framesY;
+            */
+            timer -> resetTime();
         }
-        else if(enms[i].posE.x > 2.0)
+        glPopMatrix();
+
+        for(int i = 0; i < 20; i++)
         {
-            enms[i].actions = 1;
-            enms[i].speed = -0.01;
+            if(enms[i].posE.x < -2.0)
+            {
+                enms[i].actions = 0;
+                enms[i].speed = 0.01;
+            }
+            else if(enms[i].posE.x > 2.0)
+            {
+                enms[i].actions = 1;
+                enms[i].speed = -0.01;
+            }
+
+            enms[i].posE.x += enms[i].speed;
+            enms[i].actionsEnms();
+            enms[i].drawEnms();
         }
 
-    enms[i].posE.x += enms[i].speed;
-    enms[i].actionsEnms();
-    enms[i].drawEnms();
+        //glScalef(5.0, 5.0, 0);
+        //glTranslatef(0, 0.0, -1);
+        fnts->drawFonts();
+
+        // Max's includes to scene
+        // drawing and updating necessary objects
+        player1->draw();
+        healthpack1->draw();
+        healthpack1->interact(player1->player);
+        healthpack2->draw();
+        healthpack2->interact(player1->player);
+
+        if(itemTimer->getTicks() > 120)
+        {
+            healthpack1->animate();
+            healthpack2->animate();
+            itemTimer->resetTime();
+        }
+
+        player1->attract(healthpack1->healthpack);
+        player1->attract(healthpack2->healthpack);
+
     }
-
-    //glScalef(5.0, 5.0, 0);
-    //glTranslatef(0, 0.0, -1);
-    fnts->drawFonts();
-
-    // Max's includes to scene
-    // drawing and updating necessary objects
-    player1->draw();
-    healthpack1->draw();
-    healthpack1->interact(player1->player);
-    healthpack2->draw();
-    healthpack2->interact(player1->player);
-
-    if(itemTimer->getTicks() > 120)
-    {
-        healthpack1->animate();
-        healthpack2->animate();
-        itemTimer->resetTime();
-    }
-
-    player1->attract(healthpack1->healthpack);
-    player1->attract(healthpack2->healthpack);
-    //--------
-
 }
 
 void _glScene::resizeGLScene(int width, int height)
@@ -181,77 +221,105 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
 {
     kbMS->wParam = wParam;
     switch (uMsg)									// Check For Windows Messages
-	{
+    {
 
-		case WM_KEYDOWN:							// Is A Key Being Held Down?
-		{
-		    //kbMS->wParam = wParam;
-		    kbMS->keyPressed(modelTeapot);
-			kbMS->moveEnv(background, .005);
-			kbMS->keyPressed(myPly);
-			kbMS->keyPressed(snds);
-
-			//Max's additions to scene
-			kbMS->movePly(player1, 0.030);                  // will flip player in said direction and translate the desired direciton
-		    kbMS->moveObj(healthpack1->healthpack, 0.040);  // healthpacks move at speed given
-		    kbMS->moveObj(healthpack2->healthpack, 0.040);
-		    //--------
-			break;							        // Jump Back
-		}
-
-		case WM_KEYUP:								// Has A Key Been Released?
-		{
-            //kbMS->wParam = wParam;
-		    kbMS->keyUp();
-		    kbMS->keyUp(myPly);
-
-			//Max's additions to scene
-			kbMS->movePly(player1,  0.0);       // player will stand after moving
-			//--------
-
-			break;							    // Jump Back
-		}
-
-		case WM_LBUTTONDOWN:
+    case WM_KEYDOWN:							// Is A Key Being Held Down?
+    {
+        //kbMS->wParam = wParam;
+        kbMS->keyPressed(modelTeapot);
+        kbMS->moveEnv(background, .005);
+        kbMS->keyPressed(myPly);
+        if(!mainScene)
         {
-            GetOGLPos(LOWORD(lParam), HIWORD(lParam));
-            cout << "Mouse Click On Location: " << posmX << " " << posmY << endl;
-
-            kbMS->mouseDown(modelTeapot, LOWORD(lParam), HIWORD(lParam));
-            break;
+            kbMS->keyPressed(snds);
         }
 
-        case WM_RBUTTONDOWN:
+        //Max's additions to scene
+        kbMS->movePly(player1, 0.030);                  // will flip player in said direction and translate the desired direciton
+        kbMS->moveObj(healthpack1->healthpack, 0.040);  // healthpacks move at speed given
+        kbMS->moveObj(healthpack2->healthpack, 0.040);
+        //--------
+        break;							        // Jump Back
+    }
+
+    case WM_KEYUP:								// Has A Key Been Released?
+    {
+        //kbMS->wParam = wParam;
+        kbMS->keyUp();
+        kbMS->keyUp(myPly);
+
+        //Max's additions to scene
+        kbMS->movePly(player1,  0.0);       // player will stand after moving
+        //--------
+
+        break;							    // Jump Back
+    }
+
+    case WM_LBUTTONDOWN:
+    {
+        GetOGLPos(LOWORD(lParam), HIWORD(lParam));
+
+        if(mainScene)
         {
-            kbMS->mouseDown(modelTeapot, LOWORD(lParam), HIWORD(lParam));
-            break;
+            if(posmX > -0.49 && posmX < 0.49 && posmY >.80 && posmY < 1.2)
+            {
+
+                mainScene = !mainScene;
+                levelOne = !levelOne;
+                doneLoading = false;
+                cout << mainScene << " \n " << levelOne << endl;
+            }
+
+        }
+        if(levelOne)
+        {
+            if(posmX > 4.5 && posmX < 5.0 && posmY > 3.0 && posmY < 3.5)
+            {
+
+                mainScene = !mainScene;
+                levelOne = !levelOne;
+                doneLoading = false;
+                cout << mainScene << " \n " << levelOne << endl;
+            }
         }
 
-        case WM_MBUTTONDOWN:
-        {
-            break;
-        }
+        cout << "Mouse Click On Location: " << posmX << " " << posmY << endl;
 
-        case WM_LBUTTONUP:
-        case WM_RBUTTONUP:
-        case WM_MBUTTONUP:
-        {
-            kbMS->mouseUp();
-            break;
-        }
+        kbMS->mouseDown(modelTeapot, LOWORD(lParam), HIWORD(lParam));
+        break;
+    }
 
-        case WM_MOUSEMOVE:
-        {
-            kbMS->mouseMove(modelTeapot, LOWORD(lParam), HIWORD(lParam));
-            break;
-        }
+    case WM_RBUTTONDOWN:
+    {
+        kbMS->mouseDown(modelTeapot, LOWORD(lParam), HIWORD(lParam));
+        break;
+    }
 
-        case WM_MOUSEWHEEL:
-        {
-            kbMS->mouseWheel(modelTeapot, (float)GET_WHEEL_DELTA_WPARAM(wParam));
-            break;
-        }
+    case WM_MBUTTONDOWN:
+    {
+        break;
+    }
 
-	}
+    case WM_LBUTTONUP:
+    case WM_RBUTTONUP:
+    case WM_MBUTTONUP:
+    {
+        kbMS->mouseUp();
+        break;
+    }
+
+    case WM_MOUSEMOVE:
+    {
+        kbMS->mouseMove(modelTeapot, LOWORD(lParam), HIWORD(lParam));
+        break;
+    }
+
+    case WM_MOUSEWHEEL:
+    {
+        kbMS->mouseWheel(modelTeapot, (float)GET_WHEEL_DELTA_WPARAM(wParam));
+        break;
+    }
+
+    }
 }
 

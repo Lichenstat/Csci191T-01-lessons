@@ -14,6 +14,8 @@
 #include <_sounds.h>
 #include <_fonts.h>
 
+//Emmanuel's files
+#include <_mainScene.h>
 // Max's h files
 #include <_healthpack_max.h>
 #include <_player_max.h>
@@ -33,9 +35,14 @@ class _glScene
 
         float screenWidth, screenHeight;
 
+        bool mainScene, levelOne, levelTwo, levelThree, doneLoading;
+
         _model *modelTeapot = new _model();
         _input *kbMS = new _input();
         _texture *modelTex = new _texture();
+
+        _parallax *mainSceneBG= new _parallax();
+
         _parallax *background = new _parallax();
         _parallax *backgroundtwo = new _parallax();
         _player *myPly = new _player();
@@ -43,6 +50,8 @@ class _glScene
         _texture *texEnms = new _texture();
         _sounds *snds = new _sounds();
         _fonts *fnts = new _fonts();
+
+        _mainScene *startGameBox = new _mainScene();
 
         // Max's addition to scene
         // these healthpacks are considered the objects used for testing (note they dont heal yet)

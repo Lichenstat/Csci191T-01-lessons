@@ -28,7 +28,7 @@ void _sounds::pauseSound(char* fileName)
 
 void _sounds::stopAllSounds()
 {
-
+    sndEng->stopAllSounds();
 }
 
 int _sounds::initSounds()
