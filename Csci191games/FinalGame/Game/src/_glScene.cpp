@@ -84,11 +84,11 @@ GLint _glScene::initGL()
         _objectinteract_max::changePosition(player1->player, 0.0, -2.1);
 
         healthpack1->initialize();
-        _objectinteract_max::changePosition(healthpack1->healthpack, 1.0, 0.0);
-        _objectinteract_max::changeScale(healthpack1->healthpack, 0.5, 0.7);
+        _objectinteract_max::changePosition(healthpack1->healthpack, -1.0, 0.0);
+        _objectinteract_max::changeScale(healthpack1->healthpack, 0.5, 0.5);
         healthpack2->initialize();
-        _objectinteract_max::changePosition(healthpack2->healthpack, -5.0, 0.0);
-        _objectinteract_max::changeScale(healthpack2->healthpack, 0.5, 0.7);
+        _objectinteract_max::changePosition(healthpack2->healthpack, 1.0, 2.0);
+        _objectinteract_max::changeScale(healthpack2->healthpack, 0.5, 0.5);
 
         doneLoading = true;
     }

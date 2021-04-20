@@ -3,7 +3,7 @@
 _healthpack_max::_healthpack_max()
 {
     //ctor
-    healing = 20.0;                                              // set healing amount
+    //healing = 20.0;                                              // set healing amount
     /*
     healthpack->obj.type = "healthpack";                         // setting desired healthpack information
     healthpack->obj.id = (unsigned int) &healthpack;
@@ -30,7 +30,7 @@ _healthpack_max::~_healthpack_max()
 
 void _healthpack_max::initialize()
 {
-    _objectinteract_max::initialize(healthpack, "healthpack,", 0.25, 0.25, 0.0, -3.0, 0.0, 0.0, "images/healthpack.png", 7.0, 1.0);
+    _objectinteract_max::initialize(healthpack, "healthpack", 0.25, 0.25, 0.0, -3.0, 0.0, 0.0, "images/healthpack.png", 7.0, 1.0);
     //healthpack->obj.hbsize = .05;
 }
 
@@ -46,10 +46,19 @@ void _healthpack_max::animate()
 
 void _healthpack_max::interact(_object_max *curObj)
 {
-    _hitbox_max::calculateRelativeHitbox(healthpack, curObj);
-    _hitbox_max::calculateHit(healthpack, curObj);
-    if(healthpack->obj.touched == true)
-    {
-        _objectinteract_max::changeImage(healthpack, "images/invisible.png", 1, 1);
+    if(healthpack->obj.exist){
+        _hitbox_max::calculateRelativeHitbox(healthpack, curObj);
+        _hitbox_max::calculateHit(healthpack, curObj);
     }
+    if(!healthpack->obj.exist)
+        {
+            _objectinteract_max::changeImage(healthpack, "images/invisible.png", 1, 1);
+        }
 }
+
+/*
+void _healthpack_max::attract(_object_max * curObj)
+{
+    _movement_max::moveTwordsObject(healthpack, curObj, .01);
+}
+*/

@@ -3,7 +3,7 @@
 _player_max::_player_max()
 {
     //ctor
-    playerHealth = 100.0;
+    playerHealth = 80.0;
 }
 
 _player_max::~_player_max()
@@ -52,5 +52,23 @@ void _player_max::movements(string direction, float speed)  // player movements 
 
 void _player_max::attract(_object_max * curObj)
 {
-    _movement_max::moveTwordsObject(curObj, player, .0005);
+    if(curObj->obj.exist)
+    {
+        _movement_max::moveTwordsObject(curObj, player, .0025);
+        if(curObj->obj.touched && string(curObj->obj.type) == "healthpack")
+        {
+            //cout << "healthpack sensed" << endl;
+            if(playerHealth < 100)
+            {
+                curObj->obj.exist = false;
+                float curmissinghealth = 100.0 - playerHealth;
+                if(curmissinghealth < 20.0)
+                    playerHealth += curmissinghealth;
+                else
+                    playerHealth += 20.0;
+
+                cout << "Picked up health, current health is " << playerHealth << endl;
+            }
+       }
+    }
 }

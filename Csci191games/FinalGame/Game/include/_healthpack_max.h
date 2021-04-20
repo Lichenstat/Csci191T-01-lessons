@@ -15,12 +15,13 @@ class _healthpack_max
 
         _object_max *healthpack  = new _object_max();           // make a new object (in this case a healthpack)
 
-        float healing;                                  // amount of healing a healthpack provides
+        //float healing;                                  // amount of healing a healthpack provides
 
         void initialize();                              // initialize healthpack with various features
         void draw();                                    // draw the healthpack and have it interact with what object
         void animate();                                 // animate the healthpack
-        void interact(_object_max *);                       // interaction of some kind (jn this case hitbox interaction)
+        void interact(_object_max *);                   // interaction of some kind (jn this case hitbox interaction)
+        //void attract(_object_max *);                    // healthpack goes towards object
 
     protected:
 
