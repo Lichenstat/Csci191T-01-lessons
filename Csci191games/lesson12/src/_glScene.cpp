@@ -120,6 +120,13 @@ GLint _glScene::drawScene()
     //glTranslatef(0, 0.0, -1);
     fnts->drawFonts();
 
+    p->particleGenerator();
+    glPushMatrix();
+        p->drawDrops();
+        glTranslatef(-3.0, -1.25, 0.0);
+    glPopMatrix();
+    p->update();
+
 }
 
 void _glScene::resizeGLScene(int width, int height)

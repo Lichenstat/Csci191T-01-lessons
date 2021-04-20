@@ -13,6 +13,7 @@
 #include <_enemies.h>
 #include <_sounds.h>
 #include <_fonts.h>
+#include <_particles.h>
 
 using namespace std;
 
@@ -38,6 +39,7 @@ class _glScene
         _texture *texEnms = new _texture();
         _sounds *snds = new _sounds();
         _fonts *fnts = new _fonts();
+        _particles *p = new _particles();
 
         _enemies enms[20];
 

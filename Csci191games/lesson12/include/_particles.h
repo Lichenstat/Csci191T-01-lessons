@@ -2,6 +2,9 @@
 #define _PARTICLES_H
 
 #include <math.h>
+#include <GL/gl.h>
+#include <random>
+#include <time.h>
 
 #define MAX_DROPS 50000
 #define GRAVITY -0.001
@@ -11,6 +14,7 @@ class _particles
     public:
         _particles();
         virtual ~_particles();
+        int numDrops;
 
         typedef struct{
             bool alive;
