@@ -14,12 +14,7 @@ _animate_max.h/.cpp		a simple class to animate various objects in the game
 I plan on updating the player to world movements and adding an enemy or two to show in the presentaitons.
 
 Emmanuel's parts:
-Testing a push from me.
-
-_mainScene.h/.cpp 		I plan on using this to create all the buttons for the main menu/scene. To do this I create a quadrant then bind a texture to it
-				with the texture class. Then using the GetOGLPos() function i get the coordinates of the mouse click and as long as that mouse 
-				click is within the range of the quadrant it will run the button's functionalities.
-
+I plan on working on the different enviroments, and make sure the platforms work with collision.
 
 Eric's parts:
 

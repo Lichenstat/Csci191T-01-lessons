@@ -222,3 +222,121 @@
 1615428270 source:c:\users\max\desktop\csci191games\lesson12\src\_timer.cpp
 	"_timer.h"
 
+1618458277 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\main.cpp
+	<windows.h>
+	<_glScene.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<iostream>
+	<windows.h>
+
+1618884300 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\include\_glscene.h
+	<windows.h>
+	<GL/glut.h>
+	<iostream>
+	<_model.h>
+	<_input.h>
+	<_texture.h>
+	<_parallax.h>
+	<_player.h>
+	<_timer.h>
+	<_enemies.h>
+	<_sounds.h>
+	<_fonts.h>
+	<_particles.h>
+
+1618458277 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\include\_model.h
+	<windows.h>
+	<GL/glut.h>
+	<iostream>
+
+1618458277 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\include\_input.h
+	<windows.h>
+	<_model.h>
+	<_parallax.h>
+	<_player.h>
+	<_sounds.h>
+
+1618458277 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\include\_parallax.h
+	<string>
+	<GL/gl.h>
+	<_texture.h>
+
+1618458277 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\include\_texture.h
+	<SOIL.h>
+	<GL/gl.h>
+	<iostream>
+
+1618458277 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\include\_player.h
+	<_common.h>
+	<_texture.h>
+	<GL/gl.h>
+	<iostream>
+
+1618458277 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\include\_common.h
+
+1618458277 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\include\_sounds.h
+	<iostream>
+	<SNDS/irrKlang.h>
+
+1618458277 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\include\_timer.h
+	<time.h>
+
+1618458277 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\include\_enemies.h
+	<_common.h>
+	<_timer.h>
+	<GL/gl.h>
+
+1618458277 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\include\_fonts.h
+	<iostream>
+	<string.h>
+	<_common.h>
+	<_texture.h>
+
+1618884300 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\include\_particles.h
+	<math.h>
+	<GL/gl.h>
+	<random>
+	<time.h>
+
+1618458277 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\src\_enemies.cpp
+	"_enemies.h"
+
+1618458277 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\src\_fonts.cpp
+	"_fonts.h"
+
+1618458277 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\src\_gllight.cpp
+	"_glLight.h"
+
+1618458277 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\include\_gllight.h
+	<_glScene.h>
+
+1618884300 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\src\_glscene.cpp
+	"_glScene.h"
+	<_glLight.h>
+	<SOIL.h>
+
+1618458277 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\src\_input.cpp
+	"_input.h"
+
+1618458277 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\src\_model.cpp
+	"_model.h"
+
+1618458277 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\src\_parallax.cpp
+	"_parallax.h"
+
+1618884300 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\src\_particles.cpp
+	"_particles.h"
+
+1618458277 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\src\_player.cpp
+	"_player.h"
+
+1618458277 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\src\_sounds.cpp
+	"_sounds.h"
+
+1618458277 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\src\_texture.cpp
+	"_texture.h"
+
+1618458277 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\lesson12\src\_timer.cpp
+	"_timer.h"
+

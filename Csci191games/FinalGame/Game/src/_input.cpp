@@ -66,12 +66,12 @@ void _input::moveEnv(_parallax* plx, float speed)
             plx->xMin += speed;
         break;
         case VK_UP:
-            plx->yMax += speed;
-            plx->yMin += speed;
+            //plx->yMax -= speed;
+            //plx->yMin -= speed;
         break;
     case VK_DOWN:
-            plx->yMax -= speed;
-            plx->yMin -= speed;
+            //plx->yMax += speed;
+            //plx->yMin += speed;
         break;
     }
 }

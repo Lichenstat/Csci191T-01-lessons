@@ -43,8 +43,17 @@ class _glScene
 
         _parallax *mainSceneBG= new _parallax();
 
-        _parallax *background = new _parallax();
-        _parallax *backgroundtwo = new _parallax();
+        //levelOne background
+        _parallax *skyBg = new _parallax();
+        _parallax *groundBg = new _parallax();
+        _parallax *fogBg = new _parallax();
+        _parallax *cloudOneBg = new _parallax();
+        _parallax *cloudTwoBg = new _parallax();
+        _parallax *smallMountainsBg = new _parallax();
+        _parallax *bigMountainsBg = new _parallax();
+        _parallax *sunBg = new _parallax();
+        _parallax *mountainBG = new _parallax();
+
         _player *myPly = new _player();
         _timer *timer = new _timer();
         _texture *texEnms = new _texture();

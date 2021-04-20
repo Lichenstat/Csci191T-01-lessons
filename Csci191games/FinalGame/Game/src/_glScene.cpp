@@ -41,22 +41,31 @@ GLint _glScene::initGL()
 
     if(levelOne)
     {
-        modelTex->loadTexture("images/car.jpg");
-        background->parallaxInit("images/plx.jpg");
-        backgroundtwo->parallaxInit("images/plx2.png");
+        //modelTex->loadTexture("images/car.jpg");
+
+        //levelOne backgrounds sources
+        skyBg->parallaxInit("images/levelOne/sky.png");
+        groundBg->parallaxInit("images/levelOne/ground.png");
+        fogBg->parallaxInit("images/levelOne/fog.png");
+        cloudOneBg->parallaxInit("images/levelOne/cloud fg.png");
+        cloudTwoBg->parallaxInit("images/levelOne/clouds bg.png");
+        smallMountainsBg->parallaxInit("images/levelOne/mountains fg.png");
+        bigMountainsBg->parallaxInit("images/levelOne/mountains bg.png");
+        sunBg->parallaxInit("images/levelOne/sun.png");
+        mountainBG->parallaxInit("images/levelOne/mountains mg.png");
 
         timer -> startTimer();
-        myPly -> playerInit(5, 3);  // how many frames (X, Y) frames is the sprite sheet
-        myPly -> plyImage -> loadTexture("images/plyspritesheet.jpg");
+        //myPly -> playerInit(5, 3);  // how many frames (X, Y) frames is the sprite sheet
+        //myPly -> plyImage -> loadTexture("images/plyspritessheet.jpg");
 
-        texEnms -> loadTexture("images/enemy.png");
+        //texEnms -> loadTexture("images/enemy.png");
 
         //snds->initSounds();
         snds->playMusic("sounds/opening.mp3");
 
-        fnts->initFonts("images/fonts.png");
-        fnts->buildFont("aAa");
-
+        //fnts->initFonts("images/fonts.png");
+        //fnts->buildFont("aAa");
+        /*
         for(int i = 0; i < 20; i++)
         {
             enms[i].tex = texEnms -> tex;
@@ -65,21 +74,21 @@ GLint _glScene::initGL()
 
             enms[i].placeEnms(enms[i].posE);
             enms[i].sizeE.y = enms[i].sizeE.x = (float)(rand()%12)/30.0;
-        }
+        }*/
 
         //Max's addition to scene
         itemTimer->startTimer();
 
         // initializing objects (in this case it is a player 1 and healthpacks)
         player1->initialize();
-        _objectinteract_max::changePosition(player1->player, 0.0, 0.0);
+        _objectinteract_max::changePosition(player1->player, 0.0, -2.1);
 
         healthpack1->initialize();
         _objectinteract_max::changePosition(healthpack1->healthpack, 1.0, 0.0);
-        _objectinteract_max::changeScale(healthpack1->healthpack, 1.0, 0.2);
+        _objectinteract_max::changeScale(healthpack1->healthpack, 0.5, 0.7);
         healthpack2->initialize();
         _objectinteract_max::changePosition(healthpack2->healthpack, -5.0, 0.0);
-        _objectinteract_max::changeScale(healthpack2->healthpack, .5, 0.7);
+        _objectinteract_max::changeScale(healthpack2->healthpack, 0.5, 0.7);
 
         doneLoading = true;
     }
@@ -111,22 +120,69 @@ GLint _glScene::drawScene()
     if(!mainScene)
     {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        glClearColor(0.6f, 0.1f, 0.2f, 0.3f);                   // change this if you want to change color of scene
+        //glClearColor(0.6f, 0.1f, 0.2f, 0.3f);                   // change this if you want to change color of scene
         glLoadIdentity();
 
+        //LevelOne background
+        //sky
         glPushMatrix();
         glScalef(3.33, 3.33, 1.0);
-        glBindTexture(GL_TEXTURE_2D, background->plxTexture->tex);
-        background->renderBack(screenWidth, screenHeight);
+        glBindTexture(GL_TEXTURE_2D, skyBg->plxTexture->tex);
+        skyBg->renderBack(screenWidth, screenHeight);
         glPopMatrix();
-
+        //sky clouds top
         glPushMatrix();
-        glScalef(3.33, 1.0, 1.0);
-        glBindTexture(GL_TEXTURE_2D, backgroundtwo->plxTexture->tex);
-        background->renderBack(screenWidth, screenHeight);
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, cloudTwoBg->plxTexture->tex);
+        cloudTwoBg->renderBack(screenWidth, screenHeight);
         glPopMatrix();
-
-        background->scroll(false, "left", 0.001);                // auto background scrolling
+        //fog
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, fogBg->plxTexture->tex);
+        fogBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        //sun
+        /*
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, sunBg->plxTexture->tex);
+        sunBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        */
+        //big mountains
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, bigMountainsBg->plxTexture->tex);
+        bigMountainsBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        //mountains
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, mountainBG->plxTexture->tex);
+        mountainBG->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        //bottom clouds
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, cloudOneBg->plxTexture->tex);
+        cloudOneBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        //small mountains
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, smallMountainsBg->plxTexture->tex);
+        smallMountainsBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        //ground
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, groundBg->plxTexture->tex);
+        groundBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        //clouds effect autoscrolling
+        cloudOneBg->scroll(true, "left", 0.0001);                // auto background scrolling
+        cloudTwoBg->scroll(true, "left", 0.0003);
 
         //glTranslated(0, 0, -8);                                 // place in the scene
         //glColor3f(1.0, 0.3, 0.2);                               // set a color to the object
@@ -135,24 +191,24 @@ GLint _glScene::drawScene()
         //modelTeapot -> drawModel();
         //glutSolidTorus(0.2, 0.5, 20, 20);
 
-        glPushMatrix();
-        glBindTexture(GL_TEXTURE_2D, myPly->plyImage->tex);
-        myPly -> drawPlayer();
+        //glPushMatrix();
+        //glBindTexture(GL_TEXTURE_2D, myPly->plyImage->tex);
+        //myPly -> drawPlayer();
 
-        if(timer -> getTicks() > 120)
-        {
-            myPly -> actions();
-            timer->resetTime();
+        //if(timer -> getTicks() > 120)
+        //{
+            //myPly -> actions();
+            //timer->resetTime();
             /*
             myPly -> xMin += 1/myPly -> framesX;
             myPly -> xMax += 1/myPly -> framesX;
             myPly -> yMin += 1/myPly -> framesY;
             myPly -> yMax += 1/myPly -> framesY;
             */
-            timer -> resetTime();
-        }
-        glPopMatrix();
-
+            //timer -> resetTime();
+        //}
+        //glPopMatrix();
+        /*
         for(int i = 0; i < 20; i++)
         {
             if(enms[i].posE.x < -2.0)
@@ -169,11 +225,11 @@ GLint _glScene::drawScene()
             enms[i].posE.x += enms[i].speed;
             enms[i].actionsEnms();
             enms[i].drawEnms();
-        }
+        }*/
 
         //glScalef(5.0, 5.0, 0);
         //glTranslatef(0, 0.0, -1);
-        fnts->drawFonts();
+        //fnts->drawFonts();
 
         // Max's includes to scene
         // drawing and updating necessary objects
@@ -226,9 +282,12 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
     case WM_KEYDOWN:							// Is A Key Being Held Down?
     {
         //kbMS->wParam = wParam;
-        kbMS->keyPressed(modelTeapot);
-        kbMS->moveEnv(background, .005);
-        kbMS->keyPressed(myPly);
+        //kbMS->keyPressed(modelTeapot);
+        kbMS->moveEnv(groundBg, .005);
+        kbMS->moveEnv(mountainBG, .0045);
+        kbMS->moveEnv(smallMountainsBg, .0048);
+        kbMS->moveEnv(bigMountainsBg, .002);
+        //kbMS->keyPressed(myPly);
         if(!mainScene)
         {
             kbMS->keyPressed(snds);
