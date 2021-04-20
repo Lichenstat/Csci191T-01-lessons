@@ -21,6 +21,10 @@ _mainScene.h/.cpp 		I plan on using this to create all the buttons for the main 
 				click is within the range of the quadrant it will run the button's functionalities.
 
 
-Eric's parts:
+Eric's parts:			
+_collision			I used this for our physics for characters, enemies, and projectiles. We can include this for our character to be able to jump.
+_weapons			The weapon class will involve the weapons themselves, their damage, and the projectiles.
+				The projectiles will have their own speeds and acceraltions. Beams, lighting, fire, and melee attacks will not have gravity applied to them
+				The pistols and grenade launchers will have gravity/acceration applied to them. Pistols will only have a small angle.
 
 Don's parts:
