@@ -11,6 +11,8 @@ _hitbox_max.h/.cpp		a simple hitbox class for calculating the hitbox of objects 
 _healthpack_max.h/.cpp		a simple in game object that can be interacted with
 _animate_max.h/.cpp		a simple class to animate various objects in the game
 
+I plan on updating the player to world movements and adding an enemy or two to show in the presentaitons.
+
 Emmanuel's parts:
 Testing a push from me.
 
