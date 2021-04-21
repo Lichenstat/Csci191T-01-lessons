@@ -24,6 +24,12 @@ float _hitbox_max::calculateAngleBetweenObjects(_object_max* curObj, _object_max
     }
 }
 
+float _hitbox_max::calculateDistance(_object_max *fromObj, _object_max *toObj)
+{
+    float x1 = fromObj->obj.pos.x - toObj->obj.pos.x;
+    float y1 = fromObj->obj.pos.y - toObj->obj.pos.y;
+    return(sqrt((x1*x1)+(y1*y1)));
+}
 
 void _hitbox_max::calculateHitbox(_object_max* curObj, float degree)        // calculate ellipse hitbox radian in conjunction to some degree
 {

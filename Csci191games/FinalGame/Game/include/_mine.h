@@ -18,6 +18,7 @@ class _mine
         _sounds * sounds = new _sounds();       // sounds for mine
 
         float damage;                           // mine damaged (unused for now)
+        bool activated;                         // mine activated or not
 
         void initialize();                      // initialize
         void draw();                            // draw mine
