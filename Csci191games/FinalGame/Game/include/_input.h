@@ -14,6 +14,10 @@
 #include <_player_max.h>
 //-----------
 
+// Eric's h files
+#include <_weapons.h>
+//-----------
+
 class _input
 {
     public:
@@ -30,6 +34,11 @@ class _input
         // Max's additions to include file
         void moveObj(_object_max *, float);        // object defined movements
         void movePly(_player_max *, float);        // player defined movements
+        //--------
+    
+        // Eric's
+        float anglesForShots(_weapons*, float, float);
+        void mouseDown(_weapons*, float, float);                // firing our weapons
         //--------
 
         void mouseDown(_model*, float, float);
