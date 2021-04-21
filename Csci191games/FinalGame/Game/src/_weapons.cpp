@@ -3,10 +3,10 @@
 _weapons::_weapons()
 {
     //ctor
-    vert[0].x =  0.0; vert[0].y = 0.0; vert[0].z = -1.0;
-    vert[1].x =  1.0; vert[1].y = 0.0; vert[1].z = -1.0;
-    vert[2].x =  1.0; vert[2].y = 1.0; vert[2].z = -1.0;
-    vert[3].x =  0.0; vert[3].y = 1.0; vert[3].z = -1.0;
+    vert[0].x =  0.0; vert[0].y = 0.0; vert[0].z = -2.0;
+    vert[1].x =  1.0; vert[1].y = 0.0; vert[1].z = -2.0;
+    vert[2].x =  1.0; vert[2].y = 1.0; vert[2].z = -2.0;
+    vert[3].x =  0.0; vert[3].y = 1.0; vert[3].z = -2.0;
 
     vel = 0.0;
     accel = 0.0;
@@ -18,18 +18,18 @@ _weapons::~_weapons()
 {
     //dtor
 }
-void _weapons::projInit()
+void _weapons::projInit(float x, float y)
 {
     projPos.x = 0.0;
     projPos.y = 0.0;
     projPos.z = -1.0;
 
-    projScale.x = 0.5;
-    projScale.y = 0.5;
+    projScale.x = 0.2;
+    projScale.y = 0.2;
     projScale.z = 1.0;
 
-    framesX = 1.0;
-    framesY = 1.0;
+    framesX = x;
+    framesY = y;
     xMin = 0.0;
     xMax = 1.0/framesX;
     yMin = 0.0;
@@ -46,16 +46,30 @@ bool _weapons::pickUpWeapons(_player* ply, _weapons* wpn)
 //math----
 float _weapons::xDisplace()
 {
-    if(abs(cos(angle) * vel) < abs((accel * tick * tick) / 2.0)){    //If the velocity is equal to the acceleration, stop moving. it will move backwards otherwise;
-        return projPos.x;
+    if(angle < 0){
+        projPos.x = projPos.x - abs(cos(angle) * vel);
     }
-    projPos.x = projPos.x + abs(cos(angle) * vel) - abs((accel * tick * tick) / 2.0);
+    else{
+        projPos.x = projPos.x + abs(cos(angle) * vel);
+    }
+
+    if(projPos.x < -3.0 || projPos.x > (5.0/projScale.x)){
+        projPos.y = 0.0;
+        projPos.x = 0.0;
+        tick = 0.0;
+    }
     return projPos.x;
 }
 
 float _weapons::yDisplace()
 {
-    projPos.y = projPos.y + abs(sin(angle) * vel) - abs((accel * tick * tick) / 2.0);
+    projPos.y = projPos.y + abs(sin(angle) * vel) - abs(sin(angle) * (accel * tick * tick) / 2.0);
+    //cout << "Y Pos is " << projPos.y << endl;
+    if(projPos.y + 0.5 < 0.01 || projPos.y > (3.5/projScale.y)){
+        projPos.y = 0.0;
+        projPos.x = 0.0;
+        tick = 0.0;
+    }
     return projPos.y;
 }
 //math----
@@ -74,9 +88,8 @@ void _weapons::weaponAction()
             tick = tick + 0.1;
             break;
         case GRENADELAUNCHER:
-            vel = 3.0;
-            accel = 2.0;
-            weaponDmg = 10;
+            xMin += 1/framesX;  //This our frame changing and allows our ball to roll.
+            xMax += 1/framesX;
             projPos.x = xDisplace();
             projPos.y = yDisplace();
             tick = tick + 0.1;
@@ -88,15 +101,8 @@ void _weapons::weaponAction()
             tick = tick + 0.1;
             break;
         case BEAM:
-            vel = 2.0;
-            accel = 0.0;
-            weaponDmg = 20;
-            framesX = 1;
-            framesY = 1;
             projPos.x = xDisplace();
             projPos.y = yDisplace();
-            cout << projPos.x << endl;
-            cout << projPos.y << endl;
             tick = tick + 0.1;
             break;
         case SHOCKRIFLE:
@@ -110,6 +116,7 @@ void _weapons::weaponAction()
 
     }
 }
+
 void _weapons::drawProj()
 {
     glTranslatef(projPos.x, projPos.y, projPos.z);
