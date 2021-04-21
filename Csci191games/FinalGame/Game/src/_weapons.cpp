@@ -26,7 +26,7 @@ void _weapons::projInit(float x, float y)
 
     projScale.x = 0.2;
     projScale.y = 0.2;
-    projScale.z = 3.0;
+    projScale.z = 1.0;
 
     framesX = x;
     framesY = y;
