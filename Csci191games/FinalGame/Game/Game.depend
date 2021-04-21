@@ -589,7 +589,7 @@
 
 1618990784 h"
 
-1618875824 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\main.cpp
+1619006335 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\main.cpp
 	<windows.h>
 	<_glScene.h>
 	<GL/glut.h>
@@ -597,7 +597,7 @@
 	<iostream>
 	<windows.h>
 
-1618899723 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_glscene.h
+1619006335 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_glscene.h
 	<windows.h>
 	<GL/glut.h>
 	<iostream>
@@ -610,9 +610,11 @@
 	<_enemies.h>
 	<_sounds.h>
 	<_fonts.h>
-	<_mainScene.h>
+	<_buttons.h>
+	<_platfroms.h>
 	<_healthpack_max.h>
 	<_player_max.h>
+	<_mine.h>
 
 1614044290 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_model.h
 	<windows.h>
@@ -695,14 +697,14 @@
 	<_common.h>
 	<_texture.h>
 
-1618996013 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_healthpack_max.h
+1619006320 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_healthpack_max.h
 	<_object_max.h>
 	<_objectinteract_max.h>
 	<_movement_max.h>
 	<_animate_max.h>
 	<_hitbox_max.h>
 
-1618983009 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_hitbox_max.h
+1619006320 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_hitbox_max.h
 	<cmath>
 	<_object_max.h>
 
@@ -721,15 +723,15 @@
 1613009550 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_gllight.h
 	<_glScene.h>
 
-1618986632 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_glscene.cpp
+1619006474 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<SOIL.h>
 
-1618988702 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_healthpack_max.cpp
+1619006320 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_healthpack_max.cpp
 	"_healthpack_max.h"
 
-1618912391 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_hitbox_max.cpp
+1619006320 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_hitbox_max.cpp
 	"_hitbox_max.h"
 
 1618899723 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_input.cpp
@@ -738,7 +740,7 @@
 1618875825 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_mainscene.cpp
 	"_mainScene.h"
 
-1614824712 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_model.cpp
+1619006335 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_model.cpp
 	"_model.h"
 
 1618454715 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_movement_max.cpp
@@ -762,7 +764,7 @@
 1615856340 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_player.cpp
 	"_player.h"
 
-1618989698 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_player_max.cpp
+1619006320 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_player_max.cpp
 	"_player_max.h"
 
 1618989436 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_sounds.cpp
@@ -775,4 +777,30 @@
 	"_timer.h"
 
 1615428270 07f57aa3109dc7a41ef4760f78e4fc011dd18
+
+1619006335 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_buttons.h
+	<_common.h>
+	<_texture.h>
+
+1619006335 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_platfroms.h
+	<_object_max.h>
+	<_objectinteract_max.h>
+	<_hitbox_max.h>
+
+1619006320 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_mine.h
+	<_object_max.h>
+	<_objectinteract_max.h>
+	<_movement_max.h>
+	<_hitbox_max.h>
+	<_animate_max.h>
+	<_sounds.h>
+
+1619006335 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_buttons.cpp
+	"_buttons.h"
+
+1619006335 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_platfroms.cpp
+	"_platfroms.h"
+
+1619006320 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_mine.cpp
+	"_mine.h"
 
