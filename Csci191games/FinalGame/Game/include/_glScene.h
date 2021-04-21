@@ -19,6 +19,7 @@
 // Max's h files
 #include <_healthpack_max.h>
 #include <_player_max.h>
+#include <_mine.h>
 //--------
 
 using namespace std;
@@ -62,12 +63,15 @@ class _glScene
 
         _mainScene *startGameBox = new _mainScene();
 
+        float inRelationToPlayer; // move objects (items) in relation to player for kbMS->moveObj items
+
         // Max's addition to scene
-        // these healthpacks are considered the objects used for testing (note they dont heal yet)
+        // these healthpacks are considered the objects used for testing
         _timer *itemTimer = new _timer();
         _player_max *player1 = new _player_max();
         _healthpack_max *healthpack1 = new _healthpack_max();
         _healthpack_max *healthpack2 = new _healthpack_max();
+        _mine * mine1 = new _mine();
         //--------
 
         _enemies enms[20];

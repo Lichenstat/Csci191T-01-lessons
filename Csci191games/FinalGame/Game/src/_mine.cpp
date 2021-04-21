@@ -14,7 +14,7 @@ _mine::~_mine()
 
 void _mine::initialize()
 {
-    _objectinteract_max::initialize(mine, "mine", 0.3, 0.3, 0.0, 0.0, 0.0, 0.0, "images/enemies/mine.png", 7.0, 1.0);
+    _objectinteract_max::initialize(mine, "mine", 0.5, 0.5, 0.0, 0.0, 0.0, 0.0, "images/enemies/mine.png", 7.0, 1.0);
 }
 
 void _mine::draw()
@@ -33,7 +33,7 @@ void _mine::interact(_object_max * curObj)
     {
         _hitbox_max::calculateRelativeHitbox(mine, curObj);
         _hitbox_max::calculateHit(mine, curObj);
-        if(mine->obj.hbsize + curObj->obj.hbsize < 2)
+        if(_hitbox_max::calculateDistance(mine, curObj) < 4)
         {
 
             if(!activated)  // if mine is in range of player play sound once
@@ -50,7 +50,7 @@ void _mine::interact(_object_max * curObj)
     }
     if(!mine->obj.exist)
     {
-        _objectinteract_max::changeImage(healthpack, "images/invisible.png", 1, 1);
+        _objectinteract_max::changeImage(mine, "images/invisible.png", 1, 1);
     }
 }
 

@@ -21,7 +21,6 @@ class _healthpack_max
         void draw();                                    // draw the healthpack and have it interact with what object
         void animate();                                 // animate the healthpack
         void interact(_object_max *);                   // interaction of some kind (jn this case hitbox interaction)
-        //void attract(_object_max *);                    // healthpack goes towards object
 
     protected:
 

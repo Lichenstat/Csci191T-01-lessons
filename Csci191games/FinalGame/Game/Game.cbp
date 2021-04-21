@@ -58,6 +58,7 @@
 		<Unit filename="include/_hitbox_max.h" />
 		<Unit filename="include/_input.h" />
 		<Unit filename="include/_mainScene.h" />
+		<Unit filename="include/_mine.h" />
 		<Unit filename="include/_model.h" />
 		<Unit filename="include/_movement_max.h" />
 		<Unit filename="include/_object_max.h" />
@@ -79,6 +80,7 @@
 		<Unit filename="src/_hitbox_max.cpp" />
 		<Unit filename="src/_input.cpp" />
 		<Unit filename="src/_mainScene.cpp" />
+		<Unit filename="src/_mine.cpp" />
 		<Unit filename="src/_model.cpp" />
 		<Unit filename="src/_movement_max.cpp" />
 		<Unit filename="src/_object_max.cpp" />

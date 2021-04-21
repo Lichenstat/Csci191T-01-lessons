@@ -30,7 +30,7 @@ _healthpack_max::~_healthpack_max()
 
 void _healthpack_max::initialize()
 {
-    _objectinteract_max::initialize(healthpack, "healthpack", 0.25, 0.25, 0.0, -3.0, 0.0, 0.0, "images/items/healthpack.png", 7.0, 1.0);
+    _objectinteract_max::initialize(healthpack, "healthpack", 0.25, 0.25, 0.0, 0.0, 0.0, 0.0, "images/items/healthpack.png", 7.0, 1.0);
     //healthpack->obj.hbsize = .05;
 }
 

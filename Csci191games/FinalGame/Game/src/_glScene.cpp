@@ -11,6 +11,7 @@ _glScene::_glScene()
     levelTwo = false;
     levelThree = false;
 
+    inRelationToPlayer = .060;
 }
 
 _glScene::~_glScene()
@@ -84,11 +85,14 @@ GLint _glScene::initGL()
         _objectinteract_max::changePosition(player1->player, 0.0, -2.1);
 
         healthpack1->initialize();
-        _objectinteract_max::changePosition(healthpack1->healthpack, -1.0, 0.0);
+        _objectinteract_max::changePosition(healthpack1->healthpack, -2.0, -2.0);
         _objectinteract_max::changeScale(healthpack1->healthpack, 0.5, 0.5);
         healthpack2->initialize();
-        _objectinteract_max::changePosition(healthpack2->healthpack, 1.0, 2.0);
+        _objectinteract_max::changePosition(healthpack2->healthpack, 2.0, -2.0);
         _objectinteract_max::changeScale(healthpack2->healthpack, 0.5, 0.5);
+
+        mine1->initialize();
+        _objectinteract_max::changePosition(mine1->mine, -2.0, 1.0);
 
         doneLoading = true;
     }
@@ -234,20 +238,29 @@ GLint _glScene::drawScene()
         // Max's includes to scene
         // drawing and updating necessary objects
         player1->draw();
+
         healthpack1->draw();
         healthpack1->interact(player1->player);
         healthpack2->draw();
         healthpack2->interact(player1->player);
 
+        mine1->draw();
+        mine1->interact(player1->player);
+
         if(itemTimer->getTicks() > 120)
         {
             healthpack1->animate();
             healthpack2->animate();
+
+            mine1->animate();
+
             itemTimer->resetTime();
         }
 
         player1->interact(healthpack1->healthpack);
         player1->interact(healthpack2->healthpack);
+
+        player1->interact(mine1->mine);
 
     }
 }
@@ -295,8 +308,9 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
 
         //Max's additions to scene
         kbMS->movePly(player1, 0.030);                  // will flip player in said direction and translate the desired direciton
-        kbMS->moveObj(healthpack1->healthpack, 0.030);  // healthpacks move at speed given
-        kbMS->moveObj(healthpack2->healthpack, 0.030);
+        kbMS->moveObj(healthpack1->healthpack, inRelationToPlayer);  // healthpacks move at speed given
+        kbMS->moveObj(healthpack2->healthpack, inRelationToPlayer);
+        kbMS->moveObj(mine1->mine, inRelationToPlayer);
 
         //--------
         break;							        // Jump Back
