@@ -10,6 +10,7 @@
 #include <_common.h>
 #include <_timer.h>
 #include <cmath>
+#include <GL/gl.h>
 class _weapons
 {
     public:
@@ -27,7 +28,7 @@ class _weapons
         //drawing our projectile and their positions
         void drawProj();
         _texture *proj = new _texture();
-        void projInit();
+        void projInit(float, float);
         vec3 projPos;
         vec3 projScale;
         vec3 vert[4];
