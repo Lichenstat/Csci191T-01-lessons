@@ -50,11 +50,10 @@ void _player_max::movements(string direction, float speed)  // player movements 
 
 }
 
-void _player_max::attract(_object_max * curObj)
+void _player_max::interact(_object_max * curObj)
 {
     if(curObj->obj.exist)
     {
-        _movement_max::moveTwordsObject(curObj, player, .0025);
         if(curObj->obj.touched && string(curObj->obj.type) == "healthpack")
         {
             //cout << "healthpack sensed" << endl;

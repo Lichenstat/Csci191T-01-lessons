@@ -49,6 +49,7 @@ void _healthpack_max::interact(_object_max *curObj)
     if(healthpack->obj.exist){
         _hitbox_max::calculateRelativeHitbox(healthpack, curObj);
         _hitbox_max::calculateHit(healthpack, curObj);
+        //_movement_max::moveTwordsObject(healthpack, curObj, .0025);
     }
     if(!healthpack->obj.exist)
         {

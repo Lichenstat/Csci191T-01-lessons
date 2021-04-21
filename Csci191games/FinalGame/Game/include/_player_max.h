@@ -21,7 +21,7 @@ class _player_max
         void animate();
         void movements(string, float);  // the various movements that are going to be done for the player
 
-        void attract(_object_max *);        // attracts various items to himself (healthpack in this case)
+        void interact(_object_max *);   // various items to himself (healthpack in this case)
 
     protected:
 
