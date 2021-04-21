@@ -334,7 +334,7 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
 
     while(!done)									// Loop That Runs While done=FALSE
     {
-        if(!Scene->doneLoading && Scene->mainScene)
+        if(!Scene->doneLoading && Scene->state == Scene->menu)
         {
 
             if (!Scene->initGL())  							// Initialize Our Newly Created GL Window
@@ -345,8 +345,18 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
             }
 
         }
+        if(!Scene->doneLoading && Scene->state == Scene->help)
+        {
 
-        if(!Scene->doneLoading && Scene->levelOne)
+            if (!Scene->initGL())  							// Initialize Our Newly Created GL Window
+            {
+                KillGLWindow();								// Reset The Display
+                MessageBox(NULL,"Initialization Failed.","ERROR",MB_OK|MB_ICONEXCLAMATION);
+                return FALSE;								// Return FALSE
+            }
+
+        }
+        if(!Scene->doneLoading && Scene->state == Scene->levelOne)
         {
 
             if (!Scene->initGL()) 							// Initialize Our Newly Created GL Window
@@ -374,7 +384,7 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
         else										// If There Are No Messages
         {
             // Draw The Scene.  Watch For ESC Key And Quit Messages From DrawGLScene()
-            if (!active  || keys[VK_ESCAPE])	                // Active?  Was There A Quit Received?
+            if (!active || keys[VK_ESCAPE] )	   //|| Scene->state == Scene->exit  Active?  Was There A Quit Received?
             {
                 done=TRUE;							// ESC or DrawGLScene Signalled A Quit
             }

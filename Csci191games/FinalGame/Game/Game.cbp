@@ -49,6 +49,7 @@
 			<Add directory="../common/lib" />
 		</Linker>
 		<Unit filename="include/_animate_max.h" />
+		<Unit filename="include/_buttons.h" />
 		<Unit filename="include/_common.h" />
 		<Unit filename="include/_enemies.h" />
 		<Unit filename="include/_fonts.h" />
@@ -57,13 +58,13 @@
 		<Unit filename="include/_healthpack_max.h" />
 		<Unit filename="include/_hitbox_max.h" />
 		<Unit filename="include/_input.h" />
-		<Unit filename="include/_mainScene.h" />
 		<Unit filename="include/_model.h" />
 		<Unit filename="include/_movement_max.h" />
 		<Unit filename="include/_object_max.h" />
 		<Unit filename="include/_objectinteract_max.h" />
 		<Unit filename="include/_parallax.h" />
 		<Unit filename="include/_particles.h" />
+		<Unit filename="include/_platfroms.h" />
 		<Unit filename="include/_player.h" />
 		<Unit filename="include/_player_max.h" />
 		<Unit filename="include/_sounds.h" />
@@ -71,6 +72,7 @@
 		<Unit filename="include/_timer.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/_animate_max.cpp" />
+		<Unit filename="src/_buttons.cpp" />
 		<Unit filename="src/_enemies.cpp" />
 		<Unit filename="src/_fonts.cpp" />
 		<Unit filename="src/_glLight.cpp" />
@@ -78,13 +80,13 @@
 		<Unit filename="src/_healthpack_max.cpp" />
 		<Unit filename="src/_hitbox_max.cpp" />
 		<Unit filename="src/_input.cpp" />
-		<Unit filename="src/_mainScene.cpp" />
 		<Unit filename="src/_model.cpp" />
 		<Unit filename="src/_movement_max.cpp" />
 		<Unit filename="src/_object_max.cpp" />
 		<Unit filename="src/_objectinteract_max.cpp" />
 		<Unit filename="src/_parallax.cpp" />
 		<Unit filename="src/_particles.cpp" />
+		<Unit filename="src/_platfroms.cpp" />
 		<Unit filename="src/_player.cpp" />
 		<Unit filename="src/_player_max.cpp" />
 		<Unit filename="src/_sounds.cpp" />

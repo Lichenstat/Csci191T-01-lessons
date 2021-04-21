@@ -15,7 +15,8 @@
 #include <_fonts.h>
 
 //Emmanuel's files
-#include <_mainScene.h>
+#include <_buttons.h>
+#include <_platfroms.h>
 // Max's h files
 #include <_healthpack_max.h>
 #include <_player_max.h>
@@ -29,13 +30,17 @@ class _glScene
         _glScene();
         virtual ~_glScene();
 
+        //current game state
+        enum cgs{landing, menu, startGame, help, exit, levelOne, levelTwo, levelThree };
+        cgs state = menu;
+
         GLint initGL();
         GLint drawScene();
         void resizeGLScene(int, int);
 
         float screenWidth, screenHeight;
 
-        bool mainScene, levelOne, levelTwo, levelThree, doneLoading;
+        bool doneLoading;
 
         _model *modelTeapot = new _model();
         _input *kbMS = new _input();
@@ -60,7 +65,12 @@ class _glScene
         _sounds *snds = new _sounds();
         _fonts *fnts = new _fonts();
 
-        _mainScene *startGameBox = new _mainScene();
+        _buttons *startGameBtn = new _buttons();
+        _buttons *helpBtn = new _buttons();
+        _buttons *exitBtn = new _buttons();
+        _buttons *backBtn = new _buttons();
+
+        _platfroms *firstPlatform = new _platfroms();
 
         // Max's addition to scene
         // these healthpacks are considered the objects used for testing (note they dont heal yet)

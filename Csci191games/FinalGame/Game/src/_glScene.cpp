@@ -4,13 +4,9 @@
 
 _glScene::_glScene()
 {
-    //ctor
-    doneLoading = false;
-    mainScene = true;
-    levelOne = false;
-    levelTwo = false;
-    levelThree = false;
+    cgs state = menu;
 
+    doneLoading = false;
 }
 
 _glScene::~_glScene()
@@ -29,17 +25,26 @@ GLint _glScene::initGL()
     glEnable(GL_COLOR_MATERIAL);
     _glLight myLight(GL_LIGHT0);
 
-    if(mainScene)
+    if(state == menu)
     {
         snds->stopAllSounds();
-        mainSceneBG->parallaxInit("images/mainSceneBGOne.jpg");
+        mainSceneBG->parallaxInit("images/menu/menuSceneBg.jpg");
 
-        startGameBox->startGBoxTex->loadTexture("images/startGameButton.png");
+        startGameBtn->startGBtnTex->loadTexture("images/menu/startBtn.png");
+        helpBtn->helpBtnTex->loadTexture("images/menu/helpBtn.png");
+        exitBtn->exitBtnTex->loadTexture("images/menu/exitBtn.png");
+        doneLoading = true;
+    }
+    if(state == help){
+
+        snds->stopAllSounds();
+
+        mainSceneBG->parallaxInit("images/menu/helpSceneBg.jpg");
+        backBtn->backBtnTex->loadTexture("images/menu/backBtn.png");
 
         doneLoading = true;
     }
-
-    if(levelOne)
+    if(state == levelOne)
     {
         //modelTex->loadTexture("images/car.jpg");
 
@@ -53,6 +58,12 @@ GLint _glScene::initGL()
         bigMountainsBg->parallaxInit("images/levelOne/mountains bg.png");
         sunBg->parallaxInit("images/levelOne/sun.png");
         mountainBG->parallaxInit("images/levelOne/mountains mg.png");
+
+        backBtn->backBtnTex->loadTexture("images/menu/backBtn.png");
+
+        firstPlatform->initialize();
+        _objectinteract_max::changePosition(firstPlatform->platform, 1.0, -2.0);
+        _objectinteract_max::changeScale(firstPlatform->platform, 0.5, 0.7);
 
         timer -> startTimer();
         //myPly -> playerInit(5, 3);  // how many frames (X, Y) frames is the sprite sheet
@@ -98,7 +109,7 @@ GLint _glScene::initGL()
 
 GLint _glScene::drawScene()
 {
-    if(mainScene)
+    if(state == menu)
     {
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -112,15 +123,42 @@ GLint _glScene::drawScene()
         glPopMatrix();
 
         glPushMatrix();
-        glBindTexture(GL_TEXTURE_2D, startGameBox->startGBoxTex->tex);
-        startGameBox->drawStartGBox();
+        glBindTexture(GL_TEXTURE_2D, startGameBtn->startGBtnTex->tex);
+        startGameBtn->drawButton(0.0,1.0,-1.0,1.0,0.5,1.0);
+        glPopMatrix();
+
+        glPushMatrix();
+        glBindTexture(GL_TEXTURE_2D, helpBtn->helpBtnTex->tex);
+        helpBtn->drawButton(0.0,0.0,-1.0,1.0,0.5,1.0);
+        glPopMatrix();
+
+        glPushMatrix();
+        glBindTexture(GL_TEXTURE_2D, exitBtn->exitBtnTex->tex);
+        exitBtn->drawButton(0.0,-1.0,-1.0,1.0,0.5,1.0);
         glPopMatrix();
 
     }
-    if(!mainScene)
+    if(state == help){
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        glLoadIdentity();
+
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, mainSceneBG->plxTexture->tex);
+        mainSceneBG->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+
+        glPushMatrix();
+        glBindTexture(GL_TEXTURE_2D, backBtn->backBtnTex->tex);
+        backBtn->drawButton(0.0,-1.5,-1.0,1.0,0.5,1.0);
+        glPopMatrix();
+
+    }
+    if(state == levelOne)
     {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        //glClearColor(0.6f, 0.1f, 0.2f, 0.3f);                   // change this if you want to change color of scene
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);                   // change this if you want to change color of scene
         glLoadIdentity();
 
         //LevelOne background
@@ -180,9 +218,18 @@ GLint _glScene::drawScene()
         glBindTexture(GL_TEXTURE_2D, groundBg->plxTexture->tex);
         groundBg->renderBack(screenWidth, screenHeight);
         glPopMatrix();
-        //clouds effect autoscrolling
+
+        firstPlatform->draw();
+        firstPlatform->interact(player1->player);
+
+        //clouds effect auto scrolling
         cloudOneBg->scroll(true, "left", 0.0001);                // auto background scrolling
         cloudTwoBg->scroll(true, "left", 0.0003);
+
+        glPushMatrix();
+        glBindTexture(GL_TEXTURE_2D, backBtn->backBtnTex->tex);
+        backBtn->drawButton(4.7,3.4,-1.0,0.5,0.3,1.0);
+        glPopMatrix();
 
         //glTranslated(0, 0, -8);                                 // place in the scene
         //glColor3f(1.0, 0.3, 0.2);                               // set a color to the object
@@ -288,11 +335,11 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
         kbMS->moveEnv(smallMountainsBg, .0048);
         kbMS->moveEnv(bigMountainsBg, .002);
         //kbMS->keyPressed(myPly);
-        if(!mainScene)
+        if(state != menu)
         {
             kbMS->keyPressed(snds);
         }
-
+        kbMS->moveObj(firstPlatform->platform, 0.06);
         //Max's additions to scene
         kbMS->movePly(player1, 0.030);                  // will flip player in said direction and translate the desired direciton
         kbMS->moveObj(healthpack1->healthpack, 0.040);  // healthpacks move at speed given
@@ -318,39 +365,57 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
     {
         GetOGLPos(LOWORD(lParam), HIWORD(lParam));
 
-        if(mainScene)
+        if(state == menu)
         {
+
             if(posmX > -0.49 && posmX < 0.49 && posmY >.80 && posmY < 1.2)
             {
+                state = levelOne;
 
-                mainScene = !mainScene;
-                levelOne = !levelOne;
                 doneLoading = false;
-                cout << mainScene << " \n " << levelOne << endl;
+            }
+             if(posmX > -0.49 && posmX < 0.49 && posmY >-0.24 && posmY < 0.24)
+            {
+                state = help;
+
+                doneLoading = false;
             }
 
-        }
-        if(levelOne)
-        {
-            if(posmX > 4.5 && posmX < 5.0 && posmY > 3.0 && posmY < 3.5)
+            if(posmX > -0.49 && posmX < 0.49 && posmY >-1.27 && posmY < -0.75)
             {
+                std::exit(0);
+                //state = exit;
 
-                mainScene = !mainScene;
-                levelOne = !levelOne;
+                //doneLoading = false;
+            }
+        }
+        if(state == help){
+            if(posmX > -0.49 && posmX < 0.49 && posmY >-1.76 && posmY < -1.25)
+            {
+                state = menu;
+
                 doneLoading = false;
-                cout << mainScene << " \n " << levelOne << endl;
+            }
+        }
+        if(state == levelOne)
+        {
+            if(posmX > 4.42 && posmX < 5.0 && posmY > 3.24 && posmY < 3.5)
+            {
+                state = menu;
+
+                doneLoading = false;
             }
         }
 
         cout << "Mouse Click On Location: " << posmX << " " << posmY << endl;
 
-        kbMS->mouseDown(modelTeapot, LOWORD(lParam), HIWORD(lParam));
+        //kbMS->mouseDown(modelTeapot, LOWORD(lParam), HIWORD(lParam));
         break;
     }
 
     case WM_RBUTTONDOWN:
     {
-        kbMS->mouseDown(modelTeapot, LOWORD(lParam), HIWORD(lParam));
+        //kbMS->mouseDown(modelTeapot, LOWORD(lParam), HIWORD(lParam));
         break;
     }
 

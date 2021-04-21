@@ -24,7 +24,7 @@ void _model::drawModel()
     glRotatef(rotateX, 1, 0, 0);
     glRotatef(rotateY, 0, 1, 0);
     glRotatef(rotateZ, 0, 0, 1);
-    glutSolidTeapot(1.5);
+    glutSolidCube(1.5);
     glPopMatrix();
 
 }

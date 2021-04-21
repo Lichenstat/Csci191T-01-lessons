@@ -1,20 +1,12 @@
-#include "_mainScene.h"
+#include "_buttons.h"
 
-_mainScene::_mainScene()
+_buttons::_buttons()
 {
     //ctor
     vert[0].x = -0.5; vert[0].y = -0.5;vert[0].z = -1.0;
     vert[1].x = 0.5; vert[1].y = -0.5;vert[1].z = -1.0;
     vert[2].x = 0.5; vert[2].y = 0.5;vert[2].z = -1.0;
     vert[3].x = -0.5; vert[3].y = 0.5;vert[3].z = -1.0;
-
-    startGBoxPos.x = 0.0;
-    startGBoxPos.y = 1.0;
-    startGBoxPos.z = -1.0;
-
-    startGBoxScale.x = 1.5;
-    startGBoxScale.y = 1.5;
-    startGBoxScale.z = 1.0;
 
     framesX = 1;
     framesY = 1;
@@ -25,15 +17,15 @@ _mainScene::_mainScene()
     yMax = 1/framesY;
 }
 
-_mainScene::~_mainScene()
+_buttons::~_buttons()
 {
     //dtor
 }
 
-void _mainScene::drawStartGBox()
+void _buttons::drawButton(float xPos,float yPos,float zPos,float xScale,float yScale,float zScale)
 {
-    glTranslatef(startGBoxPos.x, startGBoxPos.y, startGBoxPos.z);
-    glScalef(startGBoxScale.x, startGBoxScale.y, startGBoxScale.z);
+    glTranslatef(xPos, yPos, zPos);
+    glScalef(xScale,yScale,zScale);
 
     glBegin(GL_QUADS);
         // wrapping a quadrant, will divide sprite by sprite frames
@@ -46,4 +38,5 @@ void _mainScene::drawStartGBox()
         glTexCoord2f(xMin, yMin);
         glVertex3f(vert[3].x, vert[3].y, vert[3].z);
     glEnd();
+
 }
