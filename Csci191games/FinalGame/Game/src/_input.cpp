@@ -182,3 +182,47 @@ void _input::mouseMove(_model* mdl, float x, float y)
     prevMouseX = x;
     prevMouseY = y;
 }
+
+
+//Eric's weapon function
+//We have to get our angle from input because it would give us the x and y for angles
+float _input::anglesForShots(_weapons* wpn, float x, float y)
+{
+    float degree;
+    prevMouseX = x;
+    prevMouseY = y;
+    if(x > 768){   //1535 = x and 800 = y -> pixels (y is inverted) --> right half of the screen
+        degree = atan((400 - prevMouseY)/(prevMouseX-800)); //quad 1
+        if(y >= 399){
+            degree = 0.01;
+        }
+    }
+    if(x <= 768){  // left half of the screen
+        degree = -atan((400 - prevMouseY)/(800 - prevMouseX)); //quad 2
+        if(y >= 399){
+            degree = -0.01;
+        }
+    }
+    degree = (degree*3.14159)/180;
+    wpn->angle = degree;
+}
+
+void _input::mouseDown(_weapons* wpn, float x, float y)
+{
+    prevMouseX = x;
+    prevMouseY = y;
+    switch(wParam)
+    {
+        case MK_LBUTTON:
+            cout << "pew pew" << endl;
+            wpn->action = wpn->GRENADELAUNCHER; //two test weapons
+            break;
+        case MK_RBUTTON:
+            cout << "pon pon" << endl;
+            wpn->action = wpn->BEAM;
+            break;
+        default:
+            break;
+    }
+}
+//-------------------
