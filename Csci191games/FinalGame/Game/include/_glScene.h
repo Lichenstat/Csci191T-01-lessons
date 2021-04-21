@@ -22,6 +22,10 @@
 #include <_player_max.h>
 #include <_mine.h>
 //--------
+//Eric's files
+#include <_collision.h>
+#include <_weapons.h>
+//-----
 
 using namespace std;
 
@@ -83,7 +87,12 @@ class _glScene
         _healthpack_max *healthpack2 = new _healthpack_max();
         _mine * mine1 = new _mine();
         //--------
-
+    
+        //Eric's addiions
+        _weapons* wpns = new _weapons();
+        _weapons* wpns2 = new _weapons();
+        _weapons* wpnHolder = new _weapons();   // Made to keep wpn 1's data
+        //-------
         _enemies enms[20];
 
         int winMSG(HWND, UINT, WPARAM, LPARAM);
