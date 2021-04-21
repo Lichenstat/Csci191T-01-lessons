@@ -20,8 +20,8 @@ _weapons::~_weapons()
 }
 void _weapons::projInit(float x, float y)
 {
-    projPos.x = 0.0;
-    projPos.y = 0.0;
+    projPos.x = 0.00;
+    projPos.y = -2.074;
     projPos.z = -1.0;
 
     projScale.x = 0.2;
@@ -54,8 +54,8 @@ float _weapons::xDisplace()
     }
 
     if(projPos.x < -7.0 || projPos.x > 7.0 ){
-        projPos.y = 0.0;
-        projPos.x = 0.0;
+        projPos.x = 0.01;
+        projPos.y = -2.074;
         tick = 0.0;
     }
     return projPos.x;
@@ -64,9 +64,9 @@ float _weapons::xDisplace()
 float _weapons::yDisplace()
 {
     projPos.y = projPos.y + abs(sin(angle) * vel) - abs(sin(angle) * (accel * tick * tick) / 2.0);
-    if(projPos.y + 0.5 < 0.01 || projPos.y > (3.5)){
-        projPos.y = 0.0;
-        projPos.x = 0.0;
+    if(projPos.y - 0.01 < -2.5 || projPos.y > (3.5)){
+        projPos.x = 0.00;
+        projPos.y = -2.074;
         tick = 0.0;
     }
     return projPos.y;
