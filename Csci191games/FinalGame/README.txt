@@ -21,5 +21,6 @@ _collision			I used this for our physics for characters, enemies, and projectile
 _weapons			The weapon class will involve the weapons themselves, their damage, and the projectiles.
 				The projectiles will have their own speeds and acceraltions. Beams, lighting, fire, and melee attacks will not have gravity applied to them
 				The pistols and grenade launchers will have gravity/acceration applied to them. Pistols will only have a small angle.
+_input				Ive added the mouse down and angle controles for our weapon here.
 
 Don's parts:
