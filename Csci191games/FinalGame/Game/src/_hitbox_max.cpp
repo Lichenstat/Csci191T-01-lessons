@@ -33,9 +33,9 @@ void _hitbox_max::calculateHitbox(_object_max* curObj, float degree)        // c
     float bottom = sqrt(fh + sh);
     curObj->obj.hbsize = (top / bottom);
 
-    if(curObj->obj.type = "player")
+    if(string(curObj->obj.type) == "player")
     {
-        curObj->obj.hbsize = curObj->obj.hbsize/5;                  // the /6 is added to help scale the player hitboxe (radius) a bit since the scale is based on scale of object and player size can be huge
+        curObj->obj.hbsize = curObj->obj.hbsize/6;                  // the /6 is added to help scale the player hitboxe (radius) a bit since the scale is based on scale of object and player size can be huge
     }
 
 /*
@@ -67,4 +67,9 @@ void _hitbox_max::calculateHit(_object_max *firstObj, _object_max *secondObj)   
            firstObj->obj.touched = true;
            secondObj->obj.touched = true;
        }
+    else
+    {
+        firstObj->obj.touched = false;
+        secondObj->obj.touched = false;
+    }
 }

@@ -95,11 +95,11 @@ GLint _glScene::initGL()
         _objectinteract_max::changePosition(player1->player, 0.0, -2.1);
 
         healthpack1->initialize();
-        _objectinteract_max::changePosition(healthpack1->healthpack, 1.0, 0.0);
-        _objectinteract_max::changeScale(healthpack1->healthpack, 0.5, 0.7);
+        _objectinteract_max::changePosition(healthpack1->healthpack, -1.0, 0.0);
+        _objectinteract_max::changeScale(healthpack1->healthpack, 0.5, 0.5);
         healthpack2->initialize();
-        _objectinteract_max::changePosition(healthpack2->healthpack, -5.0, 0.0);
-        _objectinteract_max::changeScale(healthpack2->healthpack, 0.5, 0.7);
+        _objectinteract_max::changePosition(healthpack2->healthpack, 1.0, 2.0);
+        _objectinteract_max::changeScale(healthpack2->healthpack, 0.5, 0.5);
 
         doneLoading = true;
     }
@@ -293,8 +293,8 @@ GLint _glScene::drawScene()
             itemTimer->resetTime();
         }
 
-        player1->attract(healthpack1->healthpack);
-        player1->attract(healthpack2->healthpack);
+        player1->interact(healthpack1->healthpack);
+        player1->interact(healthpack2->healthpack);
 
     }
 }
@@ -342,8 +342,9 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
         kbMS->moveObj(firstPlatform->platform, 0.06);
         //Max's additions to scene
         kbMS->movePly(player1, 0.030);                  // will flip player in said direction and translate the desired direciton
-        kbMS->moveObj(healthpack1->healthpack, 0.040);  // healthpacks move at speed given
-        kbMS->moveObj(healthpack2->healthpack, 0.040);
+        kbMS->moveObj(healthpack1->healthpack, 0.030);  // healthpacks move at speed given
+        kbMS->moveObj(healthpack2->healthpack, 0.030);
+
         //--------
         break;							        // Jump Back
     }

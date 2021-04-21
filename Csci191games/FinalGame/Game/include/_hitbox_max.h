@@ -1,8 +1,8 @@
 #ifndef _HITBOX_MAX_H
 #define _HITBOX_MAX_H
 
-#include <_object_max.h>
 #include <cmath>
+#include <_object_max.h>
 
 class _hitbox_max
 {

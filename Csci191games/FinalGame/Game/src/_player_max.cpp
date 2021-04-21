@@ -3,7 +3,8 @@
 _player_max::_player_max()
 {
     //ctor
-    playerHealth = 100.0;
+    playerHealth = 80.0;
+    movementSoundPlaying = false;
 }
 
 _player_max::~_player_max()
@@ -37,20 +38,47 @@ void _player_max::movements(string direction, float speed)  // player movements 
     if(speed != 0)
     {
         _animate_max::movementCycle(player, 1, 8, 2);       // if player is running
+        if(!movementSoundPlaying)
+        {
+            movementSoundPlaying = true;
+            movementSounds->playMusic("sounds/sfx/running on gravel.mp3");
+        }
     }
     if(speed == 0)
     {
         _animate_max::movementCycle(player, 1, 4, 9);       // if player is standing
+        movementSounds->stopAllSounds();
+        movementSoundPlaying = false;
     }
     if(direction == "jump")
     {
         _animate_max::movementCycle(player, 1, 8, 5);       // if player is jumping
+        movementSounds->stopAllSounds();
+
         //_movement::jump(player, 1.0, 1.0);
     }
 
 }
 
-void _player_max::attract(_object_max * curObj)
+void _player_max::interact(_object_max * curObj)
 {
-    _movement_max::moveTwordsObject(curObj, player, .0005);
+    if(curObj->obj.exist)
+    {
+        if(curObj->obj.touched && string(curObj->obj.type) == "healthpack")
+        {
+            //cout << "healthpack sensed" << endl;
+            if(playerHealth < 100)
+            {
+                curObj->obj.exist = false;
+                itemSounds->playSounds("sounds/sfx/hiss.mp3");
+                float curmissinghealth = 100.0 - playerHealth;
+                if(curmissinghealth < 20.0)
+                    playerHealth += curmissinghealth;
+                else
+                    playerHealth += 20.0;
+
+                cout << "Picked up health, current health is " << playerHealth << endl;
+            }
+       }
+    }
 }

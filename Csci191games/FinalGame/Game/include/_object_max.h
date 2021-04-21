@@ -5,6 +5,7 @@
 #include <_texture.h>
 #include <GL/gl.h>
 #include <iostream>
+#include <typeinfo>
 
 using namespace std;
 
