@@ -3,6 +3,7 @@
 _mine::_mine()
 {
     damage = 20.0;      // set damage of mine
+    activated = false;
     //ctor
 }
 
@@ -32,8 +33,24 @@ void _mine::interact(_object_max * curObj)
     {
         _hitbox_max::calculateRelativeHitbox(mine, curObj);
         _hitbox_max::calculateHit(mine, curObj);
-        _movement_max::moveTwordsObject(mine, curObj, .0025);
-    }
+        if(mine->obj.hbsize + curObj->obj.hbsize < 2)
+        {
 
+            if(!activated)  // if mine is in range of player play sound once
+            {
+              sounds->playSounds("sounds/sfx/beeping.mp3") ;
+            }
+            activated = true;
+            _movement_max::moveTwordsObject(mine, curObj, .0025);   // and move towards player
+        }
+        else
+        {
+            activated = false;  // else if player is out of range, deactivate
+        }
+    }
+    if(!mine->obj.exist)
+    {
+        _objectinteract_max::changeImage(healthpack, "images/invisible.png", 1, 1);
+    }
 }
 
