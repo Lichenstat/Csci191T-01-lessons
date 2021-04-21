@@ -104,6 +104,14 @@ GLint _glScene::initGL()
         mine1->initialize();
         _objectinteract_max::changePosition(mine1->mine, -2.0, 1.0);
 
+        //Eric's projectiles
+        wpns->projInit(8, 1);
+        wpns->proj->loadTexture("images/ballRoll.png");
+        wpns2->projInit(1, 1);
+        wpns2->proj->loadTexture("images/laserSprite.png");
+        wpnHolder = wpns;
+        //----------
+        
         doneLoading = true;
     }
 
@@ -307,6 +315,36 @@ GLint _glScene::drawScene()
         player1->interact(healthpack2->healthpack);
 
         player1->interact(mine1->mine);
+        
+        //Eric's drawings
+        glPushMatrix();
+            if(wpns->action == wpns->BEAM){
+                wpns->proj = wpns2->proj;
+                wpns->framesX = 1.0;
+                wpns->xMax = 1.0/wpns->framesX;
+                wpns->vel = 0.3;
+                wpns->accel = 0.0;
+                wpns->weaponDmg = 20;
+                wpns->projScale.x = 0.3;
+                wpns->projScale.y = 0.3;
+            }
+            if(wpns->action == wpns->GRENADELAUNCHER){
+                wpns->framesX = 8.0;
+                wpns->vel = 0.1;
+                wpns->accel = 0.05;
+                wpns->weaponDmg = 10;
+                wpns->projScale.x = 0.2;
+                wpns->projScale.y = 0.2;
+            }
+            glBindTexture(GL_TEXTURE_2D, wpns->proj->tex);
+            wpns->drawProj();
+            glRotatef(wpns->angle, 0.0f, 0.0f, 1.0f);
+            if(timer->getTicks() > 60) //basically allows our ball to roll and gives it actions according to time
+            {
+                wpns->weaponAction();
+                timer->resetTime();
+            }
+        glPopMatrix();
 
     }
 }
@@ -419,6 +457,14 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
 
                 doneLoading = false;
             }
+            
+            //Eric's aditions
+            if(wpns == wpns2){
+                wpns = wpnHolder;
+            }
+            kbMS->anglesForShots(wpns, LOWORD(lParam), HIWORD(lParam));
+            kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam));
+            //----
         }
 
         cout << "Mouse Click On Location: " << posmX << " " << posmY << endl;
@@ -430,6 +476,15 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
     case WM_RBUTTONDOWN:
     {
         //kbMS->mouseDown(modelTeapot, LOWORD(lParam), HIWORD(lParam));
+        //Eric's additons
+        GetOGLPos(LOWORD(lParam), HIWORD(lParam));
+        if(levelOne){
+            cout << "Mouse Click On Location: " << posmX << " " << posmY << endl;
+            wpns = wpns2;
+            kbMS->anglesForShots(wpns, LOWORD(lParam), HIWORD(lParam));
+            kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam));
+        }
+        //-----
         break;
     }
 
