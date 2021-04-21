@@ -26,7 +26,7 @@ void _weapons::projInit(float x, float y)
 
     projScale.x = 0.2;
     projScale.y = 0.2;
-    projScale.z = 1.0;
+    projScale.z = 3.0;
 
     framesX = x;
     framesY = y;
@@ -53,7 +53,7 @@ float _weapons::xDisplace()
         projPos.x = projPos.x + abs(cos(angle) * vel);
     }
 
-    if(projPos.x < -3.0 || projPos.x > (5.0/projScale.x)){
+    if(projPos.x < -7.0 || projPos.x > 7.0 ){
         projPos.y = 0.0;
         projPos.x = 0.0;
         tick = 0.0;
@@ -64,15 +64,14 @@ float _weapons::xDisplace()
 float _weapons::yDisplace()
 {
     projPos.y = projPos.y + abs(sin(angle) * vel) - abs(sin(angle) * (accel * tick * tick) / 2.0);
-    //cout << "Y Pos is " << projPos.y << endl;
-    if(projPos.y + 0.5 < 0.01 || projPos.y > (3.5/projScale.y)){
+    if(projPos.y + 0.5 < 0.01 || projPos.y > (3.5)){
         projPos.y = 0.0;
         projPos.x = 0.0;
         tick = 0.0;
     }
     return projPos.y;
 }
-//math----
+//end of math----
 void _weapons::weaponAction()
 {
     switch(action){
