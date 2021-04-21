@@ -297,6 +297,7 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
         kbMS->movePly(player1, 0.030);                  // will flip player in said direction and translate the desired direciton
         kbMS->moveObj(healthpack1->healthpack, 0.030);  // healthpacks move at speed given
         kbMS->moveObj(healthpack2->healthpack, 0.030);
+
         //--------
         break;							        // Jump Back
     }

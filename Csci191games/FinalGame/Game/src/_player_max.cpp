@@ -4,6 +4,7 @@ _player_max::_player_max()
 {
     //ctor
     playerHealth = 80.0;
+    movementSoundPlaying = false;
 }
 
 _player_max::~_player_max()
@@ -37,14 +38,23 @@ void _player_max::movements(string direction, float speed)  // player movements 
     if(speed != 0)
     {
         _animate_max::movementCycle(player, 1, 8, 2);       // if player is running
+        if(!movementSoundPlaying)
+        {
+            movementSoundPlaying = true;
+            movementSounds->playMusic("sounds/sfx/running on gravel.mp3");
+        }
     }
     if(speed == 0)
     {
         _animate_max::movementCycle(player, 1, 4, 9);       // if player is standing
+        movementSounds->stopAllSounds();
+        movementSoundPlaying = false;
     }
     if(direction == "jump")
     {
         _animate_max::movementCycle(player, 1, 8, 5);       // if player is jumping
+        movementSounds->stopAllSounds();
+
         //_movement::jump(player, 1.0, 1.0);
     }
 
@@ -60,6 +70,7 @@ void _player_max::interact(_object_max * curObj)
             if(playerHealth < 100)
             {
                 curObj->obj.exist = false;
+                itemSounds->playSounds("sounds/sfx/hiss.mp3");
                 float curmissinghealth = 100.0 - playerHealth;
                 if(curmissinghealth < 20.0)
                     playerHealth += curmissinghealth;

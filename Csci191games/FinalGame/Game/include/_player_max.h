@@ -5,6 +5,7 @@
 #include <_objectinteract_max.h>
 #include <_movement_max.h>
 #include <_animate_max.h>
+#include <_sounds.h>
 
 class _player_max
 {
@@ -13,6 +14,10 @@ class _player_max
         virtual ~_player_max();
 
         _object_max *player = new _object_max();
+        _sounds * movementSounds = new _sounds();               // sounds
+        _sounds * itemSounds = new _sounds();
+
+        bool movementSoundPlaying;      // check if a movement sound is playing already
 
         float playerHealth;             // amount of health a player currently has
 

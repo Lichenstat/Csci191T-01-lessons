@@ -643,11 +643,12 @@
 1618455391 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_animate_max.h
 	<_object_max.h>
 
-1618982689 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_player_max.h
+1618989592 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_player_max.h
 	<_object_max.h>
 	<_objectinteract_max.h>
 	<_movement_max.h>
 	<_animate_max.h>
+	<_sounds.h>
 
 1618982694 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_movement_max.h
 	<cmath>
@@ -672,7 +673,7 @@
 	<_common.h>
 	<_texture.h>
 
-1618982694 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_healthpack_max.h
+1618996013 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_healthpack_max.h
 	<_object_max.h>
 	<_objectinteract_max.h>
 	<_movement_max.h>
@@ -698,12 +699,12 @@
 1613009550 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_gllight.h
 	<_glScene.h>
 
-1618976025 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_glscene.cpp
+1618986632 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<SOIL.h>
 
-1618913877 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_healthpack_max.cpp
+1618988702 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_healthpack_max.cpp
 	"_healthpack_max.h"
 
 1618912391 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_hitbox_max.cpp
@@ -739,10 +740,10 @@
 1615856340 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_player.cpp
 	"_player.h"
 
-1618982517 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_player_max.cpp
+1618989698 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_player_max.cpp
 	"_player_max.h"
 
-1618875825 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_sounds.cpp
+1618989436 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_sounds.cpp
 	"_sounds.h"
 
 1616031080 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_texture.cpp
