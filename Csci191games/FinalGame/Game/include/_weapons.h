@@ -40,7 +40,7 @@ class _weapons
         //Physics, variables and equations for our projectiles
         float vel;              //Velocity
         float accel;            //Acceleration
-        float angle;
+        GLfloat angle;
         float xDisplace();      //Delta X
         float yDisplace();      //Delta Y
         float tick;             //time in ticks
