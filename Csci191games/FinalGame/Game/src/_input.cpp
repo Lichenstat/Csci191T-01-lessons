@@ -191,19 +191,18 @@ float _input::anglesForShots(_weapons* wpn, float x, float y)
     float degree;
     prevMouseX = x;
     prevMouseY = y;
-    if(x > 768){   //1535 = x and 800 = y -> pixels (y is inverted) --> right half of the screen
-        degree = atan((400 - prevMouseY)/(prevMouseX-800)); //quad 1
-        if(y >= 399){
+    if(x > 767.5){
+        degree = atan((700 - prevMouseY)/(prevMouseX-767.5)); //quad 1
+        if(y >= 701){
             degree = 0.01;
         }
     }
-    if(x <= 768){  // left half of the screen
-        degree = -atan((400 - prevMouseY)/(800 - prevMouseX)); //quad 2
-        if(y >= 399){
+    if(x <= 767.5){  // left half of the screen
+        degree = -atan((700 - prevMouseY)/(767.5 - prevMouseX)); //quad 2
+        if(y >= 701){
             degree = -0.01;
         }
     }
-    degree = (degree*3.14159)/180;
     wpn->angle = degree;
 }
 
@@ -214,11 +213,9 @@ void _input::mouseDown(_weapons* wpn, float x, float y)
     switch(wParam)
     {
         case MK_LBUTTON:
-            cout << "pew pew" << endl;
             wpn->action = wpn->GRENADELAUNCHER; //two test weapons
             break;
         case MK_RBUTTON:
-            cout << "pon pon" << endl;
             wpn->action = wpn->BEAM;
             break;
         default:
