@@ -2,6 +2,10 @@
 #include <_glLight.h>
 #include <SOIL.h>
 
+GLint loc;  // have in proper place on the real game
+float  a = 0;
+int h = -1;
+
 _glScene::_glScene()
 {
     //ctor
@@ -51,6 +55,8 @@ GLint _glScene::initGL()
         enms[i].sizeE.y = enms[i].sizeE.x = (float)(rand()%12)/30.0;
     }
 
+    shd->initShader("shaders/v.vs", "shaders/f.fs");
+
     return true;
 }
 
@@ -84,6 +90,12 @@ GLint _glScene::drawScene()
 
     glPushMatrix();
     glBindTexture(GL_TEXTURE_2D, myPly->plyImage->tex);
+
+    glUseProgram(shd->program); // start of shader
+    loc = glGetUniformLocation(shd->program, "scale");
+    if(loc != -1) glUniform1f(loc, 2);
+    else cout << "Location not found\n";
+
     myPly -> drawPlayer();
 
     if(timer -> getTicks() > 120)
@@ -98,7 +110,14 @@ GLint _glScene::drawScene()
     */
     timer -> resetTime();
     }
+
+    glUseProgram(0);    // end of shader
+
     glPopMatrix();
+
+    (a < 0.1) ? h = 1 : NULL;
+    (a > 1.5) ? h = -1 : NULL;
+    a += 0.01 * h;
 
     for(int i = 0; i < 20; i++)
     {
