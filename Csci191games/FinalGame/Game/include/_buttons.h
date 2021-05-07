@@ -20,6 +20,7 @@ class _buttons
         _texture *helpBtnTex = new _texture();
         _texture *exitBtnTex = new _texture();
         _texture *backBtnTex = new _texture();
+        _texture *creditBtnTex = new _texture();
 
     protected:
 

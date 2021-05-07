@@ -36,8 +36,8 @@ class _glScene
         virtual ~_glScene();
 
         //current game state
-        enum cgs{landing, menu, startGame, help, exit, levelOne, levelTwo, levelThree };
-        cgs state = menu;
+        enum cgs{landing, menu, startGame, help, exit, levelOne, levelTwo, levelThree, credit };
+        cgs state = landing;
 
         GLint initGL();
         GLint drawScene();
@@ -52,6 +52,8 @@ class _glScene
         _texture *modelTex = new _texture();
 
         _parallax *mainSceneBG= new _parallax();
+        _parallax *creditSceneBG = new _parallax();
+        _parallax *landingBG = new _parallax();
 
         //levelOne background
         _parallax *skyBg = new _parallax();
@@ -74,6 +76,7 @@ class _glScene
         _buttons *helpBtn = new _buttons();
         _buttons *exitBtn = new _buttons();
         _buttons *backBtn = new _buttons();
+        _buttons *creditBtn = new _buttons();
 
         _platfroms *firstPlatform = new _platfroms();
 
@@ -87,7 +90,7 @@ class _glScene
         _healthpack_max *healthpack2 = new _healthpack_max();
         _mine * mine1 = new _mine();
         //--------
-    
+
         //Eric's addiions
         _weapons* wpns = new _weapons();
         _weapons* wpns2 = new _weapons();

@@ -298,6 +298,14 @@ LRESULT CALLBACK WndProc(	HWND	hWnd,			// Handle For This Window
         Scene->resizeGLScene(LOWORD(lParam),HIWORD(lParam));
         return 0;								// Jump Back
     }
+
+    case WM_LBUTTONDOWN:
+    {
+        if (Scene->state == Scene->landing)
+            Scene->state = Scene->menu;
+            Scene->doneLoading = false;
+    }
+
     }
 
     // Pass All Unhandled Messages To DefWindowProc
@@ -356,6 +364,18 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
             }
 
         }
+
+        if(!Scene->doneLoading && Scene->state == Scene->credit)
+        {
+
+            if (!Scene->initGL())  							// Initialize Our Newly Created GL Window
+            {
+                KillGLWindow();								// Reset The Display
+                MessageBox(NULL,"Initialization Failed.","ERROR",MB_OK|MB_ICONEXCLAMATION);
+                return FALSE;								// Return FALSE
+            }
+
+        }
         if(!Scene->doneLoading && Scene->state == Scene->levelOne)
         {
 
@@ -386,16 +406,83 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
             // Draw The Scene.  Watch For ESC Key And Quit Messages From DrawGLScene()
             if (!active || keys[VK_ESCAPE] )	   //|| Scene->state == Scene->exit  Active?  Was There A Quit Received?
             {
-                done=TRUE;							// ESC or DrawGLScene Signalled A Quit
+                if (Scene->state == Scene->help)
+                {
+                    keys[VK_ESCAPE] = false;
+                    Scene->state = Scene->menu;
+                    Scene->doneLoading = false;
+                }
+                else if (Scene->state == Scene->credit)
+                {
+                    keys[VK_ESCAPE] = false;
+                    Scene->state = Scene->menu;
+                    Scene->doneLoading = false;
+                }
+                else if (Scene->state == Scene->levelOne)
+                {
+                    if (MessageBox(NULL,"Would You Like To Quit", "Exit?",MB_YESNO|MB_ICONQUESTION)==IDYES)
+                    {
+                        PostQuitMessage(0);							// Windowed Mode
+                    }
+                    else
+                    {
+                        keys[VK_ESCAPE] = false;
+                        Scene->state = Scene->levelOne;
+                    }
+                }
+                else
+                    done=TRUE;							// ESC or DrawGLScene Signalled A Quit
             }
             else									// Not Time To Quit, Update Screen
             {
+                if (keys[VK_RETURN] && Scene->state == Scene->landing)
+                                        {
+                                            keys[VK_RETURN] == false;
+                                            Scene->state = Scene->menu;
+                                            Scene->doneLoading = false;
+                                        }
+                /*if (keys[VK_LBUTTON] && Scene->state == Scene->landing)
+                                        {
+                                            keys[VK_LBUTTON] == false;
+                                            Scene->state = Scene->menu;
+                                            Scene->doneLoading = false;
+                                        }*/
+                if (keys[0x4e] && Scene->state == Scene->menu) // N pressed
+                {
+                    //Scene->initGL();
+                    keys[0x4e] = false;
+                    Scene->state = Scene->levelOne;
+                    Scene->doneLoading = false;
+                }
+
+                if (keys[0x48] && Scene->state == Scene->menu) // H pressed
+                {
+                    keys[0x48] = false;
+                    Scene->state = Scene->help;
+                    Scene->doneLoading = false;
+                }
+
+                if (keys[0x43] && Scene->state == Scene->menu) // C pressed
+                {
+                    keys[0x43] = false;
+                    Scene->state = Scene->credit;
+                    Scene->doneLoading = false;
+                }
+
+
+                if (keys[0x45] && Scene->state == Scene->menu) // E pressed
+                {
+                    keys[0x45] = false;
+                    done = TRUE;
+                }
+
                 if(Scene->doneLoading)              //if assets are done loading draw new scene
                 {
                     Scene->drawScene();
                     SwapBuffers(hDC);	            // Swap Buffers (Double Buffering)
                 }
             }
+
 
             if (keys[VK_F1])						// Is F1 Being Pressed?
             {

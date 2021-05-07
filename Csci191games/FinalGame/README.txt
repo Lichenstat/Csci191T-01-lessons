@@ -5,7 +5,7 @@ that way we won't get so confused with eachothers parts wer plan on making
 
 Max's parts:
 _object_max.h/.cpp		I used this to create various objects
-_objectinteract_max.h/.cpp  	then I used this to update their information using different seperate static cases (it includes gl_push,gl_pop matrix with its functionality so no need to include that in scene if oyu are using my object type)
+_objectinteract_max.h/.cpp  	then I used this to update their information using different seperate static cases (it includes gl_push,gl_pop matrix with its functionality so no need to include that in scene if you are using my object type)
 _movement_max.h/.cp		This was used for updating the movement of various things in relation to the world
 _hitbox_max.h/.cpp		a simple hitbox class for calculating the hitbox of objects in relation to one another (note the hitbox is kinda buggy, it works but is slightly miscalcualted)
 _healthpack_max.h/.cpp		a simple in game object that can be interacted with
@@ -24,3 +24,6 @@ _weapons			The weapon class will involve the weapons themselves, their damage, a
 _input				Ive added the mouse down and angle controles for our weapon here.
 
 Don's parts:
+Menu				Created a landing/menu/help/credit pages with keyboard click. Emmanuel helped me with the mouse clicking implementation.
+Key/Menu			Press N for new game, H for help, C for credit, E for exit. ESC or Back Button at help/credit page back to menu page.
+Pausing				Press ESC during game play to pause the game. Emmanuel contributed with game states to suit our implementations.

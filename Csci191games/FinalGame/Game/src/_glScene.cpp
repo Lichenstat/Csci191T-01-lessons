@@ -4,7 +4,7 @@
 
 _glScene::_glScene()
 {
-    cgs state = menu;
+    //cgs state = landing;
     doneLoading = false;
     inRelationToPlayer = .060;
 }
@@ -25,6 +25,14 @@ GLint _glScene::initGL()
     glEnable(GL_COLOR_MATERIAL);
     _glLight myLight(GL_LIGHT0);
 
+    if (state == landing)
+    {
+        snds->stopAllSounds();
+        landingBG->parallaxInit("images/menu/landing.png");
+        doneLoading = true;
+
+    }
+
     if(state == menu)
     {
         snds->stopAllSounds();
@@ -33,8 +41,10 @@ GLint _glScene::initGL()
         startGameBtn->startGBtnTex->loadTexture("images/menu/startBtn.png");
         helpBtn->helpBtnTex->loadTexture("images/menu/helpBtn.png");
         exitBtn->exitBtnTex->loadTexture("images/menu/exitBtn.png");
+        creditBtn->creditBtnTex->loadTexture("images/menu/creditBtn.png");
         doneLoading = true;
     }
+
     if(state == help){
 
         snds->stopAllSounds();
@@ -44,6 +54,17 @@ GLint _glScene::initGL()
 
         doneLoading = true;
     }
+
+    if(state == credit){
+
+        snds->stopAllSounds();
+
+        creditSceneBG->parallaxInit("images/menu/creditSceneBg.png");
+        backBtn->backBtnTex->loadTexture("images/menu/backBtn.png");
+
+        doneLoading = true;
+    }
+
     if(state == levelOne)
     {
         //modelTex->loadTexture("images/car.jpg");
@@ -111,7 +132,7 @@ GLint _glScene::initGL()
         wpns2->proj->loadTexture("images/laserSprite.png");
         wpnHolder = wpns;
         //----------
-        
+
         doneLoading = true;
     }
 
@@ -120,6 +141,20 @@ GLint _glScene::initGL()
 
 GLint _glScene::drawScene()
 {
+    if(state == landing)
+    {
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        glLoadIdentity();
+
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, landingBG->plxTexture->tex);
+        mainSceneBG->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+
+    }
+
     if(state == menu)
     {
 
@@ -144,8 +179,17 @@ GLint _glScene::drawScene()
         glPopMatrix();
 
         glPushMatrix();
+        glBindTexture(GL_TEXTURE_2D, creditBtn->creditBtnTex->tex);
+        //glBindTexture(GL_TEXTURE_2D, exitBtn->exitBtnTex->tex);
+        //exitBtn->drawButton(0.0,-1.0,-1.0,1.0,0.5,1.0);
+        creditBtn->drawButton(0.0,-1.0,-1.0,1.0,0.5,1.0);
+        glPopMatrix();
+
+        glPushMatrix();
+        //glBindTexture(GL_TEXTURE_2D, creditBtn->creditBtnTex->tex);
         glBindTexture(GL_TEXTURE_2D, exitBtn->exitBtnTex->tex);
-        exitBtn->drawButton(0.0,-1.0,-1.0,1.0,0.5,1.0);
+        exitBtn->drawButton(0.0,-2.0,-1.0,1.0,0.5,1.0);
+
         glPopMatrix();
 
     }
@@ -166,6 +210,25 @@ GLint _glScene::drawScene()
         glPopMatrix();
 
     }
+
+    if(state == credit){
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        glLoadIdentity();
+
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, creditSceneBG->plxTexture->tex);
+        creditSceneBG->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+
+        glPushMatrix();
+        glBindTexture(GL_TEXTURE_2D, backBtn->backBtnTex->tex);
+        backBtn->drawButton(0.0,-1.5,-1.0,1.0,0.5,1.0);
+        glPopMatrix();
+
+    }
+
     if(state == levelOne)
     {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -315,7 +378,7 @@ GLint _glScene::drawScene()
         player1->interact(healthpack2->healthpack);
 
         player1->interact(mine1->mine);
-        
+
         //Eric's drawings
         glPushMatrix();
             if(wpns->action == wpns->BEAM){
@@ -435,13 +498,31 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
 
             if(posmX > -0.49 && posmX < 0.49 && posmY >-1.27 && posmY < -0.75)
             {
-                std::exit(0);
+                state = credit;
+                doneLoading = false;
+                //std::exit(0);
                 //state = exit;
+
+                //doneLoading = false;
+            }
+
+            if(posmX > -0.49 && posmX < 0.49 && posmY >-2.25 && posmY < -1.78)
+            {
+                std::exit(0);
+                //state = help;
 
                 //doneLoading = false;
             }
         }
         if(state == help){
+            if(posmX > -0.49 && posmX < 0.49 && posmY >-1.76 && posmY < -1.25)
+            {
+                state = menu;
+
+                doneLoading = false;
+            }
+        }
+        if(state == credit){
             if(posmX > -0.49 && posmX < 0.49 && posmY >-1.76 && posmY < -1.25)
             {
                 state = menu;
@@ -457,7 +538,7 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
 
                 doneLoading = false;
             }
-            
+
             //Eric's aditions
             if(wpns == wpns2){
                 wpns = wpnHolder;
