@@ -441,12 +441,7 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
                                             Scene->state = Scene->menu;
                                             Scene->doneLoading = false;
                                         }
-                /*if (keys[VK_LBUTTON] && Scene->state == Scene->landing)
-                                        {
-                                            keys[VK_LBUTTON] == false;
-                                            Scene->state = Scene->menu;
-                                            Scene->doneLoading = false;
-                                        }*/
+
                 if (keys[0x4e] && Scene->state == Scene->menu) // N pressed
                 {
                     //Scene->initGL();
