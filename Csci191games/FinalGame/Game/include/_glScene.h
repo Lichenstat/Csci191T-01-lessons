@@ -20,6 +20,7 @@
 // Max's h files
 #include <_healthpack_max.h>
 #include <_player_max.h>
+#include <_hud.h>
 #include <_mine.h>
 //--------
 //Eric's files
@@ -83,11 +84,12 @@ class _glScene
         // these healthpacks are considered the objects used for testing
         _timer *itemTimer = new _timer();
         _player_max *player1 = new _player_max();
+        _hud *hud = new _hud();
         _healthpack_max *healthpack1 = new _healthpack_max();
         _healthpack_max *healthpack2 = new _healthpack_max();
         _mine * mine1 = new _mine();
         //--------
-    
+
         //Eric's addiions
         _weapons* wpns = new _weapons();
         _weapons* wpns2 = new _weapons();

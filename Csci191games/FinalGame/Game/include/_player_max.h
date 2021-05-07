@@ -16,6 +16,9 @@ class _player_max
         _object_max *player = new _object_max();
         _sounds * movementSounds = new _sounds();               // sounds
         _sounds * itemSounds = new _sounds();
+        float deathFrames;                                      // how many frames are the death animation
+
+        int killCount;                                          // player killcount
 
         bool movementSoundPlaying;      // check if a movement sound is playing already
 
@@ -23,9 +26,8 @@ class _player_max
 
         void initialize();              // initialize player
         void draw();                    // draw player
-        void animate();
-        void movements(string, float);  // the various movements that are going to be done for the player
-
+        void animate();                 // animate player
+        void movements(string, float);  // the various movements that are going to be done for the player (as well as movement animations)
         void interact(_object_max *);   // various items to himself (healthpack in this case)
 
     protected:

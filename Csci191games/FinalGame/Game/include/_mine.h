@@ -16,6 +16,7 @@ class _mine
 
         _object_max * mine = new _object_max(); // mine is an object
         _sounds * sounds = new _sounds();       // sounds for mine
+        int deathFrames;
 
         float damage;                           // mine damaged (unused for now)
         bool activated;                         // mine activated or not

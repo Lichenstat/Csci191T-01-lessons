@@ -72,7 +72,7 @@ GLint _glScene::initGL()
         //texEnms -> loadTexture("images/enemy.png");
 
         //snds->initSounds();
-        snds->playMusic("sounds/opening.mp3");
+        //snds->playMusic("sounds/opening.mp3");
 
         //fnts->initFonts("images/fonts.png");
         //fnts->buildFont("aAa");
@@ -94,6 +94,8 @@ GLint _glScene::initGL()
         player1->initialize();
         _objectinteract_max::changePosition(player1->player, 0.0, -2.1);
 
+        hud->initialize();
+
         healthpack1->initialize();
         _objectinteract_max::changePosition(healthpack1->healthpack, -2.0, -2.0);
         _objectinteract_max::changeScale(healthpack1->healthpack, 0.5, 0.5);
@@ -111,7 +113,7 @@ GLint _glScene::initGL()
         wpns2->proj->loadTexture("images/laserSprite.png");
         wpnHolder = wpns;
         //----------
-        
+
         doneLoading = true;
     }
 
@@ -291,7 +293,8 @@ GLint _glScene::drawScene()
 
         // Max's includes to scene
         // drawing and updating necessary objects
-        player1->draw();
+        hud->draw();
+        hud->interact(player1->playerHealth);
 
         healthpack1->draw();
         healthpack1->interact(player1->player);
@@ -301,8 +304,11 @@ GLint _glScene::drawScene()
         mine1->draw();
         mine1->interact(player1->player);
 
+        player1->draw();
+
         if(itemTimer->getTicks() > 120)
         {
+            player1->animate();
             healthpack1->animate();
             healthpack2->animate();
 
@@ -315,7 +321,7 @@ GLint _glScene::drawScene()
         player1->interact(healthpack2->healthpack);
 
         player1->interact(mine1->mine);
-        
+
         //Eric's drawings
         glPushMatrix();
             if(wpns->action == wpns->BEAM){
@@ -378,24 +384,26 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
 
     case WM_KEYDOWN:							// Is A Key Being Held Down?
     {
-        //kbMS->wParam = wParam;
-        //kbMS->keyPressed(modelTeapot);
-        kbMS->moveEnv(groundBg, .005);
-        kbMS->moveEnv(mountainBG, .0045);
-        kbMS->moveEnv(smallMountainsBg, .0048);
-        kbMS->moveEnv(bigMountainsBg, .002);
-        //kbMS->keyPressed(myPly);
-        if(state != menu)
+        if (player1->playerHealth > 0)
         {
-            kbMS->keyPressed(snds);
+            //kbMS->wParam = wParam;
+            //kbMS->keyPressed(modelTeapot);
+            kbMS->moveEnv(groundBg, .005);
+            kbMS->moveEnv(mountainBG, .0045);
+            kbMS->moveEnv(smallMountainsBg, .0048);
+            kbMS->moveEnv(bigMountainsBg, .002);
+            //kbMS->keyPressed(myPly);
+            if(state != menu)
+            {
+                kbMS->keyPressed(snds);
+            }
+            kbMS->moveObj(firstPlatform->platform, 0.06);
+            //Max's additions to scene
+            kbMS->movePly(player1, 0.030);                  // will flip player in said direction and translate the desired direciton
+            kbMS->moveObj(healthpack1->healthpack, inRelationToPlayer);  // healthpacks move at speed given
+            kbMS->moveObj(healthpack2->healthpack, inRelationToPlayer);
+            kbMS->moveObj(mine1->mine, inRelationToPlayer);
         }
-        kbMS->moveObj(firstPlatform->platform, 0.06);
-        //Max's additions to scene
-        kbMS->movePly(player1, 0.030);                  // will flip player in said direction and translate the desired direciton
-        kbMS->moveObj(healthpack1->healthpack, inRelationToPlayer);  // healthpacks move at speed given
-        kbMS->moveObj(healthpack2->healthpack, inRelationToPlayer);
-        kbMS->moveObj(mine1->mine, inRelationToPlayer);
-
         //--------
         break;							        // Jump Back
     }
@@ -457,7 +465,7 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
 
                 doneLoading = false;
             }
-            
+
             //Eric's aditions
             if(wpns == wpns2){
                 wpns = wpnHolder;

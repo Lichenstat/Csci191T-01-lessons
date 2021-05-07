@@ -4,6 +4,7 @@ _mine::_mine()
 {
     damage = 20.0;      // set damage of mine
     activated = false;
+    deathFrames = 1;
     //ctor
 }
 
@@ -24,7 +25,16 @@ void _mine::draw()
 
 void _mine::animate()
 {
-    _animate_max::animate(mine);
+    if(deathFrames < 5)
+    {
+        if(!mine->obj.exist)
+        {
+            if(deathFrames == 1)
+                _objectinteract_max::changeImage(mine, "images/explosion.png", 5.0, 5.0);
+            deathFrames += 1;
+        }
+        _animate_max::animate(mine);
+    }
 }
 
 void _mine::interact(_object_max * curObj)
@@ -47,10 +57,6 @@ void _mine::interact(_object_max * curObj)
         {
             activated = false;  // else if player is out of range, deactivate
         }
-    }
-    if(!mine->obj.exist)
-    {
-        _objectinteract_max::changeImage(mine, "images/invisible.png", 1, 1);
     }
 }
 
