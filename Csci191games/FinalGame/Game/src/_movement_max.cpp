@@ -51,8 +51,3 @@ void _movement_max::moveTwordsObject(_object_max *curObj, _object_max *toObj, fl
         moveDegree(curObj, (atan((toObj->obj.pos.y - curObj->obj.pos.y)/(toObj->obj.pos.x - curObj->obj.pos.x)))*(180/3.14159), speed);
     }
 }
-
-void _movement_max::jump(_object_max *curObj, float heightJump, float speed)               // get an object to jump in an arc in a certain direction
-{
-
-}

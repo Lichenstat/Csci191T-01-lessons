@@ -53,7 +53,14 @@ void _animate_max::movementCycle(_object_max *curObj, float startX, float endX, 
 
 }
 
-void _animate_max::jump(_object_max *curObj, float onXMin, float onXMax, float onYMin, float onYMax)
+void _animate_max::singleFrame(_object_max * curObj, float frameX, float frameY)
 {
-
+    float xsizeunit, ysizeunit;
+    xsizeunit = 1/curObj->obj.frames.x;
+    ysizeunit = 1/curObj->obj.frames.y;
+    //cout << "Units: " << xsizeunit << " " << ysizeunit << endl;
+    curObj->obj.xMin = xsizeunit*frameX;                         // cycle through desired frames along x axis (matrix style)
+    curObj->obj.xMax = xsizeunit*frameX + xsizeunit;
+    curObj->obj.yMin = (frameY-1)/curObj->obj.frames.y;
+    curObj->obj.yMax = frameY/curObj->obj.frames.y;
 }

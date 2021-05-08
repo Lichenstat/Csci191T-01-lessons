@@ -15,7 +15,6 @@ class _movement_max
         static void moveVertical(_object_max *, float);                // move vertically in a given direction (object, speedY)
         static void moveDegree(_object_max *,float, float);            // move at a degree in a given direction (object, speedX, speedY)
         static void moveTwordsObject(_object_max *, _object_max*, float);  // move towards a given object in general (object, toObjest, speed)
-        static void jump(_object_max *, float, float);               // object can do a jump in a given direction (object, heightY, speed)
 
     protected:
 

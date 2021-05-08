@@ -25,6 +25,7 @@ void _player_max::draw()
 {
     _objectinteract_max::draw(player);
     player->obj.touched = false;
+    jumping->jumpLoop(player);
 }
 
 void _player_max::animate()
@@ -50,27 +51,32 @@ void _player_max::movements(string direction, float speed)  // player movements 
     {
         _animate_max::direction(player, speed);             // player direction of movement
 
-        if(speed != 0)
+        if(speed != 0 && !jumping->currentlyJumping)
         {
-            _animate_max::movementCycle(player, 1, 8, 2);       // if player is running
-            if(!movementSoundPlaying)
-            {
-                movementSoundPlaying = true;
-                movementSounds->playMusic("sounds/sfx/running on gravel.mp3");
-            }
+                _animate_max::movementCycle(player, 1, 8, 2);       // if player is running
+                if(!movementSoundPlaying)
+                {
+                    movementSoundPlaying = true;
+                    movementSounds->playMusic("sounds/sfx/running on gravel.mp3");
+                }
         }
         if(speed == 0)
         {
-            _animate_max::movementCycle(player, 1, 4, 9);       // if player is standing
-            movementSounds->stopAllSounds();
+            if(!jumping->currentlyJumping)
+            {
+                _animate_max::movementCycle(player, 1, 4, 9);       // if player is standing
+                movementSounds->stopAllSounds();
+            }
             movementSoundPlaying = false;
         }
-        if(direction == "jump")
+        if(direction == "jump" && !jumping->currentlyJumping)
         {
-            _animate_max::movementCycle(player, 1, 8, 5);       // if player is jumping
+            _animate_max::singleFrame(player, 5, 5);
             movementSounds->stopAllSounds();
-
-            //_movement::jump(player, 1.0, 1.0);
+            if(!jumping->currentlyJumping)
+                jumping->jump(player, 2.5, speed - 0.020);
+                jumping->currentlyJumping = true;
+                movementSoundPlaying = true;
         }
     }
     if(playerHealth <= 0)

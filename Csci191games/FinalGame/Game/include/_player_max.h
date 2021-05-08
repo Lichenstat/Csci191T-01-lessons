@@ -3,7 +3,7 @@
 
 #include <_object_max.h>
 #include <_objectinteract_max.h>
-#include <_movement_max.h>
+#include <_movement_jump.h>
 #include <_animate_max.h>
 #include <_sounds.h>
 
@@ -15,12 +15,12 @@ class _player_max
 
         _object_max *player = new _object_max();
         _sounds * movementSounds = new _sounds();               // sounds
+        bool movementSoundPlaying;                              // check if a movement sound is playing already
         _sounds * itemSounds = new _sounds();
         float deathFrames;                                      // how many frames are the death animation
+        _movement_jump * jumping = new _movement_jump();        // to create a vertical jump
 
         int killCount;                                          // player killcount
-
-        bool movementSoundPlaying;      // check if a movement sound is playing already
 
         float playerHealth;             // amount of health a player currently has
 

@@ -589,7 +589,7 @@
 
 1618990784 h"
 
-1619006335 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\main.cpp
+1620441847 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\main.cpp
 	<windows.h>
 	<_glScene.h>
 	<GL/glut.h>
@@ -597,7 +597,7 @@
 	<iostream>
 	<windows.h>
 
-1620378117 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_glscene.h
+1620441847 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_glscene.h
 	<windows.h>
 	<GL/glut.h>
 	<iostream>
@@ -668,17 +668,17 @@
 1620354278 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_objectinteract_max.h
 	<_object_max.h>
 
-1620354136 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_animate_max.h
+1620478456 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_animate_max.h
 	<_object_max.h>
 
-1620377661 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_player_max.h
+1620474457 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_player_max.h
 	<_object_max.h>
 	<_objectinteract_max.h>
-	<_movement_max.h>
+	<_movement_jump.h>
 	<_animate_max.h>
 	<_sounds.h>
 
-1618982694 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_movement_max.h
+1620466250 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_movement_max.h
 	<cmath>
 	<_object_max.h>
 	<_objectinteract_max.h>
@@ -712,7 +712,7 @@
 	<cmath>
 	<_object_max.h>
 
-1618454024 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_animate_max.cpp
+1620480810 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_animate_max.cpp
 	"_animate_max.h"
 
 1616635225 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_enemies.cpp
@@ -727,7 +727,7 @@
 1613009550 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_gllight.h
 	<_glScene.h>
 
-1620380824 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_glscene.cpp
+1620471267 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<SOIL.h>
@@ -747,7 +747,7 @@
 1619006335 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_model.cpp
 	"_model.h"
 
-1618454715 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_movement_max.cpp
+1620466253 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_movement_max.cpp
 	"_movement_max.h"
 
 1618453255 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_object_max.cpp
@@ -768,7 +768,7 @@
 1615856340 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_player.cpp
 	"_player.h"
 
-1620385776 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_player_max.cpp
+1620483791 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_player_max.cpp
 	"_player_max.h"
 
 1618989436 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_sounds.cpp
@@ -782,7 +782,7 @@
 
 1615428270 07f57aa3109dc7a41ef4760f78e4fc011dd18
 
-1619006335 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_buttons.h
+1620441847 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_buttons.h
 	<_common.h>
 	<_texture.h>
 
@@ -837,4 +837,14 @@
 1620380383 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_hud.h
 	<_object_max.h>
 	<_objectinteract_max.h>
+
+1620484035 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_movement_jump.h
+	<_object_max.h>
+	<_objectinteract_max.h>
+	<_movement_max.h>
+	<_animate_max.h>
+	<_sounds.h>
+
+1620484331 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_movement_jump.cpp
+	"_movement_jump.h"
 
