@@ -4,6 +4,9 @@ _hud::_hud()
 {
     //ctor
     hbxscale = 2.5;
+    healthbarPieces[0] = healthbarBack;
+    healthbarPieces[1] = healthbarMiddle;
+    healthbarPieces[2] = healthbarFront;
 }
 
 _hud::~_hud()
@@ -24,9 +27,7 @@ void _hud::initialize()
 
 void _hud::draw()
 {
-    _objectinteract_max::draw(healthbarBack);
-    _objectinteract_max::draw(healthbarMiddle);
-    _objectinteract_max::draw(healthbarFront);
+    _objectinteract_max::draw(healthbarPieces);
 }
 
 void _hud::interact(float playerHealth)

@@ -126,6 +126,8 @@ GLint _glScene::initGL()
 
         mine1->initialize();
         _objectinteract_max::changePosition(mine1->mine, -2.0, 1.0);
+        turret1->initialize();
+        _objectinteract_max::changePosition(turret1->turretParts, -2.5, -2.2);
 
         //Eric's projectiles
         wpns->projInit(8, 1);
@@ -367,6 +369,9 @@ GLint _glScene::drawScene()
         mine1->draw();
         mine1->interact(player1->player);
 
+        turret1->draw();
+        turret1->interact(player1->player);
+
         player1->draw();
 
         if(itemTimer->getTicks() > 120)
@@ -376,6 +381,7 @@ GLint _glScene::drawScene()
             healthpack2->animate();
 
             mine1->animate();
+            turret1->animate();
 
             itemTimer->resetTime();
         }
@@ -383,6 +389,7 @@ GLint _glScene::drawScene()
         player1->interact(healthpack1->healthpack);
         player1->interact(healthpack2->healthpack);
         player1->interact(mine1->mine);
+
 
         //Eric's drawings
         glPushMatrix();
@@ -465,6 +472,7 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
             kbMS->moveObj(healthpack1->healthpack, inRelationToPlayer);  // healthpacks move at speed given
             kbMS->moveObj(healthpack2->healthpack, inRelationToPlayer);
             kbMS->moveObj(mine1->mine, inRelationToPlayer);
+            kbMS->moveObj(turret1->turretParts, inRelationToPlayer);
         }
         //--------
         break;							        // Jump Back

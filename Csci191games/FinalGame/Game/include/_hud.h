@@ -11,6 +11,7 @@ class _hud
         virtual ~_hud();
 
         // creation of the healthbar
+        _object_max * healthbarPieces[3];
         _object_max * healthbarBack = new _object_max();
         _object_max * healthbarMiddle = new _object_max();
         _object_max * healthbarFront = new _object_max();

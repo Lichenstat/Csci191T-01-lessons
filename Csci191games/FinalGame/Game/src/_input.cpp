@@ -102,6 +102,14 @@ void _input::moveObj(_object_max *curObj, float speed)
     }
 }
 
+void _input::moveObj(_object_max * curObjs[], float speed)
+{
+    for(int i = 0; i < sizeof(curObjs) - 1; i++)
+    {
+        moveObj(curObjs[i], speed);
+    }
+}
+
 void _input::movePly(_player_max *curObj, float speed)
 {
     switch(wParam)

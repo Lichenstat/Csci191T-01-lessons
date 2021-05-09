@@ -18,6 +18,7 @@ class _mine
         _sounds * sounds = new _sounds();       // sounds for mine
         int deathFrames;
 
+        float health;                           // mine health
         float damage;                           // mine damaged (unused for now)
         bool activated;                         // mine activated or not
 

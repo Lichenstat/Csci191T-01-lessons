@@ -33,9 +33,10 @@ class _input
 
         // Max's additions to include file
         void moveObj(_object_max *, float);        // object defined movements
+        void moveObj(_object_max * [], float);
         void movePly(_player_max *, float);        // player defined movements
         //--------
-    
+
         // Eric's
         float anglesForShots(_weapons*, float, float);
         void mouseDown(_weapons*, float, float);                // firing our weapons

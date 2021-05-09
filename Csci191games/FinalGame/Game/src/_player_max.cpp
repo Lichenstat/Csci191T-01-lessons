@@ -110,7 +110,7 @@ void _player_max::interact(_object_max * curObj)
             if(string(curObj->obj.type) == "mine")  // if the player is interacting with a mine
             {
                 curObj->obj.exist = false;
-                itemSounds->playSounds("sounds/sfx/explosion 2.mp3");
+                //itemSounds->playSounds("sounds/sfx/explosion 2.mp3");
                 playerHealth -= 30;
 
                     cout << "Mine touched player and blew up, current health is " << playerHealth << endl;

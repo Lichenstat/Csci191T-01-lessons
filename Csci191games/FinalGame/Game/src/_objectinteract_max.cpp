@@ -26,16 +26,40 @@ void _objectinteract_max::changeScale(_object_max *curObj, float scaleX, float s
     curObj->obj.scale.y = scaleY;
 }
 
+void _objectinteract_max::changeScale(_object_max * curObjs[], float scaleX, float scaleY)
+{
+    for(int i = 0; i < sizeof(curObjs) - 1; i++)
+    {
+        changeScale(curObjs[i], scaleX, scaleY);
+    }
+}
+
 void _objectinteract_max::changePosition(_object_max *curObj, float posX, float posY)  // change the position of the object
 {
     curObj->obj.pos.x = posX;
     curObj->obj.pos.y = posY;
 }
 
+void _objectinteract_max::changePosition(_object_max * curObjs[], float posX, float posY)
+{
+    for(int i = 0; i < sizeof(curObjs) - 1; i++)
+    {
+        changePosition(curObjs[i], posX, posY);
+    }
+}
+
 void _objectinteract_max::changeAngle(_object_max *curObj, float angle, float coordrotZ)   // change the angle of the object
 {
     curObj->obj.angle = angle;                                              // set angle
     curObj->obj.coordrot.z = coordrotZ;                                     // set coordinate z to anything greater than 0 to activate
+}
+
+void _objectinteract_max::changeAngle(_object_max * curObjs[], float angle, float coordrotZ)
+{
+    for(int i = 0; i < sizeof(curObjs) - 1; i++)
+    {
+        changeAngle(curObjs[i], angle, coordrotZ);
+    }
 }
 
 void _objectinteract_max::changeImage(_object_max *curObj, char *image, float framesX, float framesY)  // change the image of the given object
@@ -50,10 +74,26 @@ void _objectinteract_max::changeImage(_object_max *curObj, char *image, float fr
     curObj->obj.yMax = 1/curObj->obj.frames.y;
 }
 
+void _objectinteract_max::changeImage(_object_max * curObjs[], char *image, float framesX, float framesY)
+{
+    for(int i = 0; i < sizeof(curObjs) - 1; i++)
+    {
+        changeImage(curObjs[i], image, framesX, framesY);
+    }
+}
+
 void _objectinteract_max::updateRelativePosition(_object_max * curObj, float moveX, float moveY)    // update relative position of object to screen translation
 {
     curObj->obj.pos.x += moveX;
     curObj->obj.pos.y += moveY;
+}
+
+void _objectinteract_max::updateRelativePosition(_object_max * curObjs[], float moveX, float moveY)
+{
+    for(int i = 0; i < sizeof(curObjs) - 1; i++)
+    {
+        updateRelativePosition(curObjs[i], moveX, moveY);
+    }
 }
 
 void _objectinteract_max::draw(_object_max *curObj)                                  // draw the object given for every update
@@ -67,8 +107,24 @@ void _objectinteract_max::draw(_object_max *curObj)                             
     glPopMatrix();
 }
 
+void _objectinteract_max::draw(_object_max * curObjs[])
+{
+    for(int i = 0; i < sizeof(curObjs) - 1; i++)
+    {
+        draw(curObjs[i]);
+    }
+}
+
 void _objectinteract_max::deleteObject(_object_max *curObj)
 {
     if(curObj->obj.exist == false)
         delete(curObj);
+}
+
+void _objectinteract_max::deleteObject(_object_max * curObjs[])
+{
+    for(int i = 0; i < sizeof(curObjs) - 1; i++)
+    {
+        deleteObject(curObjs[i]);
+    }
 }

@@ -11,12 +11,19 @@ class _objectinteract_max
 
         static void initialize(_object_max *, char *, float, float, float, float, float, float, char *, float, float);        // initialize object using (scaleX, scaleY, translationX, translationY, angle, coordrotZ, image, frames X, frames Y)
         static void changeScale(_object_max *, float, float);                                           // change the objects size if need be (size X, size Y)
+        static void changeScale(_object_max * [], float, float);
         static void changePosition(_object_max *, float, float);                                        // change the objects position (translation) if need be (pos X, pos Y)
+        static void changePosition(_object_max * [], float, float);
         static void changeAngle(_object_max *, float, float);                                           // change the objects angle if need be (angle, z coord (as far as i can tell coordrotZ > 0 just means a rotation in terms with the Z axis is enabled))
+        static void changeAngle(_object_max * [], float, float);
         static void changeImage(_object_max *, char *, float, float);                                   // change the objects image if need be (image, frames X, frames Y)
+        static void changeImage(_object_max * [], char *, float, float);
         static void updateRelativePosition(_object_max *, float, float);                                // change the relative position of objects (useful for movements in relation to player)
+        static void updateRelativePosition(_object_max * [], float, float);
         static void draw(_object_max *);                                                                // draw the object every update possible
+        static void draw(_object_max * []);
         static void deleteObject(_object_max *);                                                        // delete the object if necessary
+        static void deleteObject(_object_max * []);
 
     protected:
 

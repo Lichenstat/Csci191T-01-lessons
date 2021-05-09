@@ -74,6 +74,7 @@
 		<Unit filename="include/_sounds.h" />
 		<Unit filename="include/_texture.h" />
 		<Unit filename="include/_timer.h" />
+		<Unit filename="include/_turret.h" />
 		<Unit filename="include/_weapons.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/_animate_max.cpp" />
@@ -101,6 +102,7 @@
 		<Unit filename="src/_sounds.cpp" />
 		<Unit filename="src/_texture.cpp" />
 		<Unit filename="src/_timer.cpp" />
+		<Unit filename="src/_turret.cpp" />
 		<Unit filename="src/_weapons.cpp" />
 		<Extensions />
 	</Project>

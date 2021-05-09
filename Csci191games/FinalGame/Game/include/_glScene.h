@@ -22,6 +22,7 @@
 #include <_player_max.h>
 #include <_hud.h>
 #include <_mine.h>
+#include <_turret.h>
 //--------
 //Eric's files
 #include <_collision.h>
@@ -87,10 +88,11 @@ class _glScene
         // these healthpacks are considered the objects used for testing
         _timer *itemTimer = new _timer();
         _player_max *player1 = new _player_max();
-        _hud *hud = new _hud();
+        _hud * hud = new _hud();
         _healthpack_max *healthpack1 = new _healthpack_max();
         _healthpack_max *healthpack2 = new _healthpack_max();
         _mine * mine1 = new _mine();
+        _turret *turret1 = new _turret();
         //--------
 
         //Eric's addiions

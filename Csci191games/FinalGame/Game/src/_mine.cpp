@@ -5,6 +5,7 @@ _mine::_mine()
     damage = 20.0;      // set damage of mine
     activated = false;
     deathFrames = 1;
+    health = 25.0;
     //ctor
 }
 
@@ -21,6 +22,8 @@ void _mine::initialize()
 void _mine::draw()
 {
     _objectinteract_max::draw(mine);
+    if(health <= 0)
+        mine->obj.exist = false;
 }
 
 void _mine::animate()
@@ -31,6 +34,7 @@ void _mine::animate()
         {
             if(deathFrames == 1)
                 _objectinteract_max::changeImage(mine, "images/explosion.png", 5.0, 5.0);
+                sounds->playSounds("sounds/sfx/explosion 2.mp3");
             deathFrames += 1;
         }
         _animate_max::animate(mine);
