@@ -17,6 +17,7 @@ class _movement_jump
         float jumpPeak;             // peak of jump height
         float jumpLocation;         // jump location(x distance along parabola, the bigger the number the bigger the distance, the bigger the y vertex location changes)
         float jumpHeight;           // jump height
+        float oldJumpHeight;        // old jump height
         float jumpSpeed;            // jump speed
         bool currentlyJumping;      // bool to tell if something is currently jumping
         float negvrtx, posvrtx;     // positive and negative vertex on x axis
@@ -24,7 +25,8 @@ class _movement_jump
         _sounds * movSnd = new _sounds();   // sounds for movement of jump on landing (get rid of later if possible, not best placement for class)
 
         void jump(_object_max *, float, float);     // set jump height and speed of object to jump
-        void jumpLoop(_object_max *);// loop through jumping sequence after setting jump
+        void jumpLoop(_object_max *, float);        // loop through jumping sequence after setting jump
+        void jumpStop();                            // stop the jump execution (basically if it hit something then stop jump movement)
 
     protected:
 

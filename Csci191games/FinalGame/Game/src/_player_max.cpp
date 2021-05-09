@@ -25,7 +25,7 @@ void _player_max::draw()
 {
     _objectinteract_max::draw(player);
     player->obj.touched = false;
-    jumping->jumpLoop(player);
+    jumping->jumpLoop(player, -2.1);
 }
 
 void _player_max::animate()

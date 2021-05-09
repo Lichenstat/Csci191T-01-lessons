@@ -768,7 +768,7 @@
 1615856340 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_player.cpp
 	"_player.h"
 
-1620483791 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_player_max.cpp
+1620536028 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_player_max.cpp
 	"_player_max.h"
 
 1618989436 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_sounds.cpp
@@ -838,13 +838,13 @@
 	<_object_max.h>
 	<_objectinteract_max.h>
 
-1620484035 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_movement_jump.h
+1620536223 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_movement_jump.h
 	<_object_max.h>
 	<_objectinteract_max.h>
 	<_movement_max.h>
 	<_animate_max.h>
 	<_sounds.h>
 
-1620484331 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_movement_jump.cpp
+1620535543 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_movement_jump.cpp
 	"_movement_jump.h"
 

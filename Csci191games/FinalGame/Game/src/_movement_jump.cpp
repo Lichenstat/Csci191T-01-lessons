@@ -8,6 +8,7 @@ _movement_jump::_movement_jump()
     jumpPeak = 0;
     jumpLocation = 0;
     jumpHeight = 0;
+    oldJumpHeight = 0;
     jumpSpeed = 0;
     currentlyJumping = false;
     negvrtx = 0;
@@ -36,32 +37,42 @@ void _movement_jump::jump(_object_max * curObj, float height, float speed)
     }
 }
 
-void _movement_jump::jumpLoop(_object_max * curObj)
+void _movement_jump::jumpLoop(_object_max * curObj, float groundLevel)
 {
     if(currentlyJumping)
     {
-        //cout << jumpLocation << " " << jumpHeight << endl
-        float ojh = jumpHeight;
-        jumpHeight = sqrt(fabs(-1 * pow((jumpLocation - 0),2) + jumpPeak));     // y = a(x - h)^2 + k (parabola)
+        //cout << jumpLocation << " " << jumpHeight << endl;
+
         if(jumpLocation <= 0)                               // hard coded frames for player animation, change later if time allots
             _animate_max::singleFrame(curObj, 4, 5);
         if(jumpLocation > 0)
             _animate_max::singleFrame(curObj, 7, 5);
-        jumpLocation += jumpSpeed;
-        _movement_max::moveVertical(curObj, jumpHeight - ojh);
-        if(jumpLocation > posvrtx)
+
+        if(jumpLocation < negvrtx)  // in case we get under the x axis (stops infinite increasing upward
         {
+            jumpLocation = negvrtx - jumpSpeed;
+        }
+        if(jumpLocation < posvrtx) // falling speed can change
+        {
+            oldJumpHeight = jumpHeight;
+            jumpLocation += jumpSpeed;
+        }
+        if(jumpLocation > posvrtx)  // falling speed will top
+            jumpLocation = posvrtx;
+        jumpHeight = sqrt(fabs(-1 * pow((jumpLocation - 0),2) + jumpPeak));     // y = a(x - h)^2 + k (parabola)
+        _movement_max::moveVertical(curObj, jumpHeight - oldJumpHeight);
+        //cout << "guy pos" << curObj->obj.pos.y << endl;
+        if(curObj->obj.pos.y < groundLevel)
+        {
+            //cout << "reached bsae lele" <<endl;
             currentlyJumping = false;
             movSnd->playSounds("sounds/sfx/jump landing.mp3");
             _animate_max::singleFrame(curObj, 1, 9);    // hard coded animation stand for player, fix later if can
         }
-        /*
-        if(jumpLocation < -25 || jumpLocation > 25)
-        {
-            _movement_max::moveVertical(curObj, origPos.y);
-            //_movement_max::moveHorizontal(curObj, origPos.y);
-            currentlyJumping = false;
-        }
-        */
     }
+}
+
+void _movement_jump::jumpStop()
+{
+    currentlyJumping = false;
 }
