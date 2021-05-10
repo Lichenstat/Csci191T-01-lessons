@@ -47,7 +47,7 @@ void _input::keyPressed(_sounds* snds)
     switch(wParam)
     {
     case VK_SPACE:
-        snds->playSounds("sounds/exmpl.wav");
+        //snds->playSounds("sounds/exmpl.wav");
         break;
     }
 }
@@ -193,41 +193,124 @@ void _input::mouseMove(_model* mdl, float x, float y)
 
 
 //Eric's weapon function
-//We have to get our angle from input because it would give us the x and y for angles
 float _input::anglesForShots(_weapons* wpn, float x, float y)
 {
-    float degree;
-    prevMouseX = x;
-    prevMouseY = y;
-    if(x > 767.5){
-        degree = atan((700 - prevMouseY)/(prevMouseX-767.5)); //quad 1
-        if(y >= 701){
-            degree = 0.01;
+    if(!wpn->active){
+        float degree;
+        prevMouseX = x;
+        prevMouseY = y;
+        wpn->xClicker = x;
+        wpn->yClicker = y;
+        if(x > 767.5){
+            degree = atan((685 - prevMouseY)/(prevMouseX - 767.5)); //Right half of screen
+            wpn->rotateAngle = (degree * 180) / 3.14159265;
         }
-    }
-    if(x <= 767.5){  // left half of the screen
-        degree = -atan((700 - prevMouseY)/(767.5 - prevMouseX)); //quad 2
-        if(y >= 701){
-            degree = -0.01;
+        else if(x < 767.5){  // left half of the screen
+            degree = -atan((685 - prevMouseY)/(767.5 - prevMouseX)); //Right half of screen
+            wpn->rotateAngle = (180 + (degree * 180) / 3.14159265);
         }
+        wpn->angle = degree;
     }
-    wpn->angle = degree;
+
 }
 
-void _input::mouseDown(_weapons* wpn, float x, float y)
+void _input::mouseDown(_weapons* wpn, _weapons* wpn2, float x, float y)
 {
     prevMouseX = x;
     prevMouseY = y;
     switch(wParam)
     {
         case MK_LBUTTON:
-            wpn->action = wpn->GRENADELAUNCHER; //two test weapons
+            if(wpn->action == wpn->PISTOL && wpn->active == false){
+                snds->playSounds("sounds/gunShot.mp3");
+            }
+            if(wpn->action == wpn->GRENADELAUNCHER && wpn->active == false){
+                snds->playSounds("sounds/gLaunchShot.mp3");
+            }
+            if(wpn->action == wpn->BEAM && wpn->active == false){
+                snds->playSounds("sounds/laserGunShot.mp3");
+            }
+            wpn->active = true;
             break;
         case MK_RBUTTON:
-            wpn->action = wpn->BEAM;
+            wpn2->active = true;
             break;
         default:
             break;
+    }
+}
+
+
+void _input::keyPressed(_weapons* wpn)
+{
+    switch(wParam)
+    {
+    case VK_LEFT:
+        if(wpn->active){
+            wpn->projPos.x += 0.06;  // do action according to your sprite
+
+        }
+        wpn->weaponPos.x += 0.06;
+        break;
+
+    case VK_RIGHT:
+        if(wpn->active){
+            wpn->projPos.x -= 0.06;  // do action according to your sprite
+
+        }
+        wpn->weaponPos.x -= 0.06;
+        break;
+    case VK_SPACE:
+        if(wpn->action == wpn->PISTOL && wpn->active == false){
+            snds->playSounds("sounds/gunShot.mp3");
+        }
+        if(wpn->action == wpn->GRENADELAUNCHER && wpn->active == false){
+            snds->playSounds("sounds/gLaunchShot.mp3");
+        }
+        if(wpn->action == wpn->BEAM && wpn->active == false){
+            snds->playSounds("sounds/laserGunShot.mp3");
+        }
+        if(wpn->xClicker <= 767.5){
+            wpn->projPos.y += 0.1;
+        }
+        wpn->active = true;
+        break;
+    }
+}
+
+void _input::weaponPickUp(_weapons* wpn, _weapons* wpnOnPly, _object_max* ply)
+{
+    switch(wParam)
+    {
+    case VK_DOWN:
+        if(col->touchingWeapon(wpn, ply)){
+            if(wpn->action == wpn->PISTOL){
+                wpnOnPly->toOrigin(ply);
+                wpnOnPly->action = wpnOnPly->PISTOL;
+                wpnOnPly->toOrigin(ply);
+            }
+            if(wpn->action == wpn->GRENADELAUNCHER){
+                wpnOnPly->toOrigin(ply);
+                wpnOnPly->action = wpnOnPly->GRENADELAUNCHER;
+                wpnOnPly->toOrigin(ply);
+            }
+            if(wpn->action == wpn->BEAM){
+                wpnOnPly->toOrigin(ply);
+                wpnOnPly->action = wpnOnPly->BEAM;
+                wpnOnPly->toOrigin(ply);
+            }
+            if(wpn->action == wpn->SHOCKRIFLE){
+                wpnOnPly->toOrigin(ply);
+                wpnOnPly->action = wpnOnPly->SHOCKRIFLE;
+                wpnOnPly->toOrigin(ply);
+            }
+            wpn->weaponPos.x = 15.0;
+            wpn->weaponPos.y = -5.0;
+            wpn->weaponPos.z = -9.0;
+        }
+        break;
+
+        break;
     }
 }
 //-------------------

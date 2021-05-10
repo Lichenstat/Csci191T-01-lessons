@@ -110,8 +110,13 @@ class _glScene
         //Eric's addiions
         _weapons* wpns = new _weapons();
         _weapons* wpns2 = new _weapons();
-        _weapons* wpnHolder = new _weapons();   // Made to keep wpn 1's data
+        _weapons* pistol = new _weapons();
+        _weapons* grenadelauncher = new _weapons();
+        _weapons* laserGun = new _weapons();
+        _weapons* shockRifle = new _weapons();
+        _collision* col = new _collision();
         //-------
+    
         _enemies enms[20];
 
         int winMSG(HWND, UINT, WPARAM, LPARAM);

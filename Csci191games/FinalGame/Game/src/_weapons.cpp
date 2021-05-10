@@ -12,6 +12,13 @@ _weapons::_weapons()
     accel = 0.0;
     tick = 0.0;
     angle = 0.0;
+    active = false;
+    srand(time(NULL));
+    onlyOnceP = 0;
+    onlyOnceG = 0;
+    onlyOnceB = 0;
+    onlyOnceS = 0;
+
 }
 
 _weapons::~_weapons()
@@ -20,13 +27,19 @@ _weapons::~_weapons()
 }
 void _weapons::projInit(float x, float y)
 {
-    projPos.x = 0.00;
-    projPos.y = -2.074;
-    projPos.z = -1.0;
-
+    projPos.x = 0.06;
+    projPos.y = -2.1;
+    projPos.z = -9.0;
     projScale.x = 0.2;
     projScale.y = 0.2;
     projScale.z = 1.0;
+
+    weaponPos.x = 15.0;
+    weaponPos.y = -5.0;
+    weaponPos.z = -9.0;
+    weaponScale.x = 0.3;
+    weaponScale.y = 0.3;
+    weaponScale.z = 1.0;
 
     framesX = x;
     framesY = y;
@@ -36,98 +49,195 @@ void _weapons::projInit(float x, float y)
     yMax = 1.0/framesY;
 }
 
-bool _weapons::pickUpWeapons(_player* ply, _weapons* wpn)
-{
-    if(ply->playerPos.x - wpn->weaponPos.x <= 0.5){
-        return true;
-    }
-    return false;
-}
 //math----
 float _weapons::xDisplace()
 {
-    if(angle < 0){
-        projPos.x = projPos.x - abs(cos(angle) * vel);
-    }
-    else{
-        projPos.x = projPos.x + abs(cos(angle) * vel);
-    }
-
-    if(projPos.x < -7.0 || projPos.x > 7.0 ){
-        projPos.x = 0.01;
-        projPos.y = -2.074;
-        tick = 0.0;
+    if(active){
+        projPos.z = 1.0;
+        if(xClicker < 767.5){
+            projPos.x = projPos.x - abs(cos(angle) * vel);
+        }
+        else{
+            projPos.x = projPos.x + abs(cos(angle) * vel);
+        }
     }
     return projPos.x;
 }
 
 float _weapons::yDisplace()
 {
-    projPos.y = projPos.y + abs(sin(angle) * vel) - abs(sin(angle) * (accel * tick * tick) / 2.0);
-    if(projPos.y - 0.01 < -2.5 || projPos.y > (3.5)){
-        projPos.x = 0.00;
-        projPos.y = -2.074;
-        tick = 0.0;
+    if(active){
+        if(yClicker > 685)
+            projPos.y = projPos.y - abs(sin(angle) * vel) - abs(sin(angle) * (accel * tick * tick) / 2.0);
+        else
+            projPos.y = projPos.y + abs(sin(angle) * vel) - abs(sin(angle) * (accel * tick * tick) / 2.0);
     }
+
     return projPos.y;
 }
-//end of math----
-void _weapons::weaponAction()
-{
-    switch(action){
-        case MELEE:
-            weaponDmg = 3;
-            break;
-        case PISTOL:
-            vel = 3.0;
-            accel = 1.0;
-            weaponDmg = 5;
-            projPos.x = xDisplace();
-            projPos.y = yDisplace();
-            tick = tick + 0.1;
-            break;
-        case GRENADELAUNCHER:
-            xMin += 1/framesX;  //This our frame changing and allows our ball to roll.
-            xMax += 1/framesX;
-            projPos.x = xDisplace();
-            projPos.y = yDisplace();
-            tick = tick + 0.1;
-            break;
-        case FLAMETHROWER:
-            weaponDmg = 13;
-            projPos.x = xDisplace();
-            projPos.y = yDisplace();
-            tick = tick + 0.1;
-            break;
-        case BEAM:
-            projPos.x = xDisplace();
-            projPos.y = yDisplace();
-            tick = tick + 0.1;
-            break;
-        case SHOCKRIFLE:
-            vel = 3.0;
-            accel = 0.0;
-            weaponDmg = 20;
-            projPos.x = xDisplace();
-            projPos.y = yDisplace();
-            tick = tick + 0.1;
-            break;
 
+void _weapons::toOrigin(_object_max* ply)   //out of bounds function
+{
+    if(projPos.x < -6.0 || projPos.x > 6.0 || (projPos.y - 0.01) < -2.5 || projPos.y > (3.5)){
+        if(projPos.y - 0.01 < -2.5 && action == GRENADELAUNCHER){
+            snds->playSounds("sounds/boomNoise.mp3");
+            tick = 0.0;
+        }
+        projPos.x = ply->obj.pos.x;
+        projPos.y = ply->obj.pos.y - 0.1;
+        projPos.z = -9.0;
+        active = false;
+    }
+}
+
+void _weapons::hitToOrigin(_object_max* ply)
+{
+    if(active){
+        if(action == GRENADELAUNCHER){
+            snds->playSounds("sounds/boomNoise.mp3");
+        }
+        active = false;
+    }
+    tick = 0.0;
+    projPos.x = ply->obj.pos.x;
+    projPos.y = ply->obj.pos.y - 0.1;
+    projPos.z = -9.0;
+}
+
+//end of math----
+void _weapons::weaponAction(_object_max* ply)
+{
+    if(active){
+        switch(action){
+            case PISTOL:
+                tick = 0.0;
+                projPos.x = xDisplace();
+                projPos.y = yDisplace();
+                toOrigin(ply);
+                break;
+            case GRENADELAUNCHER:
+                xMin += 1/framesX;  //This our frame changing and allows our ball to roll.
+                xMax += 1/framesX;
+                projPos.x = xDisplace();
+                projPos.y = yDisplace();
+                if(active){
+                    tick = tick + 0.1;
+                }
+                toOrigin( ply);
+                break;
+            case BEAM:
+                tick = 0.0;
+                projPos.x = xDisplace();
+                projPos.y = yDisplace();
+                toOrigin(ply);
+                break;
+            case SHOCKRIFLE:
+                tick = 0.0;
+                vel = 3.0;
+                accel = 0.0;
+                weaponDmg = 20;
+                projPos.x = xDisplace();
+                projPos.y = yDisplace();
+                toOrigin(ply);
+                break;
+        }
+    }
+    else{
+        hitToOrigin(ply);
     }
 }
 
 void _weapons::drawProj()
 {
-    glTranslatef(projPos.x, projPos.y, projPos.z);
-    glScalef(projScale.x, projScale.y, projScale.z);
-    glBegin(GL_QUADS);
-        glTexCoord2f(xMin, yMax);
-        glVertex3f(vert[0].x, vert[0].y, vert[0].z);
-        glTexCoord2f(xMax, yMax);
-        glVertex3f(vert[1].x, vert[1].y, vert[1].z);
-        glTexCoord2f(xMax, yMin);
-        glVertex3f(vert[2].x, vert[2].y, vert[2].z);
-        glTexCoord2f(xMin, yMin);
-        glVertex3f(vert[3].x, vert[3].y, vert[3].z);
-    glEnd();
+    glPushMatrix();
+        glTranslatef(projPos.x, projPos.y, projPos.z);
+        glRotatef(rotateAngle, 0.0f, 0.0f, 1.0f);
+        glScalef(projScale.x, projScale.y, projScale.z);
+        glBegin(GL_QUADS);
+            glTexCoord2f(xMin, yMax);
+            glVertex3f(vert[0].x, vert[0].y, vert[0].z);
+            glTexCoord2f(xMax, yMax);
+            glVertex3f(vert[1].x, vert[1].y, vert[1].z);
+            glTexCoord2f(xMax, yMin);
+            glVertex3f(vert[2].x, vert[2].y, vert[2].z);
+            glTexCoord2f(xMin, yMin);
+            glVertex3f(vert[3].x, vert[3].y, vert[3].z);
+        glEnd();
+    glPopMatrix();
 }
+
+void _weapons::drawWeapon()
+{
+    glPushMatrix();
+        glTranslatef(weaponPos.x, weaponPos.y, weaponPos.z);
+        glScalef(weaponScale.x, weaponScale.y, weaponScale.z);
+        glBegin(GL_QUADS);
+            glTexCoord2f(xMin, 1);
+            glVertex3f(vert[0].x, vert[0].y, vert[0].z);
+            glTexCoord2f(1, 1);
+            glVertex3f(vert[1].x, vert[1].y, vert[1].z);
+            glTexCoord2f(1, yMin);
+            glVertex3f(vert[2].x, vert[2].y, vert[2].z);
+            glTexCoord2f(xMin, yMin);
+            glVertex3f(vert[3].x, vert[3].y, vert[3].z);
+        glEnd();
+    glPopMatrix();
+}
+
+
+void _weapons::weaponSpawn(_object_max* obj, _weapons* wpn)
+{
+    int randomSpawner = rand()%101 + 1;
+    cout << "BONK BONK: " << randomSpawner << endl;
+    if(obj->obj.exist == false){
+        switch(weaponHold){
+            case P:
+            if(randomSpawner < 50 && onlyOnceP == 0){
+                wpn->weaponPos.x = obj->obj.pos.x;
+                wpn->weaponPos.y = obj->obj.pos.y;
+                wpn->weaponPos.z = 1.0;
+                onlyOnceP++;
+                drawWeapon();
+            }
+            break;
+            case G:
+            if(randomSpawner < 100 && onlyOnceG == 0){
+                wpn->weaponPos.x = obj->obj.pos.x;
+                wpn->weaponPos.y = obj->obj.pos.y;
+                wpn->weaponPos.z = 1.0;
+                onlyOnceG++;
+                drawWeapon();
+            }
+            break;
+            case B:
+            if(randomSpawner < 50 && onlyOnceB == 0){
+                wpn->weaponPos.x = obj->obj.pos.x;
+                wpn->weaponPos.y = obj->obj.pos.y;
+                wpn->weaponPos.z = 1.0;
+                onlyOnceB++;
+                drawWeapon();
+            }
+            break;
+            case S:
+            if(randomSpawner < 50 && onlyOnceS == 0){
+                wpn->weaponPos.x = obj->obj.pos.x;
+                wpn->weaponPos.y = obj->obj.pos.y;
+                wpn->weaponPos.z = 1.0;
+                onlyOnceS++;
+                drawWeapon();
+            }
+            break;
+        }
+    }
+}
+
+float _weapons::weaponFall()
+{;
+    vel = -0.075;
+    if(weaponPos.y - 0.1 >= -2.4){
+        weaponPos.y = weaponPos.y + vel;
+    }
+    return weaponPos.y;
+}
+
+

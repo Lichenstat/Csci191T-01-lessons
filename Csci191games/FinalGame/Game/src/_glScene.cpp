@@ -113,11 +113,44 @@ GLint _glScene::initGL()
         _objectinteract_max::changePosition(turret1->turretParts, -2.5, -2.2);
 
         //Eric's projectiles
-        wpns->projInit(8, 1);
-        wpns->proj->loadTexture("images/ballRoll.png");
-        wpns2->projInit(1, 1);
-        wpns2->proj->loadTexture("images/laserSprite.png");
-        wpnHolder = wpns;
+        pistol->projInit(1, 1);
+        pistol->weaponSkin->loadTexture("images/pistol.png");
+        pistol->weaponHold = pistol->P;
+        pistol->proj->loadTexture("images/bullet.png");
+        pistol->action = pistol->PISTOL;
+        pistol->framesX = 1.0;
+        pistol->xMax = 1.0/pistol->framesX;
+        pistol->vel = 0.1;
+        pistol->weaponDmg = 10;
+        pistol->projScale.x = 0.2;
+        pistol->projScale.y = 0.2;
+
+        grenadelauncher->projInit(8, 1);
+        grenadelauncher->weaponSkin->loadTexture("images/grenadeLauncher.png");
+        grenadelauncher->weaponHold = grenadelauncher->G;
+        grenadelauncher->proj->loadTexture("images/ballRoll.png");
+        grenadelauncher->action = grenadelauncher->GRENADELAUNCHER;
+        grenadelauncher->framesX = 8.0;
+        grenadelauncher->xMax = 1.0/grenadelauncher->framesX;
+        grenadelauncher->vel = 0.009;
+        grenadelauncher->accel = 0.0005;
+        grenadelauncher->weaponDmg = 25;
+        grenadelauncher->projScale.x = 0.2;
+        grenadelauncher->projScale.y = 0.2;
+
+        laserGun->projInit(1, 1);
+        laserGun->weaponSkin->loadTexture("images/beamGun.png");
+        laserGun->weaponHold = laserGun->B;
+        laserGun->proj->loadTexture("images/laserSprite.png");
+        laserGun->action = laserGun->BEAM;
+        laserGun->framesX = 1.0;
+        laserGun->xMax = 1.0/laserGun->framesX;
+        laserGun->vel = 0.3;
+        laserGun->weaponDmg = 50;
+        laserGun->projScale.x = 0.2;
+        laserGun->projScale.y = 0.2;
+
+        wpns = pistol;        //MANUAL START TO WEAPON, should start with a pistol but set to laserGun for ease of destroying turret and mine
         //----------
 
         doneLoading = true;
@@ -343,31 +376,65 @@ GLint _glScene::drawScene()
 
 
         //Eric's drawings
+        if(wpns->action == wpns->PISTOL){
+            wpns = pistol;
+            pistol->vel = 0.2;
+            pistol->weaponDmg = 10;
+            pistol->projScale.x = 0.2;
+            pistol->projScale.y = 0.2;
+        }
+        if(wpns->action == wpns->GRENADELAUNCHER){
+            wpns = grenadelauncher;
+            grenadelauncher->vel = 0.09;
+            grenadelauncher->accel = 0.005;
+            grenadelauncher->weaponDmg = 25;
+            grenadelauncher->projScale.x = 0.2;
+            grenadelauncher->projScale.y = 0.2;
+        }
+        if(wpns->action == wpns->BEAM){
+            wpns = laserGun;
+            laserGun->vel = 0.3;
+            laserGun->weaponDmg = 50;
+            laserGun->projScale.x = 0.2;
+            laserGun->projScale.y = 0.2;
+        }
         glPushMatrix();
-            if(wpns->action == wpns->BEAM){
-                wpns->proj = wpns2->proj;
-                wpns->framesX = 1.0;
-                wpns->xMax = 1.0/wpns->framesX;
-                wpns->vel = 0.3;
-                wpns->accel = 0.0;
-                wpns->weaponDmg = 20;
-                wpns->projScale.x = 0.3;
-                wpns->projScale.y = 0.3;
-            }
-            if(wpns->action == wpns->GRENADELAUNCHER){
-                wpns->framesX = 8.0;
-                wpns->vel = 0.1;
-                wpns->accel = 0.05;
-                wpns->weaponDmg = 10;
-                wpns->projScale.x = 0.2;
-                wpns->projScale.y = 0.2;
-            }
             glBindTexture(GL_TEXTURE_2D, wpns->proj->tex);
             wpns->drawProj();
-            glRotatef(wpns->angle, 0.0f, 0.0f, 1.0f);
-            if(timer->getTicks() > 60) //basically allows our ball to roll and gives it actions according to time
+            glBindTexture(GL_TEXTURE_2D, wpns2->proj->tex);
+            wpns2->drawProj();
+            glBindTexture(GL_TEXTURE_2D, pistol->weaponSkin->tex);
+            pistol->drawWeapon();
+            glBindTexture(GL_TEXTURE_2D, grenadelauncher->weaponSkin->tex);
+            grenadelauncher->drawWeapon();
+            glBindTexture(GL_TEXTURE_2D, laserGun->weaponSkin->tex);
+            laserGun->drawWeapon();
+            if(timer->getTicks() > 15)
             {
-                wpns->weaponAction();
+                wpns->weaponAction(player1->player);
+                if(col->projHit(wpns, mine1->mine))
+                {
+                    wpns->hitToOrigin(player1->player);
+                    mine1->health -= wpns->weaponDmg;
+                    if(mine1->health <= 0){
+                        mine1->mine->obj.pos.z = -9.0;
+                        mine1->mine->obj.exist = false;
+                    }
+                    grenadelauncher->weaponSpawn(mine1->mine, grenadelauncher);
+                }
+                if(col->projHit(wpns, turret1->turrethead))
+                {
+                    wpns->hitToOrigin(player1->player);
+                    turret1->health-= wpns->weaponDmg;
+                    if(turret1->health <= 0){
+                        turret1->turrethead->obj.pos.z = -9.0;
+                        turret1->turretbarrel->obj.pos.z = -9.0;
+                        turret1->turrethead->obj.exist = false;
+                    }
+                    laserGun->weaponSpawn(turret1->turrethead, laserGun);
+                }
+                grenadelauncher->weaponFall();
+                laserGun->weaponFall();
                 timer->resetTime();
             }
         glPopMatrix();
@@ -486,6 +553,20 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
             kbMS->moveObj(healthpack2->healthpack, inRelationToPlayer);
             kbMS->moveObj(mine1->mine, inRelationToPlayer);
             kbMS->moveObj(turret1->turretParts, inRelationToPlayer);
+            //-----------
+
+            //Eric's keyboard imputs
+            kbMS->keyPressed(wpns);
+            kbMS->keyPressed(pistol);
+            kbMS->keyPressed(grenadelauncher);
+            kbMS->keyPressed(laserGun);
+            kbMS->keyPressed(shockRifle);
+            kbMS->weaponPickUp(pistol, wpns, player1->player);
+            kbMS->weaponPickUp(grenadelauncher, wpns, player1->player);
+            kbMS->weaponPickUp(laserGun, wpns, player1->player);
+            kbMS->weaponPickUp(shockRifle, wpns, player1->player);
+
+            //--------------
         }
         //--------
         break;							        // Jump Back
@@ -571,11 +652,7 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
             }
 
             //Eric's aditions
-            if(wpns == wpns2){
-                wpns = wpnHolder;
-            }
             kbMS->anglesForShots(wpns, LOWORD(lParam), HIWORD(lParam));
-            kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam));
             //----
         }
 
@@ -590,10 +667,6 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
         //Eric's additons
         GetOGLPos(LOWORD(lParam), HIWORD(lParam));
         if(levelOne){
-            cout << "Mouse Click On Location: " << posmX << " " << posmY << endl;
-            wpns = wpns2;
-            kbMS->anglesForShots(wpns, LOWORD(lParam), HIWORD(lParam));
-            kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam));
         }
         //-----
         break;
@@ -614,12 +687,14 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
 
     case WM_MOUSEMOVE:
     {
+        kbMS->anglesForShots(wpns, LOWORD(lParam), HIWORD(lParam));
         kbMS->mouseMove(modelTeapot, LOWORD(lParam), HIWORD(lParam));
         break;
     }
 
     case WM_MOUSEWHEEL:
     {
+
         kbMS->mouseWheel(modelTeapot, (float)GET_WHEEL_DELTA_WPARAM(wParam));
         break;
     }

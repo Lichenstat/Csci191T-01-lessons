@@ -16,6 +16,7 @@
 
 // Eric's h files
 #include <_weapons.h>
+#include <_collision.h>
 //-----------
 
 class _input
@@ -39,7 +40,11 @@ class _input
 
         // Eric's
         float anglesForShots(_weapons*, float, float);
-        void mouseDown(_weapons*, float, float);                // firing our weapons
+        void mouseDown(_weapons*, _weapons*, float, float);                // firing our weapons
+        void keyPressed(_weapons*);
+        void weaponPickUp(_weapons*, _weapons*, _object_max*);
+        _collision* col = new _collision();
+        _sounds* snds = new _sounds();
         //--------
 
         void mouseDown(_model*, float, float);
