@@ -388,6 +388,18 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
             }
 
         }
+        if(!Scene->doneLoading && Scene->state == Scene->levelTwo)
+        {
+
+            if (!Scene->initGL()) 							// Initialize Our Newly Created GL Window
+            {
+
+                KillGLWindow();								// Reset The Display
+                MessageBox(NULL,"Initialization Failed.","ERROR",MB_OK|MB_ICONEXCLAMATION);
+                return FALSE;								// Return FALSE
+            }
+
+        }
 
         if (PeekMessage(&msg,NULL,0,0,PM_REMOVE))	// Is There A Message Waiting?
         {

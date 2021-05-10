@@ -7,6 +7,7 @@ _glScene::_glScene()
     //cgs state = landing;
     doneLoading = false;
     inRelationToPlayer = .060;
+
 }
 
 _glScene::~_glScene()
@@ -16,6 +17,7 @@ _glScene::~_glScene()
 
 GLint _glScene::initGL()
 {
+
     glShadeModel(GL_SMOOTH);
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     glClearDepth(1.0f);
@@ -45,7 +47,8 @@ GLint _glScene::initGL()
         doneLoading = true;
     }
 
-    if(state == help){
+    if(state == help)
+    {
 
         snds->stopAllSounds();
 
@@ -55,7 +58,8 @@ GLint _glScene::initGL()
         doneLoading = true;
     }
 
-    if(state == credit){
+    if(state == credit)
+    {
 
         snds->stopAllSounds();
 
@@ -67,18 +71,17 @@ GLint _glScene::initGL()
 
     if(state == levelOne)
     {
-        //modelTex->loadTexture("images/car.jpg");
 
         //levelOne backgrounds sources
-        skyBg->parallaxInit("images/levelOne/sky.png");
-        groundBg->parallaxInit("images/levelOne/ground.png");
-        fogBg->parallaxInit("images/levelOne/fog.png");
-        cloudOneBg->parallaxInit("images/levelOne/cloud fg.png");
-        cloudTwoBg->parallaxInit("images/levelOne/clouds bg.png");
-        smallMountainsBg->parallaxInit("images/levelOne/mountains fg.png");
-        bigMountainsBg->parallaxInit("images/levelOne/mountains bg.png");
-        sunBg->parallaxInit("images/levelOne/sun.png");
-        mountainBG->parallaxInit("images/levelOne/mountains mg.png");
+        lvOskyBg->parallaxInit("images/levelOne/sky.png");
+        lv0groundBg->parallaxInit("images/levelOne/ground.png");
+        lvOfogBg->parallaxInit("images/levelOne/fog.png");
+        lvOcloudOneBg->parallaxInit("images/levelOne/cloud fg.png");
+        lvOcloudTwoBg->parallaxInit("images/levelOne/clouds bg.png");
+        lvOsmallMountainsBg->parallaxInit("images/levelOne/mountains fg.png");
+        lvObigMountainsBg->parallaxInit("images/levelOne/mountains bg.png");
+        lvOsunBg->parallaxInit("images/levelOne/sun.png");
+        lvOmountainBG->parallaxInit("images/levelOne/mountains mg.png");
 
         backBtn->backBtnTex->loadTexture("images/menu/backBtn.png");
 
@@ -87,26 +90,6 @@ GLint _glScene::initGL()
         _objectinteract_max::changeScale(firstPlatform->platform, 0.5, 0.7);
 
         timer -> startTimer();
-        //myPly -> playerInit(5, 3);  // how many frames (X, Y) frames is the sprite sheet
-        //myPly -> plyImage -> loadTexture("images/plyspritessheet.jpg");
-
-        //texEnms -> loadTexture("images/enemy.png");
-
-        //snds->initSounds();
-        //snds->playMusic("sounds/opening.mp3");
-
-        //fnts->initFonts("images/fonts.png");
-        //fnts->buildFont("aAa");
-        /*
-        for(int i = 0; i < 20; i++)
-        {
-            enms[i].tex = texEnms -> tex;
-            enms[i].posE.x = (float)rand()/float(RAND_MAX)*5-2.5;
-            enms[i].posE.y = -0.5;
-
-            enms[i].placeEnms(enms[i].posE);
-            enms[i].sizeE.y = enms[i].sizeE.x = (float)(rand()%12)/30.0;
-        }*/
 
         //Max's addition to scene
         itemTimer->startTimer();
@@ -140,11 +123,30 @@ GLint _glScene::initGL()
         doneLoading = true;
     }
 
+    if(state == levelTwo)
+    {
+        cout << "ran levelTwo initialize" << endl;
+        //levelOne backgrounds sources
+        lv1cloudOneBg->parallaxInit("images/levelTwo/clouds bg.png");
+        lv1cloudTwoBg->parallaxInit("images/levelTwo/clouds fg.png");
+        lv1fogBg->parallaxInit("images/levelTwo/fog.png");
+        lv1mountainsBg->parallaxInit("images/levelTwo/forest and mountains.png");
+        lv1forestBg->parallaxInit("images/levelTwo/forest fg.png");
+        lv1groundBg->parallaxInit("images/levelTwo/ground.png");
+        lv1bigMountainBg->parallaxInit("images/levelTwo/mountain.png");
+        lv1skyBg->parallaxInit("images/levelTwo/sky.png");
+        lv1treeBg->parallaxInit("images/levelTwo/tree.png");
+
+        doneLoading = true;
+    }
+
     return true;
+
 }
 
 GLint _glScene::drawScene()
 {
+
     if(state == landing)
     {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -197,7 +199,8 @@ GLint _glScene::drawScene()
         glPopMatrix();
 
     }
-    if(state == help){
+    if(state == help)
+    {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glLoadIdentity();
@@ -215,7 +218,8 @@ GLint _glScene::drawScene()
 
     }
 
-    if(state == credit){
+    if(state == credit)
+    {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glLoadIdentity();
@@ -235,6 +239,8 @@ GLint _glScene::drawScene()
 
     if(state == levelOne)
     {
+
+
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);                   // change this if you want to change color of scene
         glLoadIdentity();
@@ -243,118 +249,63 @@ GLint _glScene::drawScene()
         //sky
         glPushMatrix();
         glScalef(3.33, 3.33, 1.0);
-        glBindTexture(GL_TEXTURE_2D, skyBg->plxTexture->tex);
-        skyBg->renderBack(screenWidth, screenHeight);
+        glBindTexture(GL_TEXTURE_2D, lvOskyBg->plxTexture->tex);
+        lvOskyBg->renderBack(screenWidth, screenHeight);
         glPopMatrix();
         //sky clouds top
         glPushMatrix();
         glScalef(3.33, 3.33, 1.0);
-        glBindTexture(GL_TEXTURE_2D, cloudTwoBg->plxTexture->tex);
-        cloudTwoBg->renderBack(screenWidth, screenHeight);
+        glBindTexture(GL_TEXTURE_2D, lvOcloudTwoBg->plxTexture->tex);
+        lvOcloudTwoBg->renderBack(screenWidth, screenHeight);
         glPopMatrix();
         //fog
         glPushMatrix();
         glScalef(3.33, 3.33, 1.0);
-        glBindTexture(GL_TEXTURE_2D, fogBg->plxTexture->tex);
-        fogBg->renderBack(screenWidth, screenHeight);
+        glBindTexture(GL_TEXTURE_2D, lvOfogBg->plxTexture->tex);
+        lvOfogBg->renderBack(screenWidth, screenHeight);
         glPopMatrix();
-        //sun
-        /*
-        glPushMatrix();
-        glScalef(3.33, 3.33, 1.0);
-        glBindTexture(GL_TEXTURE_2D, sunBg->plxTexture->tex);
-        sunBg->renderBack(screenWidth, screenHeight);
-        glPopMatrix();
-        */
         //big mountains
         glPushMatrix();
         glScalef(3.33, 3.33, 1.0);
-        glBindTexture(GL_TEXTURE_2D, bigMountainsBg->plxTexture->tex);
-        bigMountainsBg->renderBack(screenWidth, screenHeight);
+        glBindTexture(GL_TEXTURE_2D, lvObigMountainsBg->plxTexture->tex);
+        lvObigMountainsBg->renderBack(screenWidth, screenHeight);
         glPopMatrix();
         //mountains
         glPushMatrix();
         glScalef(3.33, 3.33, 1.0);
-        glBindTexture(GL_TEXTURE_2D, mountainBG->plxTexture->tex);
-        mountainBG->renderBack(screenWidth, screenHeight);
+        glBindTexture(GL_TEXTURE_2D, lvOmountainBG->plxTexture->tex);
+        lvOmountainBG->renderBack(screenWidth, screenHeight);
         glPopMatrix();
         //bottom clouds
         glPushMatrix();
         glScalef(3.33, 3.33, 1.0);
-        glBindTexture(GL_TEXTURE_2D, cloudOneBg->plxTexture->tex);
-        cloudOneBg->renderBack(screenWidth, screenHeight);
+        glBindTexture(GL_TEXTURE_2D, lvOcloudOneBg->plxTexture->tex);
+        lvOcloudOneBg->renderBack(screenWidth, screenHeight);
         glPopMatrix();
         //small mountains
         glPushMatrix();
         glScalef(3.33, 3.33, 1.0);
-        glBindTexture(GL_TEXTURE_2D, smallMountainsBg->plxTexture->tex);
-        smallMountainsBg->renderBack(screenWidth, screenHeight);
+        glBindTexture(GL_TEXTURE_2D, lvOsmallMountainsBg->plxTexture->tex);
+        lvOsmallMountainsBg->renderBack(screenWidth, screenHeight);
         glPopMatrix();
         //ground
         glPushMatrix();
         glScalef(3.33, 3.33, 1.0);
-        glBindTexture(GL_TEXTURE_2D, groundBg->plxTexture->tex);
-        groundBg->renderBack(screenWidth, screenHeight);
+        glBindTexture(GL_TEXTURE_2D, lv0groundBg->plxTexture->tex);
+        lv0groundBg->renderBack(screenWidth, screenHeight);
         glPopMatrix();
 
         firstPlatform->draw();
         firstPlatform->interact(player1->player);
 
         //clouds effect auto scrolling
-        cloudOneBg->scroll(true, "left", 0.0001);                // auto background scrolling
-        cloudTwoBg->scroll(true, "left", 0.0003);
+        lvOcloudOneBg->scroll(true, "left", 0.0001);                // auto background scrolling
+        lvOcloudTwoBg->scroll(true, "left", 0.0003);
 
         glPushMatrix();
         glBindTexture(GL_TEXTURE_2D, backBtn->backBtnTex->tex);
         backBtn->drawButton(4.7,3.4,-1.0,0.5,0.3,1.0);
         glPopMatrix();
-
-        //glTranslated(0, 0, -8);                                 // place in the scene
-        //glColor3f(1.0, 0.3, 0.2);                               // set a color to the object
-
-        //glBindTexture(GL_TEXTURE_2D,modelTex->tex);             // to use texture on the teapot
-        //modelTeapot -> drawModel();
-        //glutSolidTorus(0.2, 0.5, 20, 20);
-
-        //glPushMatrix();
-        //glBindTexture(GL_TEXTURE_2D, myPly->plyImage->tex);
-        //myPly -> drawPlayer();
-
-        //if(timer -> getTicks() > 120)
-        //{
-            //myPly -> actions();
-            //timer->resetTime();
-            /*
-            myPly -> xMin += 1/myPly -> framesX;
-            myPly -> xMax += 1/myPly -> framesX;
-            myPly -> yMin += 1/myPly -> framesY;
-            myPly -> yMax += 1/myPly -> framesY;
-            */
-            //timer -> resetTime();
-        //}
-        //glPopMatrix();
-        /*
-        for(int i = 0; i < 20; i++)
-        {
-            if(enms[i].posE.x < -2.0)
-            {
-                enms[i].actions = 0;
-                enms[i].speed = 0.01;
-            }
-            else if(enms[i].posE.x > 2.0)
-            {
-                enms[i].actions = 1;
-                enms[i].speed = -0.01;
-            }
-
-            enms[i].posE.x += enms[i].speed;
-            enms[i].actionsEnms();
-            enms[i].drawEnms();
-        }*/
-
-        //glScalef(5.0, 5.0, 0);
-        //glTranslatef(0, 0.0, -1);
-        //fnts->drawFonts();
 
         // Max's includes to scene
         // drawing and updating necessary objects
@@ -422,6 +373,70 @@ GLint _glScene::drawScene()
         glPopMatrix();
 
     }
+    if(state == levelTwo)
+    {
+
+
+        cout << "running levelTwo drawScene" << endl;
+
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);                   // change this if you want to change color of scene
+        glLoadIdentity();
+
+        //LevelTwo background
+        //sky
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, lv1skyBg->plxTexture->tex);
+        lv1skyBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        //bottom clouds
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, lv1cloudOneBg->plxTexture->tex);
+        lv1cloudOneBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        //fog
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, lv1fogBg->plxTexture->tex);
+        lv1fogBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        //big mountains
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, lv1bigMountainBg->plxTexture->tex);
+        lv1bigMountainBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        //mountains
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, lv1mountainsBg->plxTexture->tex);
+        lv1mountainsBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        //sky clouds top
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, lv1cloudTwoBg->plxTexture->tex);
+        lv1cloudTwoBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        //forest
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, lv1forestBg->plxTexture->tex);
+        lv1forestBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        //ground
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, lv1groundBg->plxTexture->tex);
+        lv1groundBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+
+        //clouds effect auto scrolling
+        lv1cloudOneBg->scroll(true, "left", 0.0001);                // auto background scrolling
+        lv1cloudTwoBg->scroll(true, "left", 0.0003);
+    }
 }
 
 void _glScene::resizeGLScene(int width, int height)
@@ -433,10 +448,7 @@ void _glScene::resizeGLScene(int width, int height)
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
-    //gluPerspective(45.0, aspectRatio, 0.1, 100);
-
     glOrtho(-5.0, 5.0, -3.5, 3.5, 0.1, 100);  // will readjust game view to match game window size
-    //glOrtho(-width/350.0, width/350.0, -height/350.0, height/350.0, 0.1, 100); // will cut off game view when changing in game window
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -455,18 +467,19 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
     {
         if (player1->playerHealth > 0)
         {
-            //kbMS->wParam = wParam;
-            //kbMS->keyPressed(modelTeapot);
-            kbMS->moveEnv(groundBg, .005);
-            kbMS->moveEnv(mountainBG, .0045);
-            kbMS->moveEnv(smallMountainsBg, .0048);
-            kbMS->moveEnv(bigMountainsBg, .002);
-            //kbMS->keyPressed(myPly);
+            if(state == levelOne){
+                kbMS->moveEnv(lv0groundBg, .005);
+                kbMS->moveEnv(lvOmountainBG, .0045);
+                kbMS->moveEnv(lvOsmallMountainsBg, .0048);
+                kbMS->moveEnv(lvObigMountainsBg, .002);
+                kbMS->moveObj(firstPlatform->platform, 0.06);
+            }
+
             if(state != menu)
             {
                 kbMS->keyPressed(snds);
             }
-            kbMS->moveObj(firstPlatform->platform, 0.06);
+
             //Max's additions to scene
             kbMS->movePly(player1, 0.030);                  // will flip player in said direction and translate the desired direciton
             kbMS->moveObj(healthpack1->healthpack, inRelationToPlayer);  // healthpacks move at speed given
@@ -500,9 +513,12 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
 
             if(posmX > -0.49 && posmX < 0.49 && posmY >.80 && posmY < 1.2)
             {
-                state = levelOne;
+
+                state = levelTwo;
+                cout << "changed state to level Two";
 
                 doneLoading = false;
+
             }
              if(posmX > -0.49 && posmX < 0.49 && posmY >-0.24 && posmY < 0.24)
             {
@@ -565,13 +581,12 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
 
         cout << "Mouse Click On Location: " << posmX << " " << posmY << endl;
 
-        //kbMS->mouseDown(modelTeapot, LOWORD(lParam), HIWORD(lParam));
         break;
     }
 
     case WM_RBUTTONDOWN:
     {
-        //kbMS->mouseDown(modelTeapot, LOWORD(lParam), HIWORD(lParam));
+
         //Eric's additons
         GetOGLPos(LOWORD(lParam), HIWORD(lParam));
         if(levelOne){

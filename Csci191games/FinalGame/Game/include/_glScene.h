@@ -58,15 +58,27 @@ class _glScene
         _parallax *landingBG = new _parallax();
 
         //levelOne background
-        _parallax *skyBg = new _parallax();
-        _parallax *groundBg = new _parallax();
-        _parallax *fogBg = new _parallax();
-        _parallax *cloudOneBg = new _parallax();
-        _parallax *cloudTwoBg = new _parallax();
-        _parallax *smallMountainsBg = new _parallax();
-        _parallax *bigMountainsBg = new _parallax();
-        _parallax *sunBg = new _parallax();
-        _parallax *mountainBG = new _parallax();
+        _parallax *lvOskyBg = new _parallax();
+        _parallax *lv0groundBg = new _parallax();
+        _parallax *lvOfogBg = new _parallax();
+        _parallax *lvOcloudOneBg = new _parallax();
+        _parallax *lvOcloudTwoBg = new _parallax();
+        _parallax *lvOsmallMountainsBg = new _parallax();
+        _parallax *lvObigMountainsBg = new _parallax();
+        _parallax *lvOsunBg = new _parallax();
+        _parallax *lvOmountainBG = new _parallax();
+
+        //levelTwo background
+        _parallax *lv1cloudOneBg = new _parallax();
+        _parallax *lv1cloudTwoBg = new _parallax();
+        _parallax *lv1fogBg = new _parallax();
+        _parallax *lv1mountainsBg = new _parallax();
+        _parallax *lv1forestBg = new _parallax();
+        _parallax *lv1groundBg = new _parallax();
+        _parallax *lv1bigMountainBg = new _parallax();
+        _parallax *lv1skyBg = new _parallax();
+        _parallax *lv1treeBg = new _parallax();
+
 
         _player *myPly = new _player();
         _timer *timer = new _timer();
