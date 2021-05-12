@@ -27,8 +27,8 @@ _weapons::~_weapons()
 }
 void _weapons::projInit(float x, float y)
 {
-    projPos.x = 0.06;
-    projPos.y = -2.1;
+    projPos.x = 15.0;
+    projPos.y = -5.0;
     projPos.z = -9.0;
     projScale.x = 0.2;
     projScale.y = 0.2;
@@ -78,7 +78,7 @@ float _weapons::yDisplace()
 
 void _weapons::toOrigin(_object_max* ply)   //out of bounds function
 {
-    if(projPos.x < -6.0 || projPos.x > 6.0 || (projPos.y - 0.01) < -2.5 || projPos.y > (3.5)){
+    if(projPos.x < -5.0 || projPos.x > 5.0 || (projPos.y - 0.01) < -2.5 || projPos.y > (3.5)){
         if(projPos.y - 0.01 < -2.5 && action == GRENADELAUNCHER){
             snds->playSounds("sounds/boomNoise.mp3");
             tick = 0.0;
@@ -133,9 +133,6 @@ void _weapons::weaponAction(_object_max* ply)
                 break;
             case SHOCKRIFLE:
                 tick = 0.0;
-                vel = 3.0;
-                accel = 0.0;
-                weaponDmg = 20;
                 projPos.x = xDisplace();
                 projPos.y = yDisplace();
                 toOrigin(ply);
@@ -166,19 +163,38 @@ void _weapons::drawProj()
     glPopMatrix();
 }
 
+void _weapons::drawShock()
+{
+    glPushMatrix();
+        glTranslatef(projPos.x, projPos.y, projPos.z);
+        glRotatef(rotateAngle, 0.0f, 0.0f, 1.0f);
+        glScalef(projScale.x, projScale.y, projScale.z);
+        glBegin(GL_QUADS);
+            glTexCoord2f(0, 1);
+            glVertex3f(vert[3].x, vert[3].y, vert[3].z);
+            glTexCoord2f(1, 1);
+            glVertex3f(vert[2].x, vert[2].y, vert[2].z);
+            glTexCoord2f(1, 0);
+            glVertex3f(vert[1].x, vert[1].y, vert[1].z);
+            glTexCoord2f(0, 0);
+            glVertex3f(vert[0].x, vert[0].y, vert[0].z);
+        glEnd();
+    glPopMatrix();
+}
+
 void _weapons::drawWeapon()
 {
     glPushMatrix();
         glTranslatef(weaponPos.x, weaponPos.y, weaponPos.z);
         glScalef(weaponScale.x, weaponScale.y, weaponScale.z);
         glBegin(GL_QUADS);
-            glTexCoord2f(xMin, 1);
+            glTexCoord2f(0, 1);
             glVertex3f(vert[0].x, vert[0].y, vert[0].z);
             glTexCoord2f(1, 1);
             glVertex3f(vert[1].x, vert[1].y, vert[1].z);
-            glTexCoord2f(1, yMin);
+            glTexCoord2f(1, 0);
             glVertex3f(vert[2].x, vert[2].y, vert[2].z);
-            glTexCoord2f(xMin, yMin);
+            glTexCoord2f(0, 0);
             glVertex3f(vert[3].x, vert[3].y, vert[3].z);
         glEnd();
     glPopMatrix();
@@ -188,7 +204,6 @@ void _weapons::drawWeapon()
 void _weapons::weaponSpawn(_object_max* obj, _weapons* wpn)
 {
     int randomSpawner = rand()%101 + 1;
-    cout << "BONK BONK: " << randomSpawner << endl;
     if(obj->obj.exist == false){
         switch(weaponHold){
             case P:
@@ -201,7 +216,7 @@ void _weapons::weaponSpawn(_object_max* obj, _weapons* wpn)
             }
             break;
             case G:
-            if(randomSpawner < 100 && onlyOnceG == 0){
+            if(randomSpawner < 50 && onlyOnceG == 0){
                 wpn->weaponPos.x = obj->obj.pos.x;
                 wpn->weaponPos.y = obj->obj.pos.y;
                 wpn->weaponPos.z = 1.0;
@@ -239,5 +254,29 @@ float _weapons::weaponFall()
     }
     return weaponPos.y;
 }
+
+void _weapons::explode()
+{
+    if(projPos.z == -9.0){
+        xMin = 0.0;
+        xMax = 1.0/framesX;
+        yMin = 0.0;
+        yMax = 1.0/framesY;
+    }
+    if(projPos.z != -9.0){
+        xMin += 1/framesX;
+        xMax += 1/framesX;
+        if(xMax == 1.0){
+            xMin = 0;
+            xMax = 1/framesX;
+            yMin += 1/framesY;
+            yMax += 1/framesY;
+        }
+        if(yMax == 1.0 && xMax == 1.0){
+            projPos.z == -9.0;
+        }
+    }
+}
+
 
 
