@@ -6,6 +6,7 @@ _mine::_mine()
     activated = false;
     deathFrames = 1;
     health = 25.0;
+    dead = false;
     //ctor
 }
 
@@ -23,7 +24,10 @@ void _mine::draw()
 {
     _objectinteract_max::draw(mine);
     if(health <= 0)
+       {
         mine->obj.exist = false;
+        dead = true;
+       }
 }
 
 void _mine::animate()

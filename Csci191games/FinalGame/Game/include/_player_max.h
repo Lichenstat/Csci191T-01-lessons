@@ -1,6 +1,9 @@
 #ifndef _PLAYER_MAX_H
 #define _PLAYER_MAX_H
 
+#include <vector>
+#include <algorithm>
+
 #include <_object_max.h>
 #include <_objectinteract_max.h>
 #include <_movement_jump.h>
@@ -20,6 +23,7 @@ class _player_max
         float deathFrames;                                      // how many frames are the death animation
         _movement_jump * jumping = new _movement_jump();        // to create a vertical jump
 
+        vector<unsigned int> id;                                // object id's to check killcount
         int killCount;                                          // player killcount
 
         float playerHealth;             // amount of health a player currently has

@@ -112,8 +112,22 @@ void _player_max::interact(_object_max * curObj)
                 curObj->obj.exist = false;
                 //itemSounds->playSounds("sounds/sfx/explosion 2.mp3");
                 playerHealth -= 30;
-
-                    cout << "Mine touched player and blew up, current health is " << playerHealth << endl;
+                cout << "Mine touched player and blew up, current health is " << playerHealth << endl;
+                cout << curObj->obj.id << endl;
+            }
+        }
+    }
+    if(!curObj->obj.exist)  // if our current object does not exist
+    {
+        string curType = string(curObj->obj.type); // get types that do not exist
+        //cout << curObj->obj.id << endl;
+        if(curType == "mine" || curType == "turrethead" || curType == "tankhead")
+        {
+            if(!(find(id.begin(), id.end(), curObj->obj.id) != id.end()))
+            {
+                id.push_back(curObj->obj.id);
+                killCount += 1;
+                cout << "Killed an enemy, killcount is now: " << killCount << endl;
             }
         }
     }
