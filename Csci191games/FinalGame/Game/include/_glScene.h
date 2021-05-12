@@ -39,7 +39,7 @@ class _glScene
 
         //current game state
         enum cgs{landing, menu, startGame, help, exit, levelOne, levelTwo, levelThree, credit };
-        cgs state = landing;
+        cgs state = levelThree;
 
         GLint initGL();
         GLint drawScene();
@@ -77,7 +77,17 @@ class _glScene
         _parallax *lv1groundBg = new _parallax();
         _parallax *lv1bigMountainBg = new _parallax();
         _parallax *lv1skyBg = new _parallax();
-        _parallax *lv1treeBg = new _parallax();
+
+        //levelThree background
+        _parallax *lv2airBg = new _parallax();
+        _parallax *lv2cloudOneBg= new _parallax();
+        _parallax *lv2cloudTwoBg = new _parallax();
+        _parallax *lv2groundBg = new _parallax();
+        _parallax *lv2bigMountainBg = new _parallax();
+        _parallax *lv2mediumMountainBg = new _parallax();
+        _parallax *lv2smallMountainBg = new _parallax();
+        _parallax *lv2skyBg = new _parallax();
+        _parallax *lv2starsBg = new _parallax();
 
         _player *myPly = new _player();
         _timer *timer = new _timer();

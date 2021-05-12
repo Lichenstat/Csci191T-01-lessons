@@ -158,8 +158,10 @@ GLint _glScene::initGL()
 
     if(state == levelTwo)
     {
-        cout << "ran levelTwo initialize" << endl;
-        //levelOne backgrounds sources
+
+
+
+        //levelTwo backgrounds sources
         lv1cloudOneBg->parallaxInit("images/levelTwo/clouds bg.png");
         lv1cloudTwoBg->parallaxInit("images/levelTwo/clouds fg.png");
         lv1fogBg->parallaxInit("images/levelTwo/fog.png");
@@ -168,9 +170,8 @@ GLint _glScene::initGL()
         lv1groundBg->parallaxInit("images/levelTwo/ground.png");
         lv1bigMountainBg->parallaxInit("images/levelTwo/mountain.png");
         lv1skyBg->parallaxInit("images/levelTwo/sky.png");
-        lv1treeBg->parallaxInit("images/levelTwo/tree.png");
 
-         timer -> startTimer();
+        timer -> startTimer();
 
         //Max's addition to scene
         itemTimer->startTimer();
@@ -233,6 +234,86 @@ GLint _glScene::initGL()
 
         wpns = pistol;        //MANUAL START TO WEAPON, should start with a pistol but set to laserGun for ease of destroying turret and mine
         //----------
+        doneLoading = true;
+    }
+    if(state == levelThree)
+    {
+
+        //levelThree backgrounds sources
+        lv2cloudOneBg->parallaxInit("images/levelThree/clouds bg.png");
+        lv2cloudTwoBg->parallaxInit("images/levelThree/clouds fg.png");
+        lv2airBg->parallaxInit("images/levelThree/air.png");
+        lv2bigMountainBg->parallaxInit("images/levelThree/mountains bg.png");
+        lv2mediumMountainBg->parallaxInit("images/levelThree/mountains mg.png");
+        lv2groundBg->parallaxInit("images/levelThree/ground.png");
+        lv2smallMountainBg->parallaxInit("images/levelThree/mountains fg.png");
+        lv2skyBg->parallaxInit("images/levelThree/sky.png");
+        lv2starsBg->parallaxInit("images/levelThree/stars.png");
+
+        timer -> startTimer();
+
+        //Max's addition to scene
+        itemTimer->startTimer();
+
+        // initializing objects (in this case it is a player 1 and healthpacks)
+        player1->initialize();
+        _objectinteract_max::changePosition(player1->player, 0.0, -2.1);
+
+        hud->initialize();
+
+        healthpack1->initialize();
+        _objectinteract_max::changePosition(healthpack1->healthpack, -2.0, -2.0);
+        _objectinteract_max::changeScale(healthpack1->healthpack, 0.5, 0.5);
+        healthpack2->initialize();
+        _objectinteract_max::changePosition(healthpack2->healthpack, 2.0, -2.0);
+        _objectinteract_max::changeScale(healthpack2->healthpack, 0.5, 0.5);
+
+        mine1->initialize();
+        _objectinteract_max::changePosition(mine1->mine, -2.0, 1.0);
+        turret1->initialize();
+        _objectinteract_max::changePosition(turret1->turretParts, -2.5, -2.2);
+
+        //Eric's projectiles
+        pistol->projInit(1, 1);
+        pistol->weaponSkin->loadTexture("images/pistol.png");
+        pistol->weaponHold = pistol->P;
+        pistol->proj->loadTexture("images/bullet.png");
+        pistol->action = pistol->PISTOL;
+        pistol->framesX = 1.0;
+        pistol->xMax = 1.0/pistol->framesX;
+        pistol->vel = 0.1;
+        pistol->weaponDmg = 10;
+        pistol->projScale.x = 0.2;
+        pistol->projScale.y = 0.2;
+
+        grenadelauncher->projInit(8, 1);
+        grenadelauncher->weaponSkin->loadTexture("images/grenadeLauncher.png");
+        grenadelauncher->weaponHold = grenadelauncher->G;
+        grenadelauncher->proj->loadTexture("images/ballRoll.png");
+        grenadelauncher->action = grenadelauncher->GRENADELAUNCHER;
+        grenadelauncher->framesX = 8.0;
+        grenadelauncher->xMax = 1.0/grenadelauncher->framesX;
+        grenadelauncher->vel = 0.009;
+        grenadelauncher->accel = 0.0005;
+        grenadelauncher->weaponDmg = 25;
+        grenadelauncher->projScale.x = 0.2;
+        grenadelauncher->projScale.y = 0.2;
+
+        laserGun->projInit(1, 1);
+        laserGun->weaponSkin->loadTexture("images/beamGun.png");
+        laserGun->weaponHold = laserGun->B;
+        laserGun->proj->loadTexture("images/laserSprite.png");
+        laserGun->action = laserGun->BEAM;
+        laserGun->framesX = 1.0;
+        laserGun->xMax = 1.0/laserGun->framesX;
+        laserGun->vel = 0.3;
+        laserGun->weaponDmg = 50;
+        laserGun->projScale.x = 0.2;
+        laserGun->projScale.y = 0.2;
+
+        wpns = pistol;        //MANUAL START TO WEAPON, should start with a pistol but set to laserGun for ease of destroying turret and mine
+        //----------
+
         doneLoading = true;
     }
 
@@ -508,8 +589,6 @@ GLint _glScene::drawScene()
 
     if(state == levelTwo)
     {
-
-
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);                   // change this if you want to change color of scene
         glLoadIdentity();
@@ -668,6 +747,177 @@ GLint _glScene::drawScene()
             }
         glPopMatrix();
     }
+
+    if(state == levelThree)
+    {
+
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);                   // change this if you want to change color of scene
+        glLoadIdentity();
+
+        //LevelThree background
+        //sky
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, lv2skyBg->plxTexture->tex);
+        lv2skyBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        //bottom clouds
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, lv2cloudOneBg->plxTexture->tex);
+        lv2cloudOneBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        //air
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, lv2airBg->plxTexture->tex);
+        lv2airBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        //big mountains
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, lv2bigMountainBg->plxTexture->tex);
+        lv2bigMountainBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        //medium mountain
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, lv2mediumMountainBg->plxTexture->tex);
+        lv2mediumMountainBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        //sky clouds top
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, lv2cloudTwoBg->plxTexture->tex);
+        lv2cloudTwoBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        //small mountains
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, lv2smallMountainBg->plxTexture->tex);
+        lv2smallMountainBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        //stars
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, lv2starsBg->plxTexture->tex);
+        lv2starsBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+        //ground
+        glPushMatrix();
+        glScalef(3.33, 3.33, 1.0);
+        glBindTexture(GL_TEXTURE_2D, lv2groundBg->plxTexture->tex);
+        lv2groundBg->renderBack(screenWidth, screenHeight);
+        glPopMatrix();
+
+        //clouds effect auto scrolling
+        lv2cloudOneBg->scroll(true, "left", 0.0001);                // auto background scrolling
+        lv2cloudTwoBg->scroll(true, "left", 0.0003);
+        lv2starsBg->scroll(true, "left", 0.00001);
+
+        // Max's includes to scene
+        // drawing and updating necessary objects
+        hud->draw();
+        hud->interact(player1->playerHealth);
+
+        healthpack1->draw();
+        healthpack1->interact(player1->player);
+        healthpack2->draw();
+        healthpack2->interact(player1->player);
+
+        mine1->draw();
+        mine1->interact(player1->player);
+
+        turret1->draw();
+        turret1->interact(player1->player);
+
+        player1->draw();
+
+        if(itemTimer->getTicks() > 120)
+        {
+            player1->animate();
+            healthpack1->animate();
+            healthpack2->animate();
+
+            mine1->animate();
+            turret1->animate();
+
+            itemTimer->resetTime();
+        }
+
+        player1->interact(healthpack1->healthpack);
+        player1->interact(healthpack2->healthpack);
+        player1->interact(mine1->mine);
+        player1->interact(turret1->turrethead);
+
+
+        //Eric's drawings
+        if(wpns->action == wpns->PISTOL){
+            wpns = pistol;
+            pistol->vel = 0.2;
+            pistol->weaponDmg = 10;
+            pistol->projScale.x = 0.2;
+            pistol->projScale.y = 0.2;
+        }
+        if(wpns->action == wpns->GRENADELAUNCHER){
+            wpns = grenadelauncher;
+            grenadelauncher->vel = 0.09;
+            grenadelauncher->accel = 0.005;
+            grenadelauncher->weaponDmg = 25;
+            grenadelauncher->projScale.x = 0.2;
+            grenadelauncher->projScale.y = 0.2;
+        }
+        if(wpns->action == wpns->BEAM){
+            wpns = laserGun;
+            laserGun->vel = 0.3;
+            laserGun->weaponDmg = 50;
+            laserGun->projScale.x = 0.2;
+            laserGun->projScale.y = 0.2;
+        }
+        glPushMatrix();
+            glBindTexture(GL_TEXTURE_2D, wpns->proj->tex);
+            wpns->drawProj();
+            glBindTexture(GL_TEXTURE_2D, wpns2->proj->tex);
+            wpns2->drawProj();
+            glBindTexture(GL_TEXTURE_2D, pistol->weaponSkin->tex);
+            pistol->drawWeapon();
+            glBindTexture(GL_TEXTURE_2D, grenadelauncher->weaponSkin->tex);
+            grenadelauncher->drawWeapon();
+            glBindTexture(GL_TEXTURE_2D, laserGun->weaponSkin->tex);
+            laserGun->drawWeapon();
+            if(timer->getTicks() > 15)
+            {
+                wpns->weaponAction(player1->player);
+                if(col->projHit(wpns, mine1->mine))
+                {
+                    wpns->hitToOrigin(player1->player);
+                    mine1->health -= wpns->weaponDmg;
+                    if(mine1->health <= 0){
+                        mine1->mine->obj.pos.z = -9.0;
+                        mine1->mine->obj.exist = false;
+                    }
+                    grenadelauncher->weaponSpawn(mine1->mine, grenadelauncher);
+                }
+                if(col->projHit(wpns, turret1->turrethead))
+                {
+                    wpns->hitToOrigin(player1->player);
+                    turret1->health-= wpns->weaponDmg;
+                    if(turret1->health <= 0){
+                        turret1->turrethead->obj.pos.z = -9.0;
+                        turret1->turretbarrel->obj.pos.z = -9.0;
+                        turret1->turrethead->obj.exist = false;
+                    }
+                    laserGun->weaponSpawn(turret1->turrethead, laserGun);
+                }
+                grenadelauncher->weaponFall();
+                laserGun->weaponFall();
+                timer->resetTime();
+            }
+        glPopMatrix();
+
+    }
+
 }
 
 void _glScene::resizeGLScene(int width, int height)
@@ -683,6 +933,7 @@ void _glScene::resizeGLScene(int width, int height)
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+
 }
 
 int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
@@ -710,6 +961,12 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
                 kbMS->moveEnv(lv1mountainsBg, .0045);
                 kbMS->moveEnv(lv1forestBg, .0048);
                 kbMS->moveEnv(lv1bigMountainBg, .002);
+            }
+            if(state == levelThree){
+                kbMS->moveEnv(lv2groundBg, .005);
+                kbMS->moveEnv(lv2smallMountainBg, .0048);
+                kbMS->moveEnv(lv2mediumMountainBg, .0045);
+                kbMS->moveEnv(lv2bigMountainBg, .002);
             }
             if(state != menu)
             {
@@ -780,10 +1037,7 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
             {
                 state = credit;
                 doneLoading = false;
-                //std::exit(0);
-                //state = exit;
 
-                //doneLoading = false;
             }
 
             if(posmX > -0.49 && posmX < 0.49 && posmY >-2.25 && posmY < -1.78)
