@@ -13,7 +13,7 @@ _objectinteract_max::~_objectinteract_max()
 void _objectinteract_max::initialize(_object_max *curObj, char *type, float scaleX, float scaleY, float posX, float posY, float angle, float coordrotZ, char *image, float framesX, float framesY) // initialize the object with desired values
 {
     curObj->obj.type = type;
-    curObj->obj.id = (unsigned int)&curObj;
+    curObj->obj.id = (unsigned int)curObj;
     changeScale(curObj, scaleX, scaleY);
     changePosition(curObj, posX, posY);
     changeAngle(curObj, angle, coordrotZ);

@@ -374,6 +374,7 @@ GLint _glScene::drawScene()
         player1->interact(healthpack1->healthpack);
         player1->interact(healthpack2->healthpack);
         player1->interact(mine1->mine);
+        player1->interact(turret1->turrethead);
 
 
         //Eric's drawings

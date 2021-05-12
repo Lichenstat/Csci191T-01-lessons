@@ -18,6 +18,7 @@ class _turret
         float health;           // turret health
         float damage;           // damage that turret does
         bool activated;         // turret activated or not
+        bool dead;              // is turret dead?
 
         _object_max * turretParts[3];
         _object_max * turretbase = new _object_max();

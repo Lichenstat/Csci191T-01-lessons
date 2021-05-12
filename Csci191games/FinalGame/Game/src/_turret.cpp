@@ -5,6 +5,7 @@ _turret::_turret()
     //ctor
     health = 50.0;
     damage = 25.0;
+    dead = false;
     activated = false;
     turretParts[0] = turretbase;
     turretParts[1] = turretbarrel;
@@ -27,6 +28,16 @@ void _turret::initialize()
 void _turret::draw()
 {
     _objectinteract_max::draw(turretParts);
+    if(health <= 0)
+    {
+        if(!dead)
+        {
+            dead = true;
+            turretbarrel->obj.exist = false;
+            turrethead->obj.exist = false;
+            _objectinteract_max::changeImage(turretbase, "images/enemies/turretbasedirty.png", 1.0, 1.0);
+        }
+    }
 }
 
 void _turret::animate()
@@ -44,7 +55,7 @@ void _turret::interact(_object_max * curObj)
         //_hitbox_max::calculateHit(turretbase, curObj);
         if(_hitbox_max::calculateDistance(turrethead, curObj) < 4)
         {
-            if(!activated)  // if turret is in range of player play sound once
+            if(!activated && !dead)  // if turret is in range of player play sound once
             {
                 sounds->playSounds("sounds/sfx/babeep.mp3");
             }
