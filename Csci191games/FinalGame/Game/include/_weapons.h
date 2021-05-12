@@ -18,7 +18,7 @@ class _weapons
     public:
         _weapons();
         virtual ~_weapons();
-        void weaponSpawn(_object_max*, _weapons*);
+        void weaponSpawn(_object_max*, _weapons*, float);
 
         //weapons we will be trying to use -> these are the projectiles
         enum{PISTOL, GRENADELAUNCHER, BEAM, SHOCKRIFLE};
@@ -66,8 +66,6 @@ class _weapons
         float yClicker;
 
         _sounds* snds = new _sounds();
-
-        void explode();
     protected:
 
     private:
