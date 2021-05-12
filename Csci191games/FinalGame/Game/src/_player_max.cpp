@@ -145,6 +145,7 @@ void _player_max::interact(_object_max * curObj)
                 id.push_back(curObj->obj.id);
                 killCount += 1;
                 cout << "Killed an enemy, killcount is now: " << killCount << endl;
+
             }
         }
     }
