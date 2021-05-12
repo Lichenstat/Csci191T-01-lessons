@@ -182,6 +182,7 @@ GLint _glScene::drawScene()
 
     if(state == landing)
     {
+
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glLoadIdentity();
@@ -196,6 +197,7 @@ GLint _glScene::drawScene()
 
     if(state == menu)
     {
+
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
@@ -272,7 +274,6 @@ GLint _glScene::drawScene()
 
     if(state == levelOne)
     {
-
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);                   // change this if you want to change color of scene
@@ -443,7 +444,6 @@ GLint _glScene::drawScene()
     if(state == levelTwo)
     {
 
-
         cout << "running levelTwo drawScene" << endl;
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -595,7 +595,8 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
             if(posmX > -0.49 && posmX < 0.49 && posmY >.80 && posmY < 1.2)
             {
 
-                state = levelTwo;
+
+                state = levelOne;
                 cout << "changed state to level Two";
 
                 doneLoading = false;
@@ -603,11 +604,11 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
             }
              if(posmX > -0.49 && posmX < 0.49 && posmY >-0.24 && posmY < 0.24)
             {
+
                 state = help;
 
                 doneLoading = false;
             }
-
             if(posmX > -0.49 && posmX < 0.49 && posmY >-1.27 && posmY < -0.75)
             {
                 state = credit;
@@ -620,13 +621,18 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
 
             if(posmX > -0.49 && posmX < 0.49 && posmY >-2.25 && posmY < -1.78)
             {
+
                 std::exit(0);
                 //state = help;
 
                 //doneLoading = false;
             }
         }
-        if(state == help){
+
+        if(state == help)
+        {
+
+
             if(posmX > -0.49 && posmX < 0.49 && posmY >-1.76 && posmY < -1.25)
             {
                 state = menu;
@@ -634,7 +640,11 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
                 doneLoading = false;
             }
         }
-        if(state == credit){
+        if(state == credit)
+        {
+
+
+
             if(posmX > -0.49 && posmX < 0.49 && posmY >-1.76 && posmY < -1.25)
             {
                 state = menu;
@@ -652,7 +662,7 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
             }
 
             //Eric's aditions
-            kbMS->anglesForShots(wpns, LOWORD(lParam), HIWORD(lParam));
+            //kbMS->anglesForShots(wpns, LOWORD(lParam), HIWORD(lParam));
             //----
         }
 

@@ -301,9 +301,11 @@ LRESULT CALLBACK WndProc(	HWND	hWnd,			// Handle For This Window
 
     case WM_LBUTTONDOWN:
     {
-        if (Scene->state == Scene->landing)
+        if (Scene->state == Scene->landing){
             Scene->state = Scene->menu;
             Scene->doneLoading = false;
+        }
+
     }
 
     }
@@ -448,11 +450,11 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
             else									// Not Time To Quit, Update Screen
             {
                 if (keys[VK_RETURN] && Scene->state == Scene->landing)
-                                        {
-                                            keys[VK_RETURN] == false;
-                                            Scene->state = Scene->menu;
-                                            Scene->doneLoading = false;
-                                        }
+                {
+                    keys[VK_RETURN] == false;
+                    Scene->state = Scene->menu;
+                    Scene->doneLoading = false;
+                }
 
                 if (keys[0x4e] && Scene->state == Scene->menu) // N pressed
                 {
