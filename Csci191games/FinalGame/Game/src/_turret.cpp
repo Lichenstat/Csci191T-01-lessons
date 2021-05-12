@@ -43,6 +43,8 @@ void _turret::draw()
             turrethead->obj.exist = false;
             turretbullet->obj.exist = false;
             _objectinteract_max::changeImage(turretbullet, "images/invisible.png", 1.0, 1.0);
+            _objectinteract_max::changeImage(turretbarrel, "images/invisible.png", 1.0, 1.0);
+            _objectinteract_max::changeImage(turrethead, "images/invisible.png", 1.0, 1.0);
             _objectinteract_max::changeImage(turretbase, "images/enemies/turretbasedirty.png", 1.0, 1.0);
         }
     }

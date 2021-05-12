@@ -23,7 +23,7 @@
 	<_healthpack_max.h>
 	<_player_max.h>
 
-1612228935 c:\users\max\desktop\finalgame\common\include\gl\glut.h
+1620864119 c:\users\max\desktop\finalgame\common\include\gl\glut.h
 	<windows.h>
 	<stdlib.h>
 	<GL/gl.h>
@@ -55,7 +55,7 @@
 	<GL/gl.h>
 	<iostream>
 
-1613613552 c:\users\max\desktop\finalgame\common\include\soil.h
+1620864119 c:\users\max\desktop\finalgame\common\include\soil.h
 
 1615855004 c:\users\max\desktop\finalgame\game\include\_player.h
 	<_common.h>
@@ -69,7 +69,7 @@
 	<iostream>
 	<SNDS/irrKlang.h>
 
-1617668452 c:\users\max\desktop\finalgame\common\include\snds\irrklang.h
+1620864121 c:\users\max\desktop\finalgame\common\include\snds\irrklang.h
 	"ik_irrKlangTypes.h"
 	"ik_vec3d.h"
 	"ik_IRefCounted.h"
@@ -91,29 +91,29 @@
 	"ik_IAudioRecorder.h"
 	"ik_ISoundMixedOutputReceiver.h"
 
-1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_irrklangtypes.h
+1620864121 c:\users\max\desktop\finalgame\common\include\snds\ik_irrklangtypes.h
 	<wchar.h>
 
-1617668452 c:\users\max\desktop\finalgame\common\include\snds\ik_vec3d.h
+1620864121 c:\users\max\desktop\finalgame\common\include\snds\ik_vec3d.h
 	<math.h>
 	"ik_irrKlangTypes.h"
 
-1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_irefcounted.h
+1620864120 c:\users\max\desktop\finalgame\common\include\snds\ik_irefcounted.h
 	"ik_irrKlangTypes.h"
 
-1617668452 c:\users\max\desktop\finalgame\common\include\snds\ik_ivirtualrefcounted.h
+1620864121 c:\users\max\desktop\finalgame\common\include\snds\ik_ivirtualrefcounted.h
 	"ik_irrKlangTypes.h"
 
-1617668450 c:\users\max\desktop\finalgame\common\include\snds\ik_esoundoutputdrivers.h
+1620864120 c:\users\max\desktop\finalgame\common\include\snds\ik_esoundoutputdrivers.h
 
-1617668450 c:\users\max\desktop\finalgame\common\include\snds\ik_esoundengineoptions.h
+1620864119 c:\users\max\desktop\finalgame\common\include\snds\ik_esoundengineoptions.h
 
-1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_estreammodes.h
+1620864120 c:\users\max\desktop\finalgame\common\include\snds\ik_estreammodes.h
 
-1617668452 c:\users\max\desktop\finalgame\common\include\snds\ik_saudiostreamformat.h
+1620864121 c:\users\max\desktop\finalgame\common\include\snds\ik_saudiostreamformat.h
 	"ik_IRefCounted.h"
 
-1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_isoundengine.h
+1620864120 c:\users\max\desktop\finalgame\common\include\snds\ik_isoundengine.h
 	"ik_IRefCounted.h"
 	"ik_vec3d.h"
 	"ik_ISoundSource.h"
@@ -122,47 +122,47 @@
 	"ik_IFileFactory.h"
 	"ik_ISoundMixedOutputReceiver.h"
 
-1617668452 c:\users\max\desktop\finalgame\common\include\snds\ik_isoundsource.h
+1620864120 c:\users\max\desktop\finalgame\common\include\snds\ik_isoundsource.h
 	"ik_IVirtualRefCounted.h"
 	"ik_vec3d.h"
 	"ik_EStreamModes.h"
 	"ik_SAudioStreamFormat.h"
 
-1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_isound.h
+1620864120 c:\users\max\desktop\finalgame\common\include\snds\ik_isound.h
 	"ik_IVirtualRefCounted.h"
 	"ik_ISoundEffectControl.h"
 	"ik_vec3d.h"
 
-1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_isoundeffectcontrol.h
+1620864120 c:\users\max\desktop\finalgame\common\include\snds\ik_isoundeffectcontrol.h
 	"ik_IVirtualRefCounted.h"
 	"ik_vec3d.h"
 
-1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_ifilefactory.h
+1620864120 c:\users\max\desktop\finalgame\common\include\snds\ik_ifilefactory.h
 	"ik_IRefCounted.h"
 
-1617668452 c:\users\max\desktop\finalgame\common\include\snds\ik_isoundmixedoutputreceiver.h
-	"ik_IRefCounted.h"
-	"ik_SAudioStreamFormat.h"
-
-1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_iaudiostream.h
+1620864120 c:\users\max\desktop\finalgame\common\include\snds\ik_isoundmixedoutputreceiver.h
 	"ik_IRefCounted.h"
 	"ik_SAudioStreamFormat.h"
 
-1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_iaudiostreamloader.h
+1620864120 c:\users\max\desktop\finalgame\common\include\snds\ik_iaudiostream.h
+	"ik_IRefCounted.h"
+	"ik_SAudioStreamFormat.h"
+
+1620864120 c:\users\max\desktop\finalgame\common\include\snds\ik_iaudiostreamloader.h
 	"ik_IRefCounted.h"
 	"ik_IFileReader.h"
 
-1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_ifilereader.h
+1620864120 c:\users\max\desktop\finalgame\common\include\snds\ik_ifilereader.h
 	"ik_IRefCounted.h"
 
-1617668452 c:\users\max\desktop\finalgame\common\include\snds\ik_isoundstopeventreceiver.h
+1620864121 c:\users\max\desktop\finalgame\common\include\snds\ik_isoundstopeventreceiver.h
 	"ik_IRefCounted.h"
 	"ik_SAudioStreamFormat.h"
 
-1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_isounddevicelist.h
+1620864120 c:\users\max\desktop\finalgame\common\include\snds\ik_isounddevicelist.h
 	"ik_IRefCounted.h"
 
-1617668451 c:\users\max\desktop\finalgame\common\include\snds\ik_iaudiorecorder.h
+1620864120 c:\users\max\desktop\finalgame\common\include\snds\ik_iaudiorecorder.h
 	"ik_IRefCounted.h"
 	"ik_ISoundSource.h"
 
@@ -608,7 +608,9 @@
 	<iostream>
 	<windows.h>
 
-1620837234 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_glscene.h
+1620863149 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_glscene.h
+	<vector>
+	<random>
 	<windows.h>
 	<GL/glut.h>
 	<iostream>
@@ -783,7 +785,7 @@
 1615856340 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_player.cpp
 	"_player.h"
 
-1620832438 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_player_max.cpp
+1620863148 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_player_max.cpp
 	"_player_max.h"
 
 1618989436 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_sounds.cpp
@@ -823,7 +825,7 @@
 1620810062 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_mine.cpp
 	"_mine.h"
 
-1620832437 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_weapons.h
+1620863148 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_weapons.h
 	<_player.h>
 	<_object_max.h>
 	<_objectinteract_max.h>
@@ -845,7 +847,7 @@
 	<_weapons.h>
 	<_sounds.h>
 
-1620832438 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_weapons.cpp
+1620863148 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_weapons.cpp
 	"_weapons.h"
 
 1620832437 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_collision.cpp
@@ -868,7 +870,7 @@
 1620832438 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_movement_jump.cpp
 	"_movement_jump.h"
 
-1620832203 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_turret.cpp
+1620864387 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_turret.cpp
 	"_turret.h"
 
 1620823218 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_turret.h
