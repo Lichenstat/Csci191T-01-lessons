@@ -695,6 +695,8 @@ GLint _glScene::drawScene()
         for(int i = 0; i < 5; i++)
         {
             player1->interact(turret1[i]->turrethead);
+
+            player1->interact(turret1[i]->turretbullet);
         }
 
         //Eric's drawings
@@ -980,6 +982,7 @@ GLint _glScene::drawScene()
 
             player1->interact(turret2[i]->turrethead);
 
+            player1->interact(turret2[i]->turretbullet);
         }
 
         //Eric's drawings
@@ -1263,6 +1266,7 @@ GLint _glScene::drawScene()
 
             player1->interact(turret3[i]->turrethead);
 
+            player1->interact(turret3[i]->turretbullet);
         }
 
         //Eric's drawings

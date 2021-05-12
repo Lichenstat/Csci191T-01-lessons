@@ -608,7 +608,7 @@
 	<iostream>
 	<windows.h>
 
-1620863149 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_glscene.h
+1620865815 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_glscene.h
 	<vector>
 	<random>
 	<windows.h>
@@ -744,7 +744,7 @@
 1613009550 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_gllight.h
 	<_glScene.h>
 
-1620837103 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_glscene.cpp
+1620865121 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<SOIL.h>

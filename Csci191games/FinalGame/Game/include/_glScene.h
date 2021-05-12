@@ -41,7 +41,7 @@ class _glScene
 
         //current game state
         enum cgs{landing, menu, startGame, help, exit, levelOne, levelTwo, levelThree, credit };
-        cgs state = levelThree;
+        cgs state = landing;
 
         GLint initGL();
         GLint drawScene();
