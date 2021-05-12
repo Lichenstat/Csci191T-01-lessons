@@ -301,9 +301,11 @@ LRESULT CALLBACK WndProc(	HWND	hWnd,			// Handle For This Window
 
     case WM_LBUTTONDOWN:
     {
-        if (Scene->state == Scene->landing)
+        if (Scene->state == Scene->landing){
             Scene->state = Scene->menu;
             Scene->doneLoading = false;
+        }
+
     }
 
     }
@@ -388,6 +390,30 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
             }
 
         }
+        if(!Scene->doneLoading && Scene->state == Scene->levelTwo)
+        {
+
+            if (!Scene->initGL()) 							// Initialize Our Newly Created GL Window
+            {
+
+                KillGLWindow();								// Reset The Display
+                MessageBox(NULL,"Initialization Failed.","ERROR",MB_OK|MB_ICONEXCLAMATION);
+                return FALSE;								// Return FALSE
+            }
+
+        }
+        if(!Scene->doneLoading && Scene->state == Scene->levelThree)
+        {
+
+            if (!Scene->initGL()) 							// Initialize Our Newly Created GL Window
+            {
+
+                KillGLWindow();								// Reset The Display
+                MessageBox(NULL,"Initialization Failed.","ERROR",MB_OK|MB_ICONEXCLAMATION);
+                return FALSE;								// Return FALSE
+            }
+
+        }
 
         if (PeekMessage(&msg,NULL,0,0,PM_REMOVE))	// Is There A Message Waiting?
         {
@@ -436,11 +462,11 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
             else									// Not Time To Quit, Update Screen
             {
                 if (keys[VK_RETURN] && Scene->state == Scene->landing)
-                                        {
-                                            keys[VK_RETURN] == false;
-                                            Scene->state = Scene->menu;
-                                            Scene->doneLoading = false;
-                                        }
+                {
+                    keys[VK_RETURN] == false;
+                    Scene->state = Scene->menu;
+                    Scene->doneLoading = false;
+                }
 
                 if (keys[0x4e] && Scene->state == Scene->menu) // N pressed
                 {
