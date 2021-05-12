@@ -40,7 +40,9 @@ class _input
 
         // Eric's
         float anglesForShots(_weapons*, float, float);
-        void mouseDown(_weapons*, _weapons*, float, float);                // firing our weapons
+        float anglesForShockShotOne(_weapons*, float, float);
+        float anglesForShockShotTwo(_weapons*, float, float);
+        void mouseDown(_weapons*, float, float);                // firing our weapons
         void keyPressed(_weapons*);
         void weaponPickUp(_weapons*, _weapons*, _object_max*);
         _collision* col = new _collision();

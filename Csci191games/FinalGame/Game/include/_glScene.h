@@ -39,7 +39,7 @@ class _glScene
 
         //current game state
         enum cgs{landing, menu, startGame, help, exit, levelOne, levelTwo, levelThree, credit };
-        cgs state = levelThree;
+        cgs state = levelOne;
 
         GLint initGL();
         GLint drawScene();
@@ -118,7 +118,9 @@ class _glScene
 
         //Eric's addiions
         _weapons* wpns = new _weapons();
-        _weapons* wpns2 = new _weapons();
+        _weapons* shockBulOne = new _weapons();
+        _weapons* shockBulTwo = new _weapons();
+        _weapons* grenadeBoom = new _weapons();
         _weapons* pistol = new _weapons();
         _weapons* grenadelauncher = new _weapons();
         _weapons* laserGun = new _weapons();

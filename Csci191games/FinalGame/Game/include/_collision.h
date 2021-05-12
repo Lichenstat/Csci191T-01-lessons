@@ -18,7 +18,7 @@ class _collision
         bool linearCollision(float, float);
         bool projHit(_weapons*, _object_max*);
         bool touchingWeapon(_weapons*, _object_max*);
-
+        bool boomCol(_weapons*, _object_max*);
         _enemies *enms = new _enemies();
         _player_max *ply = new _player_max();
         _timer *time = new _timer();

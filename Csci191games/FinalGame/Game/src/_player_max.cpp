@@ -7,6 +7,7 @@ _player_max::_player_max()
     movementSoundPlaying = false;   // we are originally not moving
     deathFrames = 1;    // start off on frame 1 if we die
     killCount = 0;
+    onPlatform = false;
 }
 
 _player_max::~_player_max()
@@ -121,6 +122,15 @@ void _player_max::interact(_object_max * curObj)
                 _objectinteract_max::changeImage(curObj, "images/invisible.png", 1.0, 1.0);
                 playerHealth -= 25;
                 cout << "Turret hit player: current health is: " << playerHealth << endl;
+            }
+            if(string(curObj->obj.type) == "platform"){
+
+                if(player->obj.pos.y >= curObj->obj.pos.y && !onPlatform){
+                    cout << player->obj.pos.y << " "<< curObj->obj.pos.y << endl;
+                    jumping->currentlyJumping = false;
+                    player->obj.pos.y = curObj->obj.pos.y + .35;
+                    onPlatform = true;
+                }
             }
         }
     }

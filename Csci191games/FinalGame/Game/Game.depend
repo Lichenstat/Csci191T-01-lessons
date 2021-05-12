@@ -287,7 +287,7 @@
 	<iostream>
 	<windows.h>
 
-1620817103 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\include\_glscene.h
+1620822611 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\include\_glscene.h
 	<windows.h>
 	<GL/glut.h>
 	<iostream>
@@ -468,7 +468,7 @@
 1620551307 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\include\_animate_max.h
 	<_object_max.h>
 
-1620813102 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\include\_player_max.h
+1620826555 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\include\_player_max.h
 	<vector>
 	<algorithm>
 	<_object_max.h>
@@ -555,7 +555,7 @@
 1618458277 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\src\_player.cpp
 	"_player.h"
 
-1620813102 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\src\_player_max.cpp
+1620827625 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\src\_player_max.cpp
 	"_player_max.h"
 
 1618468820 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\src\_sounds.cpp
@@ -567,7 +567,7 @@
 1618458277 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\src\_timer.cpp
 	"_timer.h"
 
-1620817949 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\src\_glscene.cpp
+1620824949 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<SOIL.h>
@@ -581,10 +581,10 @@
 
 1618988879 D
 
-1618973163 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\src\_platfroms.cpp
+1620822543 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\src\_platfroms.cpp
 	"_platfroms.h"
 
-1618970522 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\include\_platfroms.h
+1620822555 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\include\_platfroms.h
 	<_object_max.h>
 	<_objectinteract_max.h>
 	<_hitbox_max.h>
@@ -935,7 +935,7 @@
 1620813102 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\src\_mine.cpp
 	"_mine.h"
 
-1620551307 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\src\_movement_jump.cpp
+1620828192 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\src\_movement_jump.cpp
 	"_movement_jump.h"
 
 1620813102 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\src\_turret.cpp

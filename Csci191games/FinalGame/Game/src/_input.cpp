@@ -214,7 +214,77 @@ float _input::anglesForShots(_weapons* wpn, float x, float y)
 
 }
 
-void _input::mouseDown(_weapons* wpn, _weapons* wpn2, float x, float y)
+float _input::anglesForShockShotOne(_weapons* wpn, float x, float y)
+{
+    if(!wpn->active){
+        float degree;
+        prevMouseX = x;
+        prevMouseY = y;
+        wpn->xClicker = x;
+        wpn->yClicker = y;
+        if(x > 767.5){
+            degree = atan((685 - prevMouseY)/(prevMouseX - 767.5)); //Right half of screen
+            degree = degree + (30*3.14159265/180);
+            if(degree >= 1.60 || degree < 0){
+                degree = -1 * degree - (15*3.14159265/180);
+                wpn->rotateAngle = 180 + ((degree) * 180) / 3.14159265;
+            }
+            else{
+                wpn->rotateAngle = ((degree) * 180) / 3.14159265;
+            }
+        }
+        else if(x < 767.5){  // left half of the screen
+            degree = -atan((685 - prevMouseY)/(767.5 - prevMouseX)); //Right half of screen
+            degree = degree + (30*3.14159265/180);
+            if(degree >= 0){
+                degree = -1 * degree; //(15*3.14159265/180);
+                wpn->rotateAngle = 180 + ((degree) * 180) / 3.14159265;
+            }
+            else{
+                wpn->rotateAngle = ((degree) * 180) / 3.14159265;
+            }
+            wpn->rotateAngle = (180 + ((degree) * 180) / 3.14159265);
+        }
+        wpn->angle = degree;
+    }
+}
+
+float _input::anglesForShockShotTwo(_weapons* wpn, float x, float y)
+{
+    if(!wpn->active){
+        float degree;
+        prevMouseX = x;
+        prevMouseY = y;
+        wpn->xClicker = x;
+        wpn->yClicker = y;
+        if(x > 767.5){
+            degree = atan((685 - prevMouseY)/(prevMouseX - 767.5)); //Right half of screen
+            degree = degree - (30*3.14159265/180);
+            if(degree < 0){
+                degree = -1 * degree; //(15*3.14159265/180);
+                wpn->rotateAngle = ((degree) * 180) / 3.14159265;
+            }
+            else{
+                wpn->rotateAngle = ((degree) * 180) / 3.14159265;
+            }
+        }
+        else if(x < 767.5){  // left half of the screen
+            degree = -atan((685 - prevMouseY)/(767.5 - prevMouseX)); //Right half of screen
+            degree = degree - (30*3.14159265/180);
+            if(degree <= -1.60 || degree > 0){
+                degree = -1 * degree + (15*3.14159265/180);
+                wpn->rotateAngle = ((degree) * 180) / 3.14159265;
+            }
+            else{
+                wpn->rotateAngle = 180 + ((degree) * 180) / 3.14159265;
+            }
+        }
+        wpn->angle = degree;
+    }
+}
+
+
+void _input::mouseDown(_weapons* wpn, float x, float y)
 {
     prevMouseX = x;
     prevMouseY = y;
@@ -230,10 +300,10 @@ void _input::mouseDown(_weapons* wpn, _weapons* wpn2, float x, float y)
             if(wpn->action == wpn->BEAM && wpn->active == false){
                 snds->playSounds("sounds/laserGunShot.mp3");
             }
+            if(wpn->action == wpn->SHOCKRIFLE && wpn->active == false){
+                snds->playSounds("sounds/zapShot.mp3");
+            }
             wpn->active = true;
-            break;
-        case MK_RBUTTON:
-            wpn2->active = true;
             break;
         default:
             break;
@@ -260,21 +330,7 @@ void _input::keyPressed(_weapons* wpn)
         }
         wpn->weaponPos.x -= 0.06;
         break;
-    case VK_SPACE:
-        if(wpn->action == wpn->PISTOL && wpn->active == false){
-            snds->playSounds("sounds/gunShot.mp3");
-        }
-        if(wpn->action == wpn->GRENADELAUNCHER && wpn->active == false){
-            snds->playSounds("sounds/gLaunchShot.mp3");
-        }
-        if(wpn->action == wpn->BEAM && wpn->active == false){
-            snds->playSounds("sounds/laserGunShot.mp3");
-        }
-        if(wpn->xClicker <= 767.5){
-            wpn->projPos.y += 0.1;
-        }
-        wpn->active = true;
-        break;
+
     }
 }
 
@@ -282,35 +338,35 @@ void _input::weaponPickUp(_weapons* wpn, _weapons* wpnOnPly, _object_max* ply)
 {
     switch(wParam)
     {
-    case VK_DOWN:
+    case VK_SPACE:
         if(col->touchingWeapon(wpn, ply)){
-            if(wpn->action == wpn->PISTOL){
-                wpnOnPly->toOrigin(ply);
-                wpnOnPly->action = wpnOnPly->PISTOL;
-                wpnOnPly->toOrigin(ply);
+            if(!wpnOnPly->active){
+                wpnOnPly->hitToOrigin(ply);
+                if(wpn->action == wpn->PISTOL){
+                    wpnOnPly->action = wpnOnPly->PISTOL;
+                }
+                if(wpn->action == wpn->GRENADELAUNCHER){
+                    wpnOnPly->action = wpnOnPly->GRENADELAUNCHER;
+                }
+                if(wpn->action == wpn->BEAM){
+                    wpnOnPly->action = wpnOnPly->BEAM;
+                }
+                if(wpn->action == wpn->SHOCKRIFLE){
+                    wpnOnPly->action = wpnOnPly->SHOCKRIFLE;
+                }
+                wpnOnPly->hitToOrigin(ply);
+                wpn->weaponPos.x = 15.0;
+                wpn->weaponPos.y = -5.0;
+                wpn->weaponPos.z = -9.0;
             }
-            if(wpn->action == wpn->GRENADELAUNCHER){
-                wpnOnPly->toOrigin(ply);
-                wpnOnPly->action = wpnOnPly->GRENADELAUNCHER;
-                wpnOnPly->toOrigin(ply);
+            if(wpn->action == wpn->BEAM && wpn->active == false){
+                snds->playSounds("sounds/pickUpWeaponSound.mp3");
             }
-            if(wpn->action == wpn->BEAM){
-                wpnOnPly->toOrigin(ply);
-                wpnOnPly->action = wpnOnPly->BEAM;
-                wpnOnPly->toOrigin(ply);
-            }
-            if(wpn->action == wpn->SHOCKRIFLE){
-                wpnOnPly->toOrigin(ply);
-                wpnOnPly->action = wpnOnPly->SHOCKRIFLE;
-                wpnOnPly->toOrigin(ply);
-            }
-            wpn->weaponPos.x = 15.0;
-            wpn->weaponPos.y = -5.0;
-            wpn->weaponPos.z = -9.0;
         }
         break;
-
-        break;
+        default:
+            break;
     }
 }
+
 //-------------------

@@ -114,7 +114,7 @@ GLint _glScene::initGL()
         _objectinteract_max::changePosition(turret1->turretbullet, -2.5, -2.2);
 
         //Eric's projectiles
-        pistol->projInit(1, 1);
+         pistol->projInit(1, 1);
         pistol->weaponSkin->loadTexture("images/pistol.png");
         pistol->weaponHold = pistol->P;
         pistol->proj->loadTexture("images/bullet.png");
@@ -148,8 +148,40 @@ GLint _glScene::initGL()
         laserGun->xMax = 1.0/laserGun->framesX;
         laserGun->vel = 0.3;
         laserGun->weaponDmg = 50;
-        laserGun->projScale.x = 0.2;
+        laserGun->projScale.x = 0.4;
         laserGun->projScale.y = 0.2;
+
+        shockRifle->projInit(1, 1);
+        shockRifle->weaponSkin->loadTexture("images/shockRifle.png");
+        shockRifle->weaponHold = shockRifle->B;
+        shockRifle->proj->loadTexture("images/shockBullet.png");
+        shockRifle->action = shockRifle->SHOCKRIFLE;
+        shockRifle->framesX = 1.0;
+        shockRifle->xMax = 1.0/shockRifle->framesX;
+        shockRifle->vel = 0.4;
+        shockRifle->weaponDmg = 100;
+        shockRifle->projScale.x = 0.3;
+        shockRifle->projScale.y = 0.15;
+
+        shockBulOne->projInit(1, 1);
+        shockBulOne->proj->loadTexture("images/shockBullet.png");
+        shockBulOne->action = shockBulOne->SHOCKRIFLE;
+        shockBulOne->framesX = 1.0;
+        shockBulOne->xMax = 1.0/shockBulOne->framesX;
+        shockBulOne->vel = 0.4;
+        shockBulOne->weaponDmg = 100;
+        shockBulOne->projScale.x = 0.3;
+        shockBulOne->projScale.y = 0.15;
+
+        shockBulTwo->projInit(1, 1);
+        shockBulTwo->proj->loadTexture("images/shockBullet.png");
+        shockBulTwo->action = shockBulTwo->SHOCKRIFLE;
+        shockBulTwo->framesX = 1.0;
+        shockBulTwo->xMax = 1.0/shockBulTwo->framesX;
+        shockBulTwo->vel = 0.4;
+        shockBulTwo->weaponDmg = 100;
+        shockBulTwo->projScale.x = 0.3;
+        shockBulTwo->projScale.y = 0.15;
 
         wpns = pistol;        //MANUAL START TO WEAPON, should start with a pistol but set to laserGun for ease of destroying turret and mine
         //----------
@@ -196,8 +228,7 @@ GLint _glScene::initGL()
         _objectinteract_max::changePosition(turret1->turretParts, -2.5, -2.2);
         _objectinteract_max::changePosition(turret1->turretbullet, -2.5, -2.2);
 
-        //Eric's projectiles
-        pistol->projInit(1, 1);
+         pistol->projInit(1, 1);
         pistol->weaponSkin->loadTexture("images/pistol.png");
         pistol->weaponHold = pistol->P;
         pistol->proj->loadTexture("images/bullet.png");
@@ -231,8 +262,40 @@ GLint _glScene::initGL()
         laserGun->xMax = 1.0/laserGun->framesX;
         laserGun->vel = 0.3;
         laserGun->weaponDmg = 50;
-        laserGun->projScale.x = 0.2;
+        laserGun->projScale.x = 0.4;
         laserGun->projScale.y = 0.2;
+
+        shockRifle->projInit(1, 1);
+        shockRifle->weaponSkin->loadTexture("images/shockRifle.png");
+        shockRifle->weaponHold = shockRifle->B;
+        shockRifle->proj->loadTexture("images/shockBullet.png");
+        shockRifle->action = shockRifle->SHOCKRIFLE;
+        shockRifle->framesX = 1.0;
+        shockRifle->xMax = 1.0/shockRifle->framesX;
+        shockRifle->vel = 0.4;
+        shockRifle->weaponDmg = 100;
+        shockRifle->projScale.x = 0.3;
+        shockRifle->projScale.y = 0.15;
+
+        shockBulOne->projInit(1, 1);
+        shockBulOne->proj->loadTexture("images/shockBullet.png");
+        shockBulOne->action = shockBulOne->SHOCKRIFLE;
+        shockBulOne->framesX = 1.0;
+        shockBulOne->xMax = 1.0/shockBulOne->framesX;
+        shockBulOne->vel = 0.4;
+        shockBulOne->weaponDmg = 100;
+        shockBulOne->projScale.x = 0.3;
+        shockBulOne->projScale.y = 0.15;
+
+        shockBulTwo->projInit(1, 1);
+        shockBulTwo->proj->loadTexture("images/shockBullet.png");
+        shockBulTwo->action = shockBulTwo->SHOCKRIFLE;
+        shockBulTwo->framesX = 1.0;
+        shockBulTwo->xMax = 1.0/shockBulTwo->framesX;
+        shockBulTwo->vel = 0.4;
+        shockBulTwo->weaponDmg = 100;
+        shockBulTwo->projScale.x = 0.3;
+        shockBulTwo->projScale.y = 0.15;
 
         wpns = pistol;        //MANUAL START TO WEAPON, should start with a pistol but set to laserGun for ease of destroying turret and mine
         //----------
@@ -277,7 +340,7 @@ GLint _glScene::initGL()
         _objectinteract_max::changePosition(turret1->turretbullet, -2.5, -2.2);
 
         //Eric's projectiles
-        pistol->projInit(1, 1);
+         pistol->projInit(1, 1);
         pistol->weaponSkin->loadTexture("images/pistol.png");
         pistol->weaponHold = pistol->P;
         pistol->proj->loadTexture("images/bullet.png");
@@ -302,6 +365,9 @@ GLint _glScene::initGL()
         grenadelauncher->projScale.x = 0.2;
         grenadelauncher->projScale.y = 0.2;
 
+        grenadeBoom->projInit(5,5);
+        grenadeBoom->proj->loadTexture("images/explosion.png");
+
         laserGun->projInit(1, 1);
         laserGun->weaponSkin->loadTexture("images/beamGun.png");
         laserGun->weaponHold = laserGun->B;
@@ -311,10 +377,42 @@ GLint _glScene::initGL()
         laserGun->xMax = 1.0/laserGun->framesX;
         laserGun->vel = 0.3;
         laserGun->weaponDmg = 50;
-        laserGun->projScale.x = 0.2;
+        laserGun->projScale.x = 0.4;
         laserGun->projScale.y = 0.2;
 
-        wpns = pistol;        //MANUAL START TO WEAPON, should start with a pistol but set to laserGun for ease of destroying turret and mine
+        shockRifle->projInit(1, 1);
+        shockRifle->weaponSkin->loadTexture("images/shockRifle.png");
+        shockRifle->weaponHold = shockRifle->B;
+        shockRifle->proj->loadTexture("images/shockBullet.png");
+        shockRifle->action = shockRifle->SHOCKRIFLE;
+        shockRifle->framesX = 1.0;
+        shockRifle->xMax = 1.0/shockRifle->framesX;
+        shockRifle->vel = 0.4;
+        shockRifle->weaponDmg = 100;
+        shockRifle->projScale.x = 0.3;
+        shockRifle->projScale.y = 0.15;
+
+        shockBulOne->projInit(1, 1);
+        shockBulOne->proj->loadTexture("images/shockBullet.png");
+        shockBulOne->action = shockBulOne->SHOCKRIFLE;
+        shockBulOne->framesX = 1.0;
+        shockBulOne->xMax = 1.0/shockBulOne->framesX;
+        shockBulOne->vel = 0.4;
+        shockBulOne->weaponDmg = 100;
+        shockBulOne->projScale.x = 0.3;
+        shockBulOne->projScale.y = 0.15;
+
+        shockBulTwo->projInit(1, 1);
+        shockBulTwo->proj->loadTexture("images/shockBullet.png");
+        shockBulTwo->action = shockBulTwo->SHOCKRIFLE;
+        shockBulTwo->framesX = 1.0;
+        shockBulTwo->xMax = 1.0/shockBulTwo->framesX;
+        shockBulTwo->vel = 0.4;
+        shockBulTwo->weaponDmg = 100;
+        shockBulTwo->projScale.x = 0.3;
+        shockBulTwo->projScale.y = 0.15;
+
+        wpns = shockRifle;        //MANUAL START TO WEAPON, should start with a pistol but set to laserGun for ease of destroying turret and mine
         //----------
 
         doneLoading = true;
@@ -522,71 +620,144 @@ GLint _glScene::drawScene()
         player1->interact(healthpack2->healthpack);
         player1->interact(mine1->mine);
         player1->interact(turret1->turrethead);
-
+        player1->interact(firstPlatform->platform);
 
         //Eric's drawings
         if(wpns->action == wpns->PISTOL){
-            wpns = pistol;
             pistol->vel = 0.2;
             pistol->weaponDmg = 10;
             pistol->projScale.x = 0.2;
             pistol->projScale.y = 0.2;
+            wpns = pistol;
         }
         if(wpns->action == wpns->GRENADELAUNCHER){
-            wpns = grenadelauncher;
-            grenadelauncher->vel = 0.09;
-            grenadelauncher->accel = 0.005;
+            grenadelauncher->vel = 0.075;
+            grenadelauncher->accel = 0.01;
             grenadelauncher->weaponDmg = 25;
             grenadelauncher->projScale.x = 0.2;
             grenadelauncher->projScale.y = 0.2;
+            wpns = grenadelauncher;
         }
         if(wpns->action == wpns->BEAM){
-            wpns = laserGun;
             laserGun->vel = 0.3;
             laserGun->weaponDmg = 50;
             laserGun->projScale.x = 0.2;
             laserGun->projScale.y = 0.2;
+            wpns = laserGun;
+        }
+        if(wpns->action == wpns->SHOCKRIFLE){
+            shockRifle->vel = 0.4;
+            shockRifle->weaponDmg = 100;
+            shockRifle->projScale.x = 0.3;
+            shockRifle->projScale.y = 0.15;
+            wpns = shockRifle;
+
+            shockBulOne->vel = 0.4;
+            shockBulOne->weaponDmg = 100;
+            shockBulOne->projScale.x = 0.3;
+            shockBulOne->projScale.y = 0.15;
+
+            shockBulTwo->vel = 0.4;
+            shockBulTwo->weaponDmg = 100;
+            shockBulTwo->projScale.x = 0.3;
+            shockBulTwo->projScale.y = 0.15;
         }
         glPushMatrix();
             glBindTexture(GL_TEXTURE_2D, wpns->proj->tex);
             wpns->drawProj();
-            glBindTexture(GL_TEXTURE_2D, wpns2->proj->tex);
-            wpns2->drawProj();
+            glBindTexture(GL_TEXTURE_2D, shockBulOne->proj->tex);
+            shockBulOne->drawProj();
+            glBindTexture(GL_TEXTURE_2D, shockBulTwo->proj->tex);
+            shockBulTwo->drawProj();
             glBindTexture(GL_TEXTURE_2D, pistol->weaponSkin->tex);
             pistol->drawWeapon();
             glBindTexture(GL_TEXTURE_2D, grenadelauncher->weaponSkin->tex);
             grenadelauncher->drawWeapon();
             glBindTexture(GL_TEXTURE_2D, laserGun->weaponSkin->tex);
             laserGun->drawWeapon();
+            glBindTexture(GL_TEXTURE_2D, shockRifle->weaponSkin->tex);
+            shockRifle->drawWeapon();
+
+            //Drawing and bullet actions----------------------------
             if(timer->getTicks() > 15)
             {
                 wpns->weaponAction(player1->player);
+                if(wpns->action == wpns->SHOCKRIFLE){
+                    shockBulOne->weaponAction(player1->player);
+                    shockBulTwo->weaponAction(player1->player);
+                }
                 if(col->projHit(wpns, mine1->mine))
                 {
-                    wpns->hitToOrigin(player1->player);
+                    if(wpns->action != wpns->SHOCKRIFLE){
+                        wpns->hitToOrigin(player1->player);
+                    }
                     mine1->health -= wpns->weaponDmg;
                     if(mine1->health <= 0){
                         mine1->mine->obj.pos.z = -9.0;
                         mine1->mine->obj.exist = false;
+                        grenadelauncher->weaponSpawn(mine1->mine, grenadelauncher);
                     }
-                    grenadelauncher->weaponSpawn(mine1->mine, grenadelauncher);
+                    if(col->boomCol(wpns, turret1->turrethead)){
+                        turret1->health -= wpns->weaponDmg;
+                        if(turret1->health <= 0){
+                            turret1->turrethead->obj.pos.z = -9.0;
+                            turret1->turretbarrel->obj.pos.z = -9.0;
+                            turret1->turrethead->obj.exist = false;
+                            laserGun->weaponSpawn(turret1->turrethead, laserGun);
+                        }
+                    }
                 }
                 if(col->projHit(wpns, turret1->turrethead))
                 {
-                    wpns->hitToOrigin(player1->player);
-                    turret1->health-= wpns->weaponDmg;
+                    if(wpns->action != wpns->SHOCKRIFLE){
+                        wpns->hitToOrigin(player1->player);
+                    }
+                    turret1->health -= wpns->weaponDmg;
                     if(turret1->health <= 0){
                         turret1->turrethead->obj.pos.z = -9.0;
                         turret1->turretbarrel->obj.pos.z = -9.0;
                         turret1->turrethead->obj.exist = false;
+                        laserGun->weaponSpawn(turret1->turrethead, laserGun);
                     }
-                    laserGun->weaponSpawn(turret1->turrethead, laserGun);
+                    if(col->boomCol(wpns, mine1->mine)){
+                        glPushMatrix();
+                            glBindTexture(GL_TEXTURE_2D, grenadeBoom->proj->tex);
+                            grenadeBoom->drawProj();
+                            if(timer->getTicks() > 30){
+                                grenadeBoom->explode();
+                            }
+                        glPopMatrix();
+                        mine1->health -= wpns->weaponDmg;
+                        if(mine1->health <= 0){
+                            mine1->mine->obj.pos.z = -9.0;
+                            mine1->mine->obj.exist = false;
+                            grenadelauncher->weaponSpawn(mine1->mine, grenadelauncher);
+                        }
+                    }
+                }
+                if(col->projHit(shockBulOne, mine1->mine) || col->projHit(shockBulTwo, mine1->mine)){
+                    mine1->health -= shockBulOne->weaponDmg;
+                    if(mine1->health <= 0){
+                        mine1->mine->obj.pos.z = -9.0;
+                        mine1->mine->obj.exist = false;
+                        grenadelauncher->weaponSpawn(mine1->mine, grenadelauncher);
+                    }
+                }
+                if(col->projHit(shockBulOne, turret1->turrethead) || col->projHit(shockBulTwo, turret1->turrethead)){
+                    turret1->health -= shockBulOne->weaponDmg;
+                    if(turret1->health <= 0){
+                        turret1->turrethead->obj.pos.z = -9.0;
+                        turret1->turretbarrel->obj.pos.z = -9.0;
+                        turret1->turrethead->obj.exist = false;
+                        laserGun->weaponSpawn(turret1->turrethead, laserGun);
+                    }
                 }
                 grenadelauncher->weaponFall();
                 laserGun->weaponFall();
                 timer->resetTime();
             }
         glPopMatrix();
+        //End of Eric's Drawings ------------------------------------------------------
 
     }
 
@@ -688,67 +859,136 @@ GLint _glScene::drawScene()
 
         //Eric's drawings
         if(wpns->action == wpns->PISTOL){
-            wpns = pistol;
             pistol->vel = 0.2;
             pistol->weaponDmg = 10;
             pistol->projScale.x = 0.2;
             pistol->projScale.y = 0.2;
+            wpns = pistol;
         }
         if(wpns->action == wpns->GRENADELAUNCHER){
-            wpns = grenadelauncher;
-            grenadelauncher->vel = 0.09;
-            grenadelauncher->accel = 0.005;
+            grenadelauncher->vel = 0.075;
+            grenadelauncher->accel = 0.01;
             grenadelauncher->weaponDmg = 25;
             grenadelauncher->projScale.x = 0.2;
             grenadelauncher->projScale.y = 0.2;
+            wpns = grenadelauncher;
         }
         if(wpns->action == wpns->BEAM){
-            wpns = laserGun;
             laserGun->vel = 0.3;
             laserGun->weaponDmg = 50;
             laserGun->projScale.x = 0.2;
             laserGun->projScale.y = 0.2;
+            wpns = laserGun;
+        }
+        if(wpns->action == wpns->SHOCKRIFLE){
+            shockRifle->vel = 0.4;
+            shockRifle->weaponDmg = 100;
+            shockRifle->projScale.x = 0.3;
+            shockRifle->projScale.y = 0.15;
+            wpns = shockRifle;
+
+            shockBulOne->vel = 0.4;
+            shockBulOne->weaponDmg = 100;
+            shockBulOne->projScale.x = 0.3;
+            shockBulOne->projScale.y = 0.15;
+
+            shockBulTwo->vel = 0.4;
+            shockBulTwo->weaponDmg = 100;
+            shockBulTwo->projScale.x = 0.3;
+            shockBulTwo->projScale.y = 0.15;
         }
         glPushMatrix();
             glBindTexture(GL_TEXTURE_2D, wpns->proj->tex);
             wpns->drawProj();
-            glBindTexture(GL_TEXTURE_2D, wpns2->proj->tex);
-            wpns2->drawProj();
+            glBindTexture(GL_TEXTURE_2D, shockBulOne->proj->tex);
+            shockBulOne->drawProj();
+            glBindTexture(GL_TEXTURE_2D, shockBulTwo->proj->tex);
+            shockBulTwo->drawProj();
+            glBindTexture(GL_TEXTURE_2D, grenadeBoom->proj->tex);
+            grenadeBoom->drawProj();
+
             glBindTexture(GL_TEXTURE_2D, pistol->weaponSkin->tex);
             pistol->drawWeapon();
             glBindTexture(GL_TEXTURE_2D, grenadelauncher->weaponSkin->tex);
             grenadelauncher->drawWeapon();
             glBindTexture(GL_TEXTURE_2D, laserGun->weaponSkin->tex);
             laserGun->drawWeapon();
+            glBindTexture(GL_TEXTURE_2D, shockRifle->weaponSkin->tex);
+            shockRifle->drawWeapon();
+
+            //Drawing and bullet actions----------------------------
             if(timer->getTicks() > 15)
             {
                 wpns->weaponAction(player1->player);
+                if(wpns->action == wpns->SHOCKRIFLE){
+                    shockBulOne->weaponAction(player1->player);
+                    shockBulTwo->weaponAction(player1->player);
+                }
                 if(col->projHit(wpns, mine1->mine))
                 {
-                    wpns->hitToOrigin(player1->player);
+                    if(wpns->action != wpns->SHOCKRIFLE){
+                        wpns->hitToOrigin(player1->player);
+                    }
                     mine1->health -= wpns->weaponDmg;
                     if(mine1->health <= 0){
                         mine1->mine->obj.pos.z = -9.0;
                         mine1->mine->obj.exist = false;
+                        grenadelauncher->weaponSpawn(mine1->mine, grenadelauncher);
                     }
-                    grenadelauncher->weaponSpawn(mine1->mine, grenadelauncher);
+                    if(col->boomCol(wpns, turret1->turrethead)){
+                        turret1->health -= wpns->weaponDmg;
+                        if(turret1->health <= 0){
+                            turret1->turrethead->obj.pos.z = -9.0;
+                            turret1->turretbarrel->obj.pos.z = -9.0;
+                            turret1->turrethead->obj.exist = false;
+                            laserGun->weaponSpawn(turret1->turrethead, laserGun);
+                        }
+                    }
                 }
                 if(col->projHit(wpns, turret1->turrethead))
                 {
-                    wpns->hitToOrigin(player1->player);
-                    turret1->health-= wpns->weaponDmg;
+                    if(wpns->action != wpns->SHOCKRIFLE){
+                        wpns->hitToOrigin(player1->player);
+                    }
+                    turret1->health -= wpns->weaponDmg;
                     if(turret1->health <= 0){
                         turret1->turrethead->obj.pos.z = -9.0;
                         turret1->turretbarrel->obj.pos.z = -9.0;
                         turret1->turrethead->obj.exist = false;
+                        laserGun->weaponSpawn(turret1->turrethead, laserGun);
                     }
-                    laserGun->weaponSpawn(turret1->turrethead, laserGun);
+                    if(col->boomCol(wpns, mine1->mine)){
+                        mine1->health -= wpns->weaponDmg;
+                        if(mine1->health <= 0){
+                            mine1->mine->obj.pos.z = -9.0;
+                            mine1->mine->obj.exist = false;
+                            grenadelauncher->weaponSpawn(mine1->mine, grenadelauncher);
+                        }
+                    }
+                }
+                if(col->projHit(shockBulOne, mine1->mine) || col->projHit(shockBulTwo, mine1->mine)){
+                    mine1->health -= shockBulOne->weaponDmg;
+                    if(mine1->health <= 0){
+                        mine1->mine->obj.pos.z = -9.0;
+                        mine1->mine->obj.exist = false;
+                        grenadelauncher->weaponSpawn(mine1->mine, grenadelauncher);
+                    }
+                }
+                if(col->projHit(shockBulOne, turret1->turrethead) || col->projHit(shockBulTwo, turret1->turrethead)){
+                    turret1->health -= shockBulOne->weaponDmg;
+                    if(turret1->health <= 0){
+                        turret1->turrethead->obj.pos.z = -9.0;
+                        turret1->turretbarrel->obj.pos.z = -9.0;
+                        turret1->turrethead->obj.exist = false;
+                        laserGun->weaponSpawn(turret1->turrethead, laserGun);
+                    }
                 }
                 grenadelauncher->weaponFall();
                 laserGun->weaponFall();
                 timer->resetTime();
             }
         glPopMatrix();
+        //End of Eric's Drawings --------------------------------------------
     }
 
     if(state == levelThree)
@@ -855,70 +1095,156 @@ GLint _glScene::drawScene()
         player1->interact(turret1->turrethead);
         player1->interact(turret1->turretbullet);
 
-
         //Eric's drawings
         if(wpns->action == wpns->PISTOL){
-            wpns = pistol;
             pistol->vel = 0.2;
             pistol->weaponDmg = 10;
             pistol->projScale.x = 0.2;
             pistol->projScale.y = 0.2;
+            wpns = pistol;
         }
         if(wpns->action == wpns->GRENADELAUNCHER){
-            wpns = grenadelauncher;
-            grenadelauncher->vel = 0.09;
-            grenadelauncher->accel = 0.005;
+            grenadelauncher->vel = 0.075;
+            grenadelauncher->accel = 0.01;
             grenadelauncher->weaponDmg = 25;
             grenadelauncher->projScale.x = 0.2;
             grenadelauncher->projScale.y = 0.2;
+            wpns = grenadelauncher;
         }
         if(wpns->action == wpns->BEAM){
-            wpns = laserGun;
             laserGun->vel = 0.3;
             laserGun->weaponDmg = 50;
             laserGun->projScale.x = 0.2;
             laserGun->projScale.y = 0.2;
+            wpns = laserGun;
+        }
+        if(wpns->action == wpns->SHOCKRIFLE){
+            shockRifle->vel = 0.4;
+            shockRifle->weaponDmg = 100;
+            shockRifle->projScale.x = 0.3;
+            shockRifle->projScale.y = 0.15;
+            wpns = shockRifle;
+
+            shockBulOne->vel = 0.4;
+            shockBulOne->weaponDmg = 100;
+            shockBulOne->projScale.x = 0.3;
+            shockBulOne->projScale.y = 0.15;
+
+            shockBulTwo->vel = 0.4;
+            shockBulTwo->weaponDmg = 100;
+            shockBulTwo->projScale.x = 0.3;
+            shockBulTwo->projScale.y = 0.15;
         }
         glPushMatrix();
             glBindTexture(GL_TEXTURE_2D, wpns->proj->tex);
             wpns->drawProj();
-            glBindTexture(GL_TEXTURE_2D, wpns2->proj->tex);
-            wpns2->drawProj();
+            glBindTexture(GL_TEXTURE_2D, shockBulOne->proj->tex);
+            shockBulOne->drawProj();
+            glBindTexture(GL_TEXTURE_2D, shockBulTwo->proj->tex);
+            shockBulTwo->drawProj();
+            glBindTexture(GL_TEXTURE_2D, grenadeBoom->proj->tex);
+            grenadeBoom->drawProj();
+            glBindTexture(GL_TEXTURE_2D, grenadeBoom->proj->tex);
+            grenadeBoom->drawProj();
+
             glBindTexture(GL_TEXTURE_2D, pistol->weaponSkin->tex);
             pistol->drawWeapon();
             glBindTexture(GL_TEXTURE_2D, grenadelauncher->weaponSkin->tex);
             grenadelauncher->drawWeapon();
             glBindTexture(GL_TEXTURE_2D, laserGun->weaponSkin->tex);
             laserGun->drawWeapon();
+            glBindTexture(GL_TEXTURE_2D, shockRifle->weaponSkin->tex);
+            shockRifle->drawWeapon();
+
+            //Drawing and bullet actions----------------------------
             if(timer->getTicks() > 15)
             {
                 wpns->weaponAction(player1->player);
+                if(wpns->action == wpns->SHOCKRIFLE){
+                    shockBulOne->weaponAction(player1->player);
+                    shockBulTwo->weaponAction(player1->player);
+                }
                 if(col->projHit(wpns, mine1->mine))
                 {
-                    wpns->hitToOrigin(player1->player);
+                    if(wpns->action != wpns->SHOCKRIFLE){
+                        wpns->hitToOrigin(player1->player);
+                    }
                     mine1->health -= wpns->weaponDmg;
                     if(mine1->health <= 0){
                         mine1->mine->obj.pos.z = -9.0;
                         mine1->mine->obj.exist = false;
+                        grenadelauncher->weaponSpawn(mine1->mine, grenadelauncher);
                     }
-                    grenadelauncher->weaponSpawn(mine1->mine, grenadelauncher);
+                    if(col->boomCol(wpns, turret1->turrethead)){
+                        turret1->health -= wpns->weaponDmg;
+                        if(turret1->health <= 0){
+                            turret1->turrethead->obj.pos.z = -9.0;
+                            turret1->turretbarrel->obj.pos.z = -9.0;
+                            turret1->turrethead->obj.exist = false;
+                            laserGun->weaponSpawn(turret1->turrethead, laserGun);
+                        }
+                    }
+                    if(wpns->action == wpns->GRENADELAUNCHER){
+                        grenadeBoom->projPos.x = wpns->projPos.x;
+                        grenadeBoom->projPos.y = wpns->projPos.y;
+                        grenadeBoom->projPos.z = wpns->projPos.z;
+                        if(timer->getTicks() > 30){
+                            grenadeBoom->explode();
+                        }
+                    }
                 }
                 if(col->projHit(wpns, turret1->turrethead))
                 {
-                    wpns->hitToOrigin(player1->player);
-                    turret1->health-= wpns->weaponDmg;
+                    if(wpns->action != wpns->SHOCKRIFLE){
+                        wpns->hitToOrigin(player1->player);
+                    }
+                    turret1->health -= wpns->weaponDmg;
                     if(turret1->health <= 0){
                         turret1->turrethead->obj.pos.z = -9.0;
                         turret1->turretbarrel->obj.pos.z = -9.0;
                         turret1->turrethead->obj.exist = false;
+                        laserGun->weaponSpawn(turret1->turrethead, laserGun);
                     }
-                    laserGun->weaponSpawn(turret1->turrethead, laserGun);
+                    if(col->boomCol(wpns, mine1->mine)){
+                        mine1->health -= wpns->weaponDmg;
+                        if(mine1->health <= 0){
+                            mine1->mine->obj.pos.z = -9.0;
+                            mine1->mine->obj.exist = false;
+                            grenadelauncher->weaponSpawn(mine1->mine, grenadelauncher);
+                        }
+                    }
+                    if(wpns->action == wpns->GRENADELAUNCHER){
+                        grenadeBoom->projPos.x = wpns->projPos.x;
+                        grenadeBoom->projPos.y = wpns->projPos.y;
+                        grenadeBoom->projPos.z = wpns->projPos.z;
+                        if(timer->getTicks() > 30){
+                            grenadeBoom->explode();
+                        }
+                    }
+                }
+                if(col->projHit(shockBulOne, mine1->mine) || col->projHit(shockBulTwo, mine1->mine)){
+                    mine1->health -= shockBulOne->weaponDmg;
+                    if(mine1->health <= 0){
+                        mine1->mine->obj.pos.z = -9.0;
+                        mine1->mine->obj.exist = false;
+                        grenadelauncher->weaponSpawn(mine1->mine, grenadelauncher);
+                    }
+                }
+                if(col->projHit(shockBulOne, turret1->turrethead) || col->projHit(shockBulTwo, turret1->turrethead)){
+                    turret1->health -= shockBulOne->weaponDmg;
+                    if(turret1->health <= 0){
+                        turret1->turrethead->obj.pos.z = -9.0;
+                        turret1->turretbarrel->obj.pos.z = -9.0;
+                        turret1->turrethead->obj.exist = false;
+                        laserGun->weaponSpawn(turret1->turrethead, laserGun);
+                    }
                 }
                 grenadelauncher->weaponFall();
                 laserGun->weaponFall();
                 timer->resetTime();
             }
         glPopMatrix();
+        //End of Eric's drawings ---------------------------------------------------------
 
     }
 
@@ -986,8 +1312,9 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
             kbMS->moveObj(turret1->turretbullet, inRelationToPlayer);
             //-----------
 
-            //Eric's keyboard imputs
-            kbMS->keyPressed(wpns);
+            //Eric's keyboard inputs
+            kbMS->keyPressed(shockBulOne);
+            kbMS->keyPressed(shockBulTwo);
             kbMS->keyPressed(pistol);
             kbMS->keyPressed(grenadelauncher);
             kbMS->keyPressed(laserGun);
@@ -996,7 +1323,6 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
             kbMS->weaponPickUp(grenadelauncher, wpns, player1->player);
             kbMS->weaponPickUp(laserGun, wpns, player1->player);
             kbMS->weaponPickUp(shockRifle, wpns, player1->player);
-
             //--------------
         }
         //--------
@@ -1019,7 +1345,7 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
     case WM_LBUTTONDOWN:
     {
         GetOGLPos(LOWORD(lParam), HIWORD(lParam));
-
+        cout << posmX << " " << posmY << endl;
         if(state == menu)
         {
 
@@ -1085,9 +1411,61 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
                 doneLoading = false;
             }
 
-            //Eric's aditions
             kbMS->anglesForShots(wpns, LOWORD(lParam), HIWORD(lParam));
-            //----
+            kbMS->anglesForShockShotOne(shockBulOne, LOWORD(lParam), HIWORD(lParam));
+            kbMS->anglesForShockShotTwo(shockBulTwo, LOWORD(lParam), HIWORD(lParam));
+            if(wpns->action == wpns->SHOCKRIFLE){
+                kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam) ); //For shockRifle;
+                kbMS->mouseDown(shockBulOne, LOWORD(lParam), HIWORD(lParam));
+                kbMS->mouseDown(shockBulTwo, LOWORD(lParam), HIWORD(lParam));//
+            }
+            else{
+                kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam));//for weapons other than shockRifle
+            }
+        }
+
+        if(state == levelTwo)
+        {
+            if(posmX > 4.42 && posmX < 5.0 && posmY > 3.24 && posmY < 3.5)
+            {
+                state = menu;
+
+                doneLoading = false;
+            }
+
+            kbMS->anglesForShots(wpns, LOWORD(lParam), HIWORD(lParam));
+            kbMS->anglesForShockShotOne(shockBulOne, LOWORD(lParam), HIWORD(lParam));
+            kbMS->anglesForShockShotTwo(shockBulTwo, LOWORD(lParam), HIWORD(lParam));
+            if(wpns->action == wpns->SHOCKRIFLE){
+                kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam) ); //For shockRifle;
+                kbMS->mouseDown(shockBulOne, LOWORD(lParam), HIWORD(lParam));
+                kbMS->mouseDown(shockBulTwo, LOWORD(lParam), HIWORD(lParam));//
+            }
+            else{
+                kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam));//for weapons other than shockRifle
+            }
+        }
+
+        if(state == levelThree)
+        {
+            if(posmX > 4.42 && posmX < 5.0 && posmY > 3.24 && posmY < 3.5)
+            {
+                state = menu;
+
+                doneLoading = false;
+            }
+
+            kbMS->anglesForShots(wpns, LOWORD(lParam), HIWORD(lParam));
+            kbMS->anglesForShockShotOne(shockBulOne, LOWORD(lParam), HIWORD(lParam));
+            kbMS->anglesForShockShotTwo(shockBulTwo, LOWORD(lParam), HIWORD(lParam));
+            if(wpns->action == wpns->SHOCKRIFLE){
+                kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam) ); //For shockRifle;
+                kbMS->mouseDown(shockBulOne, LOWORD(lParam), HIWORD(lParam));
+                kbMS->mouseDown(shockBulTwo, LOWORD(lParam), HIWORD(lParam));//
+            }
+            else{
+                kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam));//for weapons other than shockRifle
+            }
         }
 
         break;
@@ -1119,15 +1497,16 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
 
     case WM_MOUSEMOVE:
     {
+<<<<<<< HEAD
         kbMS->anglesForShots(wpns, LOWORD(lParam), HIWORD(lParam));
+=======
         kbMS->mouseMove(modelTeapot, LOWORD(lParam), HIWORD(lParam));
+>>>>>>> 8597067834ccc8a6194c7bd64862d57fdaf6eb1a
         break;
     }
 
     case WM_MOUSEWHEEL:
     {
-
-        kbMS->mouseWheel(modelTeapot, (float)GET_WHEEL_DELTA_WPARAM(wParam));
         break;
     }
 

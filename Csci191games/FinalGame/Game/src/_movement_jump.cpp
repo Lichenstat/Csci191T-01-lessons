@@ -42,6 +42,8 @@ void _movement_jump::jump(_object_max * curObj, float height, float speed)
 {
     if(!currentlyJumping)
     {
+        cout << curObj->obj.pos.y << endl;
+
         origPos.x = curObj->obj.pos.x;
         origPos.y = curObj->obj.pos.y;
         posvrtx = sqrt(height/1);
@@ -57,6 +59,7 @@ void _movement_jump::jump(_object_max * curObj, float height, float speed)
 
 void _movement_jump::jumpLoop(_object_max * curObj, float groundLevel)
 {
+
     if(currentlyJumping)
     {
         //cout << jumpLocation << " " << jumpHeight << endl;
