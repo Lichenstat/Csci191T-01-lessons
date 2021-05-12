@@ -111,6 +111,7 @@ GLint _glScene::initGL()
         _objectinteract_max::changePosition(mine1->mine, -2.0, 1.0);
         turret1->initialize();
         _objectinteract_max::changePosition(turret1->turretParts, -2.5, -2.2);
+        _objectinteract_max::changePosition(turret1->turretbullet, -2.5, -2.2);
 
         //Eric's projectiles
         pistol->projInit(1, 1);
@@ -193,6 +194,7 @@ GLint _glScene::initGL()
         _objectinteract_max::changePosition(mine1->mine, -2.0, 1.0);
         turret1->initialize();
         _objectinteract_max::changePosition(turret1->turretParts, -2.5, -2.2);
+        _objectinteract_max::changePosition(turret1->turretbullet, -2.5, -2.2);
 
         //Eric's projectiles
         pistol->projInit(1, 1);
@@ -272,6 +274,7 @@ GLint _glScene::initGL()
         _objectinteract_max::changePosition(mine1->mine, -2.0, 1.0);
         turret1->initialize();
         _objectinteract_max::changePosition(turret1->turretParts, -2.5, -2.2);
+        _objectinteract_max::changePosition(turret1->turretbullet, -2.5, -2.2);
 
         //Eric's projectiles
         pistol->projInit(1, 1);
@@ -850,6 +853,7 @@ GLint _glScene::drawScene()
         player1->interact(healthpack2->healthpack);
         player1->interact(mine1->mine);
         player1->interact(turret1->turrethead);
+        player1->interact(turret1->turretbullet);
 
 
         //Eric's drawings
@@ -979,6 +983,7 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
             kbMS->moveObj(healthpack2->healthpack, inRelationToPlayer);
             kbMS->moveObj(mine1->mine, inRelationToPlayer);
             kbMS->moveObj(turret1->turretParts, inRelationToPlayer);
+            kbMS->moveObj(turret1->turretbullet, inRelationToPlayer);
             //-----------
 
             //Eric's keyboard imputs

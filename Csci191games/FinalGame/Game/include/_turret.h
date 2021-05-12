@@ -17,13 +17,18 @@ class _turret
 
         float health;           // turret health
         float damage;           // damage that turret does
+        float bulletspeed;      // speed of bullet
+        float bulletdistance;   // distance of bullet
+        float bulletangle;      // bullet angle
         bool activated;         // turret activated or not
         bool dead;              // is turret dead?
 
-        _object_max * turretParts[3];
+
+        _object_max * turretParts[4];
         _object_max * turretbase = new _object_max();
         _object_max * turrethead = new _object_max();
         _object_max * turretbarrel = new _object_max();
+        _object_max * turretbullet = new _object_max();
 
         _sounds * sounds = new _sounds();
 

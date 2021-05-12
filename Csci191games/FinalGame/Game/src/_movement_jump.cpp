@@ -11,6 +11,7 @@ _movement_jump::_movement_jump()
     oldJumpHeight = 0;
     jumpSpeed = 0;
     currentlyJumping = false;
+    isFalling = false;
     negvrtx = 0;
     posvrtx = 0;
 }
@@ -18,6 +19,23 @@ _movement_jump::_movement_jump()
 _movement_jump::~_movement_jump()
 {
     //dtor
+}
+
+void _movement_jump::fall(_object_max * curObj, float height, float speed)
+{
+    if(!isFalling)
+    {
+        origPos.x = curObj->obj.pos.x;
+        origPos.y = curObj->obj.pos.y;
+        posvrtx = sqrt(height/1);
+        negvrtx = 0;
+        jumpLocation = negvrtx;
+        jumpPeak = height;
+        jumpSpeed = speed;
+        isFalling = true;
+        cout << posvrtx << " " << negvrtx << endl;
+        //cout << jumpLocation << " " << jumpSpeed << endl;
+    }
 }
 
 void _movement_jump::jump(_object_max * curObj, float height, float speed)
@@ -47,25 +65,30 @@ void _movement_jump::jumpLoop(_object_max * curObj, float groundLevel)
             _animate_max::singleFrame(curObj, 4, 5);
         if(jumpLocation > 0)
             _animate_max::singleFrame(curObj, 7, 5);
-
         if(jumpLocation < negvrtx)  // in case we get under the x axis (stops infinite increasing upward
         {
             jumpLocation = negvrtx - jumpSpeed;
         }
         if(jumpLocation < posvrtx) // falling speed can change
         {
+
             oldJumpHeight = jumpHeight;
             jumpLocation += jumpSpeed;
+            //oldJumpHeight = jumpHeight;
+            //jumpLocation += jumpSpeed;
         }
         if(jumpLocation > posvrtx)  // falling speed will top
             jumpLocation = posvrtx;
-        jumpHeight = sqrt(fabs(-1 * pow((jumpLocation - 0),2) + jumpPeak));     // y = a(x - h)^2 + k (parabola)
-        _movement_max::moveVertical(curObj, jumpHeight - oldJumpHeight);
-        //cout << "guy pos" << curObj->obj.pos.y << endl;
+        jumpHeight = sqrt(fabs(-1 * pow((jumpLocation - 0),2) + jumpPeak)); // y = a(x - h)^2 + k (parabola)
+        if(!isFalling)
+            _movement_max::moveVertical(curObj, jumpHeight - oldJumpHeight);
+        else
+            _movement_max::moveVertical(curObj, jumpHeight - oldJumpHeight);
+        //cout << jumpHeight - oldJumpHeight << endl;
         if(curObj->obj.pos.y < groundLevel)
         {
-            //cout << "reached bsae lele" <<endl;
             currentlyJumping = false;
+            isFalling = false;
             movSnd->playSounds("sounds/sfx/jump landing.mp3");
             _animate_max::singleFrame(curObj, 1, 9);    // hard coded animation stand for player, fix later if can
         }

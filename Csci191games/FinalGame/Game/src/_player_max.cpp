@@ -113,7 +113,14 @@ void _player_max::interact(_object_max * curObj)
                 //itemSounds->playSounds("sounds/sfx/explosion 2.mp3");
                 playerHealth -= 30;
                 cout << "Mine touched player and blew up, current health is " << playerHealth << endl;
-                cout << curObj->obj.id << endl;
+            }
+            if(string(curObj->obj.type) == "turretbullet")
+            {
+                curObj->obj.exist = false;
+                itemSounds->playSounds("sounds/sfx/electricshock.mp3");
+                _objectinteract_max::changeImage(curObj, "images/invisible.png", 1.0, 1.0);
+                playerHealth -= 25;
+                cout << "Turret hit player: current health is: " << playerHealth << endl;
             }
         }
     }
