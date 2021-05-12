@@ -519,7 +519,7 @@ GLint _glScene::drawScene()
         player1->interact(healthpack2->healthpack);
         player1->interact(mine1->mine);
         player1->interact(turret1->turrethead);
-
+        player1->interact(firstPlatform->platform);
 
         //Eric's drawings
         if(wpns->action == wpns->PISTOL){
@@ -851,7 +851,6 @@ GLint _glScene::drawScene()
         player1->interact(mine1->mine);
         player1->interact(turret1->turrethead);
 
-
         //Eric's drawings
         if(wpns->action == wpns->PISTOL){
             wpns = pistol;
@@ -1014,7 +1013,7 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
     case WM_LBUTTONDOWN:
     {
         GetOGLPos(LOWORD(lParam), HIWORD(lParam));
-
+        cout << posmX << " " << posmY << endl;
         if(state == menu)
         {
 
@@ -1115,14 +1114,11 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
     case WM_MOUSEMOVE:
     {
         kbMS->anglesForShots(wpns, LOWORD(lParam), HIWORD(lParam));
-        kbMS->mouseMove(modelTeapot, LOWORD(lParam), HIWORD(lParam));
         break;
     }
 
     case WM_MOUSEWHEEL:
     {
-
-        kbMS->mouseWheel(modelTeapot, (float)GET_WHEEL_DELTA_WPARAM(wParam));
         break;
     }
 

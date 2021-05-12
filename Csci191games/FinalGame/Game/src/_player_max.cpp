@@ -7,6 +7,7 @@ _player_max::_player_max()
     movementSoundPlaying = false;   // we are originally not moving
     deathFrames = 1;    // start off on frame 1 if we die
     killCount = 0;
+    onPlatform = false;
 }
 
 _player_max::~_player_max()
@@ -114,6 +115,15 @@ void _player_max::interact(_object_max * curObj)
                 playerHealth -= 30;
                 cout << "Mine touched player and blew up, current health is " << playerHealth << endl;
                 cout << curObj->obj.id << endl;
+            }
+            if(string(curObj->obj.type) == "platform"){
+
+                if(player->obj.pos.y >= curObj->obj.pos.y && !onPlatform){
+                    cout << player->obj.pos.y << " "<< curObj->obj.pos.y << endl;
+                    jumping->currentlyJumping = false;
+                    player->obj.pos.y = curObj->obj.pos.y + .35;
+                    onPlatform = true;
+                }
             }
         }
     }

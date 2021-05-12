@@ -27,6 +27,7 @@ class _player_max
         int killCount;                                          // player killcount
 
         float playerHealth;             // amount of health a player currently has
+        bool onPlatform;
 
         void initialize();              // initialize player
         void draw();                    // draw player
