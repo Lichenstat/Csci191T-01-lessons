@@ -1497,11 +1497,8 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
 
     case WM_MOUSEMOVE:
     {
-<<<<<<< HEAD
         kbMS->anglesForShots(wpns, LOWORD(lParam), HIWORD(lParam));
-=======
         kbMS->mouseMove(modelTeapot, LOWORD(lParam), HIWORD(lParam));
->>>>>>> 8597067834ccc8a6194c7bd64862d57fdaf6eb1a
         break;
     }
 
