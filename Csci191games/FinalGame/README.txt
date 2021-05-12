@@ -17,11 +17,23 @@ Emmanuel's parts:
 I plan on working on the different enviroments, and make sure the platforms work with collision.
 
 Eric's parts:			
-_collision			I used this for our physics for characters, enemies, and projectiles. We can include this for our character to be able to jump.
+_collision			I used this for our physics for characters, enemies, and projectiles. These functions will check to see if the player or weapons are 					touching something else. These will also check to see if the weapons hit the enemies. 
 _weapons			The weapon class will involve the weapons themselves, their damage, and the projectiles.
-				The projectiles will have their own speeds and acceraltions. Beams, lighting, fire, and melee attacks will not have gravity applied to them
-				The pistols and grenade launchers will have gravity/acceration applied to them. Pistols will only have a small angle.
+				We have 4 weapons that we can use. Pistol, grenade launcher, laser gun, and shock rifle.
+				Pistol: Very weak, straight forward weapon. Character will start with this every stage. It will take multiple shots for this weapon to 					destroy enemies.
+				Grenade Launcher: The grenade launcher will have gravity/acceration applied to the projectile. Very strong weapon and can single shot 					enemies but the the weapon is much harder to use than the rest of the weapons. The angle will make the flying mines a hassle to	 				   destroy.
+				Laser Gun: Basically an upgraded pistol. Fires fast, straight and does a lot more damage than that of the pistol.
+				Shock Rifle: Best weapon in the game. Will destroy everything when it touches the enemies. Very fast attack speed and will go through 					eveything. Also spreads into 3 shots.
 _input				Ive added the mouse down and angle controles for our weapon here.
+				Controls added: anglesForShots, weaponPickUp, keyPressed (movement of weapons), mouseClick(shoot)
+				anglesForShots: Will calculate a general angle for the projetiles. Is not completely accurate because monitor pixels are an issue. 				    There are also anglesForShockShotOne and Two. These will calculate what angles that the spread will have for our shock rifle.
+				anglesForShots-> Command is "left click"
+				weaponPickUp: pickup the weapon if you are touching the weapon on the floor.
+				weaponPickUp-> Command is "Space"
+				keyPressed (movement of weapons): This keyPressed was made to allow projectiles and weapons that fall on the 	floor to move 					 according to the player
+				keyPressed-> Commands "left", "right", and "up"
+				mouseClick (shoot): This was made to fire our weapon. Will use the angle caluculated by anglesForShots
+				mouseClick -> Commands "left click"
 
 Don's parts:
 Menu				Created a landing/menu/help/credit pages with keyboard click. Emmanuel helped me with the mouse clicking implementation.
