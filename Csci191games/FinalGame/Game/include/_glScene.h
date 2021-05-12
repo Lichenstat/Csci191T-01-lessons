@@ -1,6 +1,8 @@
 #ifndef _GLSCENE_H
 #define _GLSCENE_H
 
+#include <vector>
+#include <random>
 #include <windows.h>
 #include <GL/glut.h>
 #include <iostream>
@@ -112,8 +114,14 @@ class _glScene
         _hud * hud = new _hud();
         _healthpack_max *healthpack1 = new _healthpack_max();
         _healthpack_max *healthpack2 = new _healthpack_max();
-        _mine * mine1 = new _mine();
-        _turret *turret1 = new _turret();
+
+        vector<_mine*> mine1;
+        vector<_mine*> mine2;
+        vector<_mine*> mine3;
+
+        vector<_turret*> turret1;
+        vector<_turret*> turret2;
+        vector<_turret*> turret3;
         //--------
 
         //Eric's addiions
