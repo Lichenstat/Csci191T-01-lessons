@@ -28,6 +28,16 @@ bool _collision::projHit(_weapons* proj, _object_max* obj)
         return false;
 }
 
+bool _collision::boomCol(_weapons* proj, _object_max* obj)
+{
+    if(((proj->projPos.x - 0.5) < obj->obj.pos.x) && ((proj->projPos.x + 0.5) > obj->obj.pos.x) &&
+       ((proj->projPos.y - 0.5) < obj->obj.pos.y) && ((proj->projPos.y + 0.5) > obj->obj.pos.y) &&
+        (obj->obj.exist) && proj->action == proj->GRENADELAUNCHER){
+        return true;
+    }
+        return false;
+}
+
 //we can use this to check if the character is on the floor or if they hop, they can get back down correctly
 bool _collision::linearCollision(float objPos, float wall)
 {
