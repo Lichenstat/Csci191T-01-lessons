@@ -201,44 +201,40 @@ void _weapons::drawWeapon()
 }
 
 
-void _weapons::weaponSpawn(_object_max* obj, _weapons* wpn)
+void _weapons::weaponSpawn(_object_max* obj, _weapons* wpn, float chance)
 {
-    int randomSpawner = rand()%101 + 1;
+    int randomSpawner = chance * (rand()%101 + 1);
     if(obj->obj.exist == false){
         switch(weaponHold){
             case P:
-            if(randomSpawner < 50 && onlyOnceP == 0){
+            if(randomSpawner < 70){
                 wpn->weaponPos.x = obj->obj.pos.x;
                 wpn->weaponPos.y = obj->obj.pos.y;
                 wpn->weaponPos.z = 1.0;
-                onlyOnceP++;
                 drawWeapon();
             }
             break;
             case G:
-            if(randomSpawner < 50 && onlyOnceG == 0){
+            if(randomSpawner < 30){
                 wpn->weaponPos.x = obj->obj.pos.x;
                 wpn->weaponPos.y = obj->obj.pos.y;
                 wpn->weaponPos.z = 1.0;
-                onlyOnceG++;
                 drawWeapon();
             }
             break;
             case B:
-            if(randomSpawner < 50 && onlyOnceB == 0){
+            if(randomSpawner < 15){
                 wpn->weaponPos.x = obj->obj.pos.x;
                 wpn->weaponPos.y = obj->obj.pos.y;
                 wpn->weaponPos.z = 1.0;
-                onlyOnceB++;
                 drawWeapon();
             }
             break;
             case S:
-            if(randomSpawner < 50 && onlyOnceS == 0){
+            if(randomSpawner < 10){
                 wpn->weaponPos.x = obj->obj.pos.x;
                 wpn->weaponPos.y = obj->obj.pos.y;
                 wpn->weaponPos.z = 1.0;
-                onlyOnceS++;
                 drawWeapon();
             }
             break;
@@ -253,29 +249,6 @@ float _weapons::weaponFall()
         weaponPos.y = weaponPos.y + vel;
     }
     return weaponPos.y;
-}
-
-void _weapons::explode()
-{
-    if(projPos.z == -9.0){
-        xMin = 0.0;
-        xMax = 1.0/framesX;
-        yMin = 0.0;
-        yMax = 1.0/framesY;
-    }
-    if(projPos.z != -9.0){
-        xMin += 1/framesX;
-        xMax += 1/framesX;
-        if(xMax == 1.0){
-            xMin = 0;
-            xMax = 1/framesX;
-            yMin += 1/framesY;
-            yMax += 1/framesY;
-        }
-        if(yMax == 1.0 && xMax == 1.0){
-            projPos.z == -9.0;
-        }
-    }
 }
 
 
