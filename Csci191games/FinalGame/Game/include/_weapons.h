@@ -31,6 +31,7 @@ class _weapons
 
         //drawing our projectiles and weapons and their positions
         void drawProj();
+        void drawShock();
         void drawWeapon();
         _texture *proj = new _texture();
         void projInit(float, float);
@@ -65,6 +66,8 @@ class _weapons
         float yClicker;
 
         _sounds* snds = new _sounds();
+
+        void explode();
     protected:
 
     private:
