@@ -170,6 +170,69 @@ GLint _glScene::initGL()
         lv1skyBg->parallaxInit("images/levelTwo/sky.png");
         lv1treeBg->parallaxInit("images/levelTwo/tree.png");
 
+         timer -> startTimer();
+
+        //Max's addition to scene
+        itemTimer->startTimer();
+
+        // initializing objects (in this case it is a player 1 and healthpacks)
+        player1->initialize();
+        _objectinteract_max::changePosition(player1->player, 0.0, -2.1);
+
+        hud->initialize();
+
+        healthpack1->initialize();
+        _objectinteract_max::changePosition(healthpack1->healthpack, -2.0, -2.0);
+        _objectinteract_max::changeScale(healthpack1->healthpack, 0.5, 0.5);
+        healthpack2->initialize();
+        _objectinteract_max::changePosition(healthpack2->healthpack, 2.0, -2.0);
+        _objectinteract_max::changeScale(healthpack2->healthpack, 0.5, 0.5);
+
+        mine1->initialize();
+        _objectinteract_max::changePosition(mine1->mine, -2.0, 1.0);
+        turret1->initialize();
+        _objectinteract_max::changePosition(turret1->turretParts, -2.5, -2.2);
+
+        //Eric's projectiles
+        pistol->projInit(1, 1);
+        pistol->weaponSkin->loadTexture("images/pistol.png");
+        pistol->weaponHold = pistol->P;
+        pistol->proj->loadTexture("images/bullet.png");
+        pistol->action = pistol->PISTOL;
+        pistol->framesX = 1.0;
+        pistol->xMax = 1.0/pistol->framesX;
+        pistol->vel = 0.1;
+        pistol->weaponDmg = 10;
+        pistol->projScale.x = 0.2;
+        pistol->projScale.y = 0.2;
+
+        grenadelauncher->projInit(8, 1);
+        grenadelauncher->weaponSkin->loadTexture("images/grenadeLauncher.png");
+        grenadelauncher->weaponHold = grenadelauncher->G;
+        grenadelauncher->proj->loadTexture("images/ballRoll.png");
+        grenadelauncher->action = grenadelauncher->GRENADELAUNCHER;
+        grenadelauncher->framesX = 8.0;
+        grenadelauncher->xMax = 1.0/grenadelauncher->framesX;
+        grenadelauncher->vel = 0.009;
+        grenadelauncher->accel = 0.0005;
+        grenadelauncher->weaponDmg = 25;
+        grenadelauncher->projScale.x = 0.2;
+        grenadelauncher->projScale.y = 0.2;
+
+        laserGun->projInit(1, 1);
+        laserGun->weaponSkin->loadTexture("images/beamGun.png");
+        laserGun->weaponHold = laserGun->B;
+        laserGun->proj->loadTexture("images/laserSprite.png");
+        laserGun->action = laserGun->BEAM;
+        laserGun->framesX = 1.0;
+        laserGun->xMax = 1.0/laserGun->framesX;
+        laserGun->vel = 0.3;
+        laserGun->weaponDmg = 50;
+        laserGun->projScale.x = 0.2;
+        laserGun->projScale.y = 0.2;
+
+        wpns = pistol;        //MANUAL START TO WEAPON, should start with a pistol but set to laserGun for ease of destroying turret and mine
+        //----------
         doneLoading = true;
     }
 
@@ -442,10 +505,10 @@ GLint _glScene::drawScene()
         glPopMatrix();
 
     }
+
     if(state == levelTwo)
     {
 
-        cout << "running levelTwo drawScene" << endl;
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);                   // change this if you want to change color of scene
@@ -504,6 +567,106 @@ GLint _glScene::drawScene()
         //clouds effect auto scrolling
         lv1cloudOneBg->scroll(true, "left", 0.0001);                // auto background scrolling
         lv1cloudTwoBg->scroll(true, "left", 0.0003);
+
+        // Max's includes to scene
+        // drawing and updating necessary objects
+        hud->draw();
+        hud->interact(player1->playerHealth);
+
+        healthpack1->draw();
+        healthpack1->interact(player1->player);
+        healthpack2->draw();
+        healthpack2->interact(player1->player);
+
+        mine1->draw();
+        mine1->interact(player1->player);
+
+        turret1->draw();
+        turret1->interact(player1->player);
+
+        player1->draw();
+
+        if(itemTimer->getTicks() > 120)
+        {
+            player1->animate();
+            healthpack1->animate();
+            healthpack2->animate();
+
+            mine1->animate();
+            turret1->animate();
+
+            itemTimer->resetTime();
+        }
+
+        player1->interact(healthpack1->healthpack);
+        player1->interact(healthpack2->healthpack);
+        player1->interact(mine1->mine);
+        player1->interact(turret1->turrethead);
+
+
+        //Eric's drawings
+        if(wpns->action == wpns->PISTOL){
+            wpns = pistol;
+            pistol->vel = 0.2;
+            pistol->weaponDmg = 10;
+            pistol->projScale.x = 0.2;
+            pistol->projScale.y = 0.2;
+        }
+        if(wpns->action == wpns->GRENADELAUNCHER){
+            wpns = grenadelauncher;
+            grenadelauncher->vel = 0.09;
+            grenadelauncher->accel = 0.005;
+            grenadelauncher->weaponDmg = 25;
+            grenadelauncher->projScale.x = 0.2;
+            grenadelauncher->projScale.y = 0.2;
+        }
+        if(wpns->action == wpns->BEAM){
+            wpns = laserGun;
+            laserGun->vel = 0.3;
+            laserGun->weaponDmg = 50;
+            laserGun->projScale.x = 0.2;
+            laserGun->projScale.y = 0.2;
+        }
+        glPushMatrix();
+            glBindTexture(GL_TEXTURE_2D, wpns->proj->tex);
+            wpns->drawProj();
+            glBindTexture(GL_TEXTURE_2D, wpns2->proj->tex);
+            wpns2->drawProj();
+            glBindTexture(GL_TEXTURE_2D, pistol->weaponSkin->tex);
+            pistol->drawWeapon();
+            glBindTexture(GL_TEXTURE_2D, grenadelauncher->weaponSkin->tex);
+            grenadelauncher->drawWeapon();
+            glBindTexture(GL_TEXTURE_2D, laserGun->weaponSkin->tex);
+            laserGun->drawWeapon();
+            if(timer->getTicks() > 15)
+            {
+                wpns->weaponAction(player1->player);
+                if(col->projHit(wpns, mine1->mine))
+                {
+                    wpns->hitToOrigin(player1->player);
+                    mine1->health -= wpns->weaponDmg;
+                    if(mine1->health <= 0){
+                        mine1->mine->obj.pos.z = -9.0;
+                        mine1->mine->obj.exist = false;
+                    }
+                    grenadelauncher->weaponSpawn(mine1->mine, grenadelauncher);
+                }
+                if(col->projHit(wpns, turret1->turrethead))
+                {
+                    wpns->hitToOrigin(player1->player);
+                    turret1->health-= wpns->weaponDmg;
+                    if(turret1->health <= 0){
+                        turret1->turrethead->obj.pos.z = -9.0;
+                        turret1->turretbarrel->obj.pos.z = -9.0;
+                        turret1->turrethead->obj.exist = false;
+                    }
+                    laserGun->weaponSpawn(turret1->turrethead, laserGun);
+                }
+                grenadelauncher->weaponFall();
+                laserGun->weaponFall();
+                timer->resetTime();
+            }
+        glPopMatrix();
     }
 }
 
@@ -542,7 +705,12 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
                 kbMS->moveEnv(lvObigMountainsBg, .002);
                 kbMS->moveObj(firstPlatform->platform, 0.06);
             }
-
+            if(state == levelTwo){
+                kbMS->moveEnv(lv1groundBg, .005);
+                kbMS->moveEnv(lv1mountainsBg, .0045);
+                kbMS->moveEnv(lv1forestBg, .0048);
+                kbMS->moveEnv(lv1bigMountainBg, .002);
+            }
             if(state != menu)
             {
                 kbMS->keyPressed(snds);
@@ -596,9 +764,7 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
             if(posmX > -0.49 && posmX < 0.49 && posmY >.80 && posmY < 1.2)
             {
 
-
                 state = levelOne;
-                cout << "changed state to level Two";
 
                 doneLoading = false;
 
@@ -624,9 +790,7 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
             {
 
                 std::exit(0);
-                //state = help;
 
-                //doneLoading = false;
             }
         }
 
@@ -641,10 +805,9 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
                 doneLoading = false;
             }
         }
+
         if(state == credit)
         {
-
-
 
             if(posmX > -0.49 && posmX < 0.49 && posmY >-1.76 && posmY < -1.25)
             {
@@ -653,6 +816,7 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
                 doneLoading = false;
             }
         }
+
         if(state == levelOne)
         {
             if(posmX > 4.42 && posmX < 5.0 && posmY > 3.24 && posmY < 3.5)
@@ -663,11 +827,9 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
             }
 
             //Eric's aditions
-            //kbMS->anglesForShots(wpns, LOWORD(lParam), HIWORD(lParam));
+            kbMS->anglesForShots(wpns, LOWORD(lParam), HIWORD(lParam));
             //----
         }
-
-        cout << "Mouse Click On Location: " << posmX << " " << posmY << endl;
 
         break;
     }

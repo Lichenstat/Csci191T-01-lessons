@@ -79,7 +79,6 @@ class _glScene
         _parallax *lv1skyBg = new _parallax();
         _parallax *lv1treeBg = new _parallax();
 
-
         _player *myPly = new _player();
         _timer *timer = new _timer();
         _texture *texEnms = new _texture();
@@ -116,7 +115,7 @@ class _glScene
         _weapons* shockRifle = new _weapons();
         _collision* col = new _collision();
         //-------
-    
+
         _enemies enms[20];
 
         int winMSG(HWND, UINT, WPARAM, LPARAM);

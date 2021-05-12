@@ -287,7 +287,7 @@
 	<iostream>
 	<windows.h>
 
-1620624146 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\include\_glscene.h
+1620814415 c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\include\_glscene.h
 	<windows.h>
 	<GL/glut.h>
 	<iostream>
@@ -567,7 +567,7 @@
 1618458277 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\src\_timer.cpp
 	"_timer.h"
 
-1620813102 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\src\_glscene.cpp
+1620813871 source:c:\users\gamep\documents\fsu\2021\csci 191t game dev\maxrepo\csci191t-01-lessons\csci191games\finalgame\game\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<SOIL.h>
