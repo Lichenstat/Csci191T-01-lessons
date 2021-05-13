@@ -14,7 +14,10 @@ _animate_max.h/.cpp		a simple class to animate various objects in the game
 I plan on updating the player to world movements and adding an enemy or two to show in the presentaitons.
 
 Emmanuel's parts:
-I plan on working on the different enviroments, and make sure the platforms work with collision.
+	I plan on working on the different environments and make sure the platforms work with collision. 
+	So the platforms worked with collision; however, I could not get a jump to work while on the platform, 
+	so platforms have been omitted from the project. I worked on getting the levels properly set up with 
+	the different scenes, turret placement, and mines placement. Also, set up the switching levels mechanism.
 
 Eric's parts:			
 _collision			I used this for our physics for characters, enemies, and projectiles. We can include this for our character to be able to jump.
