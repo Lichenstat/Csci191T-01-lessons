@@ -1,17 +1,25 @@
-This is the code base to be used in the creation of the final game:
-
-If your reading this then just note what parts you have added onto the file
-that way we won't get so confused with eachothers parts wer plan on making
+Final game README.txt submission for group virtual boys:
 
 Max's parts:
+common.h (modified)		Modified the common.h file to include a objInfo_max struct
+_input.h/.cpp (modified)	Modified the input to include _object_max type
 _object_max.h/.cpp		I used this to create various objects
 _objectinteract_max.h/.cpp  	then I used this to update their information using different seperate static cases (it includes gl_push,gl_pop matrix with its functionality so no need to include that in scene if you are using my object type)
-_movement_max.h/.cp		This was used for updating the movement of various things in relation to the world
+_movement_max.h/.cpp		This was used for updating the movement of various things in relation to the world
+_movement_jump.h/.cpp		used to calculate the jump movements for the player
 _hitbox_max.h/.cpp		a simple hitbox class for calculating the hitbox of objects in relation to one another (note the hitbox is kinda buggy, it works but is slightly miscalcualted)
 _healthpack_max.h/.cpp		a simple in game object that can be interacted with
 _animate_max.h/.cpp		a simple class to animate various objects in the game
+_hud.h/.cpp			a simple hud to display various info about the players current condition
+_healthbar.h/.cpp		a graphical healthbar that updates using players current health
+_mine.h/.cpp			a mine enemy to dodge and kill in the game, if if touches the player it explodes
+_turret.h/.cpp			a turret enemy to shoot at the player in the game, the bullet does damage if it touches the player
 
-I plan on updating the player to world movements and adding an enemy or two to show in the presentaitons.
+In creation of the game it was important to have a solid and abstract base to go off of when creating items/objects for the game. 
+The whole point of the _object_max class was to be able to make an object and then interact with it using _objectinteract_max, then make
+seperate classes for each individual item (like player and turret, etc.) so that objects can all interact being based off the same basic struct via
+static cases and the functions in their own classes. Basically after that I just made parts for the game such as healthpacks, turrets, etc. 
+and added player/object updates to movements in relation to the game world and made sure that objects/items could all interact with one another properly.
 
 Emmanuel's parts:
 I plan on working on the different enviroments, and make sure the platforms work with collision.
