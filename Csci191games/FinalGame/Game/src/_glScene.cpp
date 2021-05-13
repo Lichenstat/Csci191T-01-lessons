@@ -116,6 +116,7 @@ GLint _glScene::initGL()
 
         // initializing objects (in this case it is a player 1 and healthpacks)
         player1->initialize();
+        player1->playerHealth = 100;
         _objectinteract_max::changePosition(player1->player, 0.0, -2.1);
 
         hud->initialize();
@@ -132,6 +133,7 @@ GLint _glScene::initGL()
         {
 
             mine1[i]->initialize();
+            mine1[i]->speed = .0025;
             _objectinteract_max::changePosition(mine1[i]->mine,((rand()%10)+1), 1);
 
         }
@@ -141,6 +143,7 @@ GLint _glScene::initGL()
         {
 
             turret1[i]->initialize();
+            turret1[i]->bulletspeed = .006;
             _objectinteract_max::changePosition(turret1[i]->turretParts, x, -2.2);
             _objectinteract_max::changePosition(turret1[i]->turretbullet, x, -2.2);
             x = ((rand()%10)+1);
@@ -242,6 +245,7 @@ GLint _glScene::initGL()
 
         // initializing objects (in this case it is a player 1 and healthpacks)
         player1->initialize();
+        player1->playerHealth = 100;
         _objectinteract_max::changePosition(player1->player, 0.0, -2.1);
 
         hud->initialize();
@@ -257,6 +261,7 @@ GLint _glScene::initGL()
         {
 
             mine2[i]->initialize();
+            mine2[i]->speed = .004;
             _objectinteract_max::changePosition(mine2[i]->mine,((rand()%15)+1), 1);
 
         }
@@ -266,6 +271,7 @@ GLint _glScene::initGL()
         {
 
             turret2[i]->initialize();
+            turret2[i]->bulletspeed = .012;
             _objectinteract_max::changePosition(turret2[i]->turretParts, x, -2.2);
             _objectinteract_max::changePosition(turret2[i]->turretbullet, x, -2.2);
             x = ((rand()%15)+1);
@@ -378,6 +384,7 @@ GLint _glScene::initGL()
 
         // initializing objects (in this case it is a player 1 and healthpacks)
         player1->initialize();
+        player1->playerHealth = 100;
         _objectinteract_max::changePosition(player1->player, 0.0, -2.1);
 
         hud->initialize();
@@ -393,6 +400,7 @@ GLint _glScene::initGL()
         {
 
             mine3[i]->initialize();
+            mine3[i]->speed = .0065;
             _objectinteract_max::changePosition(mine3[i]->mine,((rand()%20)+1), 1);
 
         }
@@ -401,6 +409,7 @@ GLint _glScene::initGL()
         for(int i = 0; i < 15; i++)
         {
             turret3[i]->initialize();
+            turret3[i]->bulletspeed = .018;
             _objectinteract_max::changePosition(turret3[i]->turretParts, x, -2.2);
             _objectinteract_max::changePosition(turret3[i]->turretbullet, x, -2.2);
             x = ((rand()%20)+1);

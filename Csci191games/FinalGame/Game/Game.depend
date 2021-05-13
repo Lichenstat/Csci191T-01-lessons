@@ -608,7 +608,7 @@
 	<iostream>
 	<windows.h>
 
-1620865815 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_glscene.h
+1620868339 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_glscene.h
 	<vector>
 	<random>
 	<windows.h>
@@ -744,7 +744,7 @@
 1613009550 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_gllight.h
 	<_glScene.h>
 
-1620865121 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_glscene.cpp
+1620868868 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<SOIL.h>
@@ -785,7 +785,7 @@
 1615856340 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_player.cpp
 	"_player.h"
 
-1620863148 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_player_max.cpp
+1620868452 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_player_max.cpp
 	"_player_max.h"
 
 1618989436 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_sounds.cpp
@@ -808,7 +808,7 @@
 	<_objectinteract_max.h>
 	<_hitbox_max.h>
 
-1620806176 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_mine.h
+1620866884 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_mine.h
 	<_object_max.h>
 	<_objectinteract_max.h>
 	<_movement_max.h>
@@ -822,7 +822,7 @@
 1620832438 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_platfroms.cpp
 	"_platfroms.h"
 
-1620810062 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_mine.cpp
+1620866902 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_mine.cpp
 	"_mine.h"
 
 1620863148 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_weapons.h
@@ -870,7 +870,7 @@
 1620832438 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_movement_jump.cpp
 	"_movement_jump.h"
 
-1620864387 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_turret.cpp
+1620868078 source:c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\src\_turret.cpp
 	"_turret.h"
 
 1620823218 c:\users\max\documents\github\csci191t-01-lessons\csci191games\finalgame\game\include\_turret.h

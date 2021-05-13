@@ -37,6 +37,7 @@ void _turret::draw()
     {
         if(!dead)
         {
+            sounds->playSounds("sounds/sfx/item breaking.mp3");
             dead = true;
             damage = 0;
             turretbarrel->obj.exist = false;

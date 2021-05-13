@@ -6,6 +6,7 @@ _mine::_mine()
     activated = false;
     deathFrames = 1;
     health = 25.0;
+    speed = .0025;
     dead = false;
     //ctor
 }
@@ -59,7 +60,7 @@ void _mine::interact(_object_max * curObj)
               sounds->playSounds("sounds/sfx/beeping.mp3") ;
             }
             activated = true;
-            _movement_max::moveTwordsObject(mine, curObj, .0025);   // and move towards player
+            _movement_max::moveTwordsObject(mine, curObj, speed);   // and move towards player
         }
         else
         {

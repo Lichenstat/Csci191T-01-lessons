@@ -20,6 +20,7 @@ class _mine
 
         float health;                           // mine health
         float damage;                           // mine damaged (unused for now)
+        float speed;                            // mine speed (movement)
         bool activated;                         // mine activated or not
         bool dead;                              // if mine is dead or not
 
