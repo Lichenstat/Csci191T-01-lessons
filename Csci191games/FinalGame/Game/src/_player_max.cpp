@@ -103,7 +103,7 @@ void _player_max::interact(_object_max * curObj)
                     if(curmissinghealth < 20.0)
                         playerHealth += curmissinghealth;
                     else
-                        playerHealth += 20.0;
+                        playerHealth += 25.0;
 
                     cout << "Picked up health, current health is " << playerHealth << endl;
                 }

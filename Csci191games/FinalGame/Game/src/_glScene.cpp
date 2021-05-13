@@ -116,6 +116,7 @@ GLint _glScene::initGL()
 
         // initializing objects (in this case it is a player 1 and healthpacks)
         player1->initialize();
+        player1->playerHealth = 100;
         _objectinteract_max::changePosition(player1->player, 0.0, -2.1);
 
         hud->initialize();
@@ -132,6 +133,7 @@ GLint _glScene::initGL()
         {
 
             mine1[i]->initialize();
+            mine1[i]->speed = .0025;
             _objectinteract_max::changePosition(mine1[i]->mine,((rand()%10)+1), 1);
 
         }
@@ -141,6 +143,7 @@ GLint _glScene::initGL()
         {
 
             turret1[i]->initialize();
+            turret1[i]->bulletspeed = .006;
             _objectinteract_max::changePosition(turret1[i]->turretParts, x, -2.2);
             _objectinteract_max::changePosition(turret1[i]->turretbullet, x, -2.2);
             x = ((rand()%10)+1);
@@ -185,7 +188,7 @@ GLint _glScene::initGL()
 
         shockRifle->projInit(1, 1);
         shockRifle->weaponSkin->loadTexture("images/shockRifle.png");
-        shockRifle->weaponHold = shockRifle->B;
+        shockRifle->weaponHold = shockRifle->S;
         shockRifle->proj->loadTexture("images/shockBullet.png");
         shockRifle->action = shockRifle->SHOCKRIFLE;
         shockRifle->framesX = 1.0;
@@ -242,6 +245,7 @@ GLint _glScene::initGL()
 
         // initializing objects (in this case it is a player 1 and healthpacks)
         player1->initialize();
+        player1->playerHealth = 100;
         _objectinteract_max::changePosition(player1->player, 0.0, -2.1);
 
         hud->initialize();
@@ -257,6 +261,7 @@ GLint _glScene::initGL()
         {
 
             mine2[i]->initialize();
+            mine2[i]->speed = .004;
             _objectinteract_max::changePosition(mine2[i]->mine,((rand()%15)+1), 1);
 
         }
@@ -266,6 +271,7 @@ GLint _glScene::initGL()
         {
 
             turret2[i]->initialize();
+            turret2[i]->bulletspeed = .012;
             _objectinteract_max::changePosition(turret2[i]->turretParts, x, -2.2);
             _objectinteract_max::changePosition(turret2[i]->turretbullet, x, -2.2);
             x = ((rand()%15)+1);
@@ -315,7 +321,7 @@ GLint _glScene::initGL()
 
         shockRifle->projInit(1, 1);
         shockRifle->weaponSkin->loadTexture("images/shockRifle.png");
-        shockRifle->weaponHold = shockRifle->B;
+        shockRifle->weaponHold = shockRifle->S;
         shockRifle->proj->loadTexture("images/shockBullet.png");
         shockRifle->action = shockRifle->SHOCKRIFLE;
         shockRifle->framesX = 1.0;
@@ -345,7 +351,7 @@ GLint _glScene::initGL()
         shockBulTwo->projScale.x = 0.3;
         shockBulTwo->projScale.y = 0.15;
 
-        wpns = shockRifle;        //MANUAL START TO WEAPON, should start with a pistol but set to laserGun for ease of destroying turret and mine
+        wpns = pistol;        //MANUAL START TO WEAPON, should start with a pistol but set to laserGun for ease of destroying turret and mine
         //----------
 
 
@@ -378,6 +384,7 @@ GLint _glScene::initGL()
 
         // initializing objects (in this case it is a player 1 and healthpacks)
         player1->initialize();
+        player1->playerHealth = 100;
         _objectinteract_max::changePosition(player1->player, 0.0, -2.1);
 
         hud->initialize();
@@ -393,6 +400,7 @@ GLint _glScene::initGL()
         {
 
             mine3[i]->initialize();
+            mine3[i]->speed = .0065;
             _objectinteract_max::changePosition(mine3[i]->mine,((rand()%20)+1), 1);
 
         }
@@ -401,6 +409,7 @@ GLint _glScene::initGL()
         for(int i = 0; i < 15; i++)
         {
             turret3[i]->initialize();
+            turret3[i]->bulletspeed = .018;
             _objectinteract_max::changePosition(turret3[i]->turretParts, x, -2.2);
             _objectinteract_max::changePosition(turret3[i]->turretbullet, x, -2.2);
             x = ((rand()%20)+1);
@@ -446,7 +455,7 @@ GLint _glScene::initGL()
 
         shockRifle->projInit(1, 1);
         shockRifle->weaponSkin->loadTexture("images/shockRifle.png");
-        shockRifle->weaponHold = shockRifle->B;
+        shockRifle->weaponHold = shockRifle->S;
         shockRifle->proj->loadTexture("images/shockBullet.png");
         shockRifle->action = shockRifle->SHOCKRIFLE;
         shockRifle->framesX = 1.0;
@@ -695,6 +704,8 @@ GLint _glScene::drawScene()
         for(int i = 0; i < 5; i++)
         {
             player1->interact(turret1[i]->turrethead);
+
+            player1->interact(turret1[i]->turretbullet);
         }
 
         //Eric's drawings
@@ -741,6 +752,7 @@ GLint _glScene::drawScene()
             shockBulTwo->projScale.x = 0.3;
             shockBulTwo->projScale.y = 0.15;
         }
+
         glPushMatrix();
         glBindTexture(GL_TEXTURE_2D, wpns->proj->tex);
         wpns->drawProj();
@@ -782,18 +794,8 @@ GLint _glScene::drawScene()
                     {
                         mine1[i]->mine->obj.pos.z = -9.0;
                         mine1[i]->mine->obj.exist = false;
-                        grenadelauncher->weaponSpawn(mine1[i]->mine, grenadelauncher);
-                    }
-                    if(col->boomCol(wpns, turret1[i]->turrethead))
-                    {
-                        turret1[i]->health -= wpns->weaponDmg;
-                        if(turret1[i]->health <= 0)
-                        {
-                            turret1[i]->turrethead->obj.pos.z = -9.0;
-                            turret1[i]->turretbarrel->obj.pos.z = -9.0;
-                            turret1[i]->turrethead->obj.exist = false;
-                            laserGun->weaponSpawn(turret1[i]->turrethead, laserGun);
-                        }
+                        grenadelauncher->weaponSpawn(mine1[i]->mine, grenadelauncher, 1);
+                        shockRifle->weaponSpawn(mine1[i]->mine, shockRifle, 2);
                     }
                 }
             }
@@ -811,19 +813,10 @@ GLint _glScene::drawScene()
                         turret1[i]->turrethead->obj.pos.z = -9.0;
                         turret1[i]->turretbarrel->obj.pos.z = -9.0;
                         turret1[i]->turrethead->obj.exist = false;
-                        laserGun->weaponSpawn(turret1[i]->turrethead, laserGun);
+                        laserGun->weaponSpawn(turret1[i]->turrethead, laserGun, 1);
+                        shockRifle->weaponSpawn(turret1[i]->turrethead, shockRifle, 2);
                     }
 
-                    if(col->boomCol(wpns, mine1[i]->mine))
-                    {
-                        mine1[i]->health -= wpns->weaponDmg;
-                        if(mine1[i]->health <= 0)
-                        {
-                            mine1[i]->mine->obj.pos.z = -9.0;
-                            mine1[i]->mine->obj.exist = false;
-                            grenadelauncher->weaponSpawn(mine1[i]->mine, grenadelauncher);
-                        }
-                    }
                 }
             }
             for(int i = 0; i < 5; i++)
@@ -835,7 +828,8 @@ GLint _glScene::drawScene()
                     {
                         mine1[i]->mine->obj.pos.z = -9.0;
                         mine1[i]->mine->obj.exist = false;
-                        grenadelauncher->weaponSpawn(mine1[i]->mine, grenadelauncher);
+                        grenadelauncher->weaponSpawn(mine1[i]->mine, grenadelauncher, 1);
+                        shockRifle->weaponSpawn(mine1[i]->mine, shockRifle, 2);
                     }
                 }
 
@@ -847,12 +841,14 @@ GLint _glScene::drawScene()
                         turret1[i]->turrethead->obj.pos.z = -9.0;
                         turret1[i]->turretbarrel->obj.pos.z = -9.0;
                         turret1[i]->turrethead->obj.exist = false;
-                        laserGun->weaponSpawn(turret1[i]->turrethead, laserGun);
+                        laserGun->weaponSpawn(turret1[i]->turrethead, laserGun, 1);
+                        shockRifle->weaponSpawn(turret1[i]->turrethead, shockRifle, 2);
                     }
                 }
             }
             grenadelauncher->weaponFall();
             laserGun->weaponFall();
+            shockRifle->weaponFall();
             timer->resetTime();
         }
         glPopMatrix();
@@ -860,6 +856,10 @@ GLint _glScene::drawScene()
 
         if(player1->killCount == 10)
         {
+            pistol->onlyOnceP == 0;
+            grenadelauncher->onlyOnceG == 0;
+            laserGun->onlyOnceB == 0;
+            shockRifle->onlyOnceS == 0;
 
             state = levelTwo;
             player1->killCount = 0;
@@ -991,6 +991,7 @@ GLint _glScene::drawScene()
 
             player1->interact(turret2[i]->turrethead);
 
+            player1->interact(turret2[i]->turretbullet);
         }
 
         //Eric's drawings
@@ -1078,18 +1079,8 @@ GLint _glScene::drawScene()
                     {
                         mine2[i]->mine->obj.pos.z = -9.0;
                         mine2[i]->mine->obj.exist = false;
-                        grenadelauncher->weaponSpawn(mine2[i]->mine, grenadelauncher);
-                    }
-                    if(col->boomCol(wpns, turret2[i]->turrethead))
-                    {
-                        turret2[i]->health -= wpns->weaponDmg;
-                        if(turret2[i]->health <= 0)
-                        {
-                            turret2[i]->turrethead->obj.pos.z = -9.0;
-                            turret2[i]->turretbarrel->obj.pos.z = -9.0;
-                            turret2[i]->turrethead->obj.exist = false;
-                            laserGun->weaponSpawn(turret2[i]->turrethead, laserGun);
-                        }
+                        grenadelauncher->weaponSpawn(mine2[i]->mine, grenadelauncher, 2);
+                        shockRifle->weaponSpawn(mine2[i]->mine, shockRifle, 2);
                     }
                 }
             }
@@ -1107,18 +1098,8 @@ GLint _glScene::drawScene()
                         turret2[i]->turrethead->obj.pos.z = -9.0;
                         turret2[i]->turretbarrel->obj.pos.z = -9.0;
                         turret2[i]->turrethead->obj.exist = false;
-                        laserGun->weaponSpawn(turret2[i]->turrethead, laserGun);
-                    }
-
-                    if(col->boomCol(wpns, mine2[i]->mine))
-                    {
-                        mine2[i]->health -= wpns->weaponDmg;
-                        if(mine2[i]->health <= 0)
-                        {
-                            mine2[i]->mine->obj.pos.z = -9.0;
-                            mine2[i]->mine->obj.exist = false;
-                            grenadelauncher->weaponSpawn(mine2[i]->mine, grenadelauncher);
-                        }
+                        laserGun->weaponSpawn(turret2[i]->turrethead, laserGun, 2);
+                        shockRifle->weaponSpawn(turret2[i]->turrethead, shockRifle, 2);
                     }
                 }
             }
@@ -1131,7 +1112,8 @@ GLint _glScene::drawScene()
                     {
                         mine2[i]->mine->obj.pos.z = -9.0;
                         mine2[i]->mine->obj.exist = false;
-                        grenadelauncher->weaponSpawn(mine2[i]->mine, grenadelauncher);
+                        grenadelauncher->weaponSpawn(mine2[i]->mine, grenadelauncher, 2);
+                        shockRifle->weaponSpawn(mine2[i]->mine, shockRifle, 2);
                     }
                 }
 
@@ -1143,12 +1125,14 @@ GLint _glScene::drawScene()
                         turret2[i]->turrethead->obj.pos.z = -9.0;
                         turret2[i]->turretbarrel->obj.pos.z = -9.0;
                         turret2[i]->turrethead->obj.exist = false;
-                        laserGun->weaponSpawn(turret2[i]->turrethead, laserGun);
+                        laserGun->weaponSpawn(turret2[i]->turrethead, laserGun, 2);
+                        shockRifle->weaponSpawn(turret2[i]->turrethead, shockRifle, 2);
                     }
                 }
             }
             grenadelauncher->weaponFall();
             laserGun->weaponFall();
+            shockRifle->weaponFall();
             timer->resetTime();
         }
         glPopMatrix();
@@ -1156,6 +1140,10 @@ GLint _glScene::drawScene()
 
         if(player1->killCount == 20)
         {
+            pistol->onlyOnceP == 0;
+            grenadelauncher->onlyOnceG == 0;
+            laserGun->onlyOnceB == 0;
+            shockRifle->onlyOnceS == 0;
 
             state = levelThree;
             player1->killCount = 0;
@@ -1287,6 +1275,7 @@ GLint _glScene::drawScene()
 
             player1->interact(turret3[i]->turrethead);
 
+            player1->interact(turret3[i]->turretbullet);
         }
 
         //Eric's drawings
@@ -1374,18 +1363,8 @@ GLint _glScene::drawScene()
                     {
                         mine3[i]->mine->obj.pos.z = -9.0;
                         mine3[i]->mine->obj.exist = false;
-                        grenadelauncher->weaponSpawn(mine3[i]->mine, grenadelauncher);
-                    }
-                    if(col->boomCol(wpns, turret3[i]->turrethead))
-                    {
-                        turret3[i]->health -= wpns->weaponDmg;
-                        if(turret3[i]->health <= 0)
-                        {
-                            turret3[i]->turrethead->obj.pos.z = -9.0;
-                            turret3[i]->turretbarrel->obj.pos.z = -9.0;
-                            turret3[i]->turrethead->obj.exist = false;
-                            laserGun->weaponSpawn(turret3[i]->turrethead, laserGun);
-                        }
+                        grenadelauncher->weaponSpawn(mine3[i]->mine, grenadelauncher, 3);
+                        shockRifle->weaponSpawn(mine3[i]->mine, shockRifle, 5);
                     }
                 }
             }
@@ -1403,18 +1382,8 @@ GLint _glScene::drawScene()
                         turret3[i]->turrethead->obj.pos.z = -9.0;
                         turret3[i]->turretbarrel->obj.pos.z = -9.0;
                         turret3[i]->turrethead->obj.exist = false;
-                        laserGun->weaponSpawn(turret3[i]->turrethead, laserGun);
-                    }
-
-                    if(col->boomCol(wpns, mine3[i]->mine))
-                    {
-                        mine3[i]->health -= wpns->weaponDmg;
-                        if(mine3[i]->health <= 0)
-                        {
-                            mine3[i]->mine->obj.pos.z = -9.0;
-                            mine3[i]->mine->obj.exist = false;
-                            grenadelauncher->weaponSpawn(mine3[i]->mine, grenadelauncher);
-                        }
+                        laserGun->weaponSpawn(turret3[i]->turrethead, laserGun, 3);
+                        shockRifle->weaponSpawn(turret3[i]->turrethead, shockRifle, 5);
                     }
                 }
             }
@@ -1427,7 +1396,8 @@ GLint _glScene::drawScene()
                     {
                         mine3[i]->mine->obj.pos.z = -9.0;
                         mine3[i]->mine->obj.exist = false;
-                        grenadelauncher->weaponSpawn(mine3[i]->mine, grenadelauncher);
+                        grenadelauncher->weaponSpawn(mine3[i]->mine, grenadelauncher, 3);
+                        shockRifle->weaponSpawn(mine3[i]->mine, shockRifle, 5);
                     }
                 }
 
@@ -1439,12 +1409,14 @@ GLint _glScene::drawScene()
                         turret3[i]->turrethead->obj.pos.z = -9.0;
                         turret3 [i]->turretbarrel->obj.pos.z = -9.0;
                         turret3 [i]->turrethead->obj.exist = false;
-                        laserGun->weaponSpawn(turret3[i]->turrethead, laserGun);
+                        laserGun->weaponSpawn(turret3[i]->turrethead, laserGun, 3);
+                        shockRifle->weaponSpawn(turret3[i]->turrethead, shockRifle, 5);
                     }
                 }
             }
             grenadelauncher->weaponFall();
             laserGun->weaponFall();
+            shockRifle->weaponFall();
             timer->resetTime();
         }
         glPopMatrix();
@@ -1461,6 +1433,10 @@ GLint _glScene::drawScene()
                 delete mine3[i];
                 delete turret3[i];
             }
+            pistol->onlyOnceP == 0;
+            grenadelauncher->onlyOnceG == 0;
+            laserGun->onlyOnceB == 0;
+            shockRifle->onlyOnceS == 0;
             mine3.clear();
             turret3.clear();
 
@@ -1660,19 +1636,20 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
 
                 doneLoading = false;
             }
-
-            kbMS->anglesForShots(wpns, LOWORD(lParam), HIWORD(lParam));
-            kbMS->anglesForShockShotOne(shockBulOne, LOWORD(lParam), HIWORD(lParam));
-            kbMS->anglesForShockShotTwo(shockBulTwo, LOWORD(lParam), HIWORD(lParam));
-            if(wpns->action == wpns->SHOCKRIFLE)
-            {
-                kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam) ); //For shockRifle;
-                kbMS->mouseDown(shockBulOne, LOWORD(lParam), HIWORD(lParam));
-                kbMS->mouseDown(shockBulTwo, LOWORD(lParam), HIWORD(lParam));//
-            }
-            else
-            {
-                kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam));//for weapons other than shockRifle
+            if(player1->playerHealth >= 0){
+                kbMS->anglesForShots(wpns, LOWORD(lParam), HIWORD(lParam));
+                kbMS->anglesForShockShotOne(shockBulOne, LOWORD(lParam), HIWORD(lParam));
+                kbMS->anglesForShockShotTwo(shockBulTwo, LOWORD(lParam), HIWORD(lParam));
+                if(wpns->action == wpns->SHOCKRIFLE)
+                {
+                    kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam) ); //For shockRifle;
+                    kbMS->mouseDown(shockBulOne, LOWORD(lParam), HIWORD(lParam));
+                    kbMS->mouseDown(shockBulTwo, LOWORD(lParam), HIWORD(lParam));//
+                }
+                else
+                {
+                    kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam));//for weapons other than shockRifle
+                }
             }
         }
 
@@ -1685,18 +1662,20 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
                 doneLoading = false;
             }
 
-            kbMS->anglesForShots(wpns, LOWORD(lParam), HIWORD(lParam));
-            kbMS->anglesForShockShotOne(shockBulOne, LOWORD(lParam), HIWORD(lParam));
-            kbMS->anglesForShockShotTwo(shockBulTwo, LOWORD(lParam), HIWORD(lParam));
-            if(wpns->action == wpns->SHOCKRIFLE)
-            {
-                kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam) ); //For shockRifle;
-                kbMS->mouseDown(shockBulOne, LOWORD(lParam), HIWORD(lParam));
-                kbMS->mouseDown(shockBulTwo, LOWORD(lParam), HIWORD(lParam));//
-            }
-            else
-            {
-                kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam));//for weapons other than shockRifle
+            if(player1->playerHealth >= 0){
+                kbMS->anglesForShots(wpns, LOWORD(lParam), HIWORD(lParam));
+                kbMS->anglesForShockShotOne(shockBulOne, LOWORD(lParam), HIWORD(lParam));
+                kbMS->anglesForShockShotTwo(shockBulTwo, LOWORD(lParam), HIWORD(lParam));
+                if(wpns->action == wpns->SHOCKRIFLE)
+                {
+                    kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam) ); //For shockRifle;
+                    kbMS->mouseDown(shockBulOne, LOWORD(lParam), HIWORD(lParam));
+                    kbMS->mouseDown(shockBulTwo, LOWORD(lParam), HIWORD(lParam));//
+                }
+                else
+                {
+                    kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam));//for weapons other than shockRifle
+                }
             }
         }
 
@@ -1709,18 +1688,20 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
                 doneLoading = false;
             }
 
-            kbMS->anglesForShots(wpns, LOWORD(lParam), HIWORD(lParam));
-            kbMS->anglesForShockShotOne(shockBulOne, LOWORD(lParam), HIWORD(lParam));
-            kbMS->anglesForShockShotTwo(shockBulTwo, LOWORD(lParam), HIWORD(lParam));
-            if(wpns->action == wpns->SHOCKRIFLE)
-            {
-                kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam) ); //For shockRifle;
-                kbMS->mouseDown(shockBulOne, LOWORD(lParam), HIWORD(lParam));
-                kbMS->mouseDown(shockBulTwo, LOWORD(lParam), HIWORD(lParam));//
-            }
-            else
-            {
-                kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam));//for weapons other than shockRifle
+            if(player1->playerHealth >= 0){
+                kbMS->anglesForShots(wpns, LOWORD(lParam), HIWORD(lParam));
+                kbMS->anglesForShockShotOne(shockBulOne, LOWORD(lParam), HIWORD(lParam));
+                kbMS->anglesForShockShotTwo(shockBulTwo, LOWORD(lParam), HIWORD(lParam));
+                if(wpns->action == wpns->SHOCKRIFLE)
+                {
+                    kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam) ); //For shockRifle;
+                    kbMS->mouseDown(shockBulOne, LOWORD(lParam), HIWORD(lParam));
+                    kbMS->mouseDown(shockBulTwo, LOWORD(lParam), HIWORD(lParam));//
+                }
+                else
+                {
+                    kbMS->mouseDown(wpns, LOWORD(lParam), HIWORD(lParam));//for weapons other than shockRifle
+                }
             }
         }
 
@@ -1767,4 +1748,3 @@ int _glScene::winMSG(HWND   hWnd,			        // Handle For This Window
 
     }
 }
-

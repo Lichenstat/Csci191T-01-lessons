@@ -37,12 +37,15 @@ void _turret::draw()
     {
         if(!dead)
         {
+            sounds->playSounds("sounds/sfx/item breaking.mp3");
             dead = true;
             damage = 0;
             turretbarrel->obj.exist = false;
             turrethead->obj.exist = false;
             turretbullet->obj.exist = false;
             _objectinteract_max::changeImage(turretbullet, "images/invisible.png", 1.0, 1.0);
+            _objectinteract_max::changeImage(turretbarrel, "images/invisible.png", 1.0, 1.0);
+            _objectinteract_max::changeImage(turrethead, "images/invisible.png", 1.0, 1.0);
             _objectinteract_max::changeImage(turretbase, "images/enemies/turretbasedirty.png", 1.0, 1.0);
         }
     }
